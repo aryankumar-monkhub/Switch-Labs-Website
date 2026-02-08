@@ -1,8 +1,26 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const Navbar = ({ onGetStarted }) => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const navigate = useNavigate();
+
+  const navItems = [
+    { label: 'Solutions', href: '#solutions', isHash: true },
+    { label: 'Our Corridors', href: '#our-corridors', isHash: true },
+    { label: 'Case Studies', href: '/case-studies', isHash: false },
+    { label: 'Impact', href: '#impact', isHash: true },
+    { label: 'About Us', href: '#about-us', isHash: true },
+    { label: 'Contact', href: '#contact', isHash: true },
+  ];
+
+  const handleNavClick = (item, e) => {
+    if (!item.isHash) {
+      e.preventDefault();
+      navigate(item.href);
+    }
+  };
 
   return (
     <nav className="glass" style={{
@@ -18,10 +36,11 @@ const Navbar = ({ onGetStarted }) => {
       justifyContent: 'space-between',
       alignItems: 'center',
     }}>
-      <div style={{
+      <Link to="/" style={{
         display: 'flex',
         alignItems: 'center',
-        gap: '1rem'
+        gap: '1rem',
+        textDecoration: 'none',
       }}>
         <img
           src="/switch-labs-logo.png"
@@ -32,17 +51,18 @@ const Navbar = ({ onGetStarted }) => {
             objectFit: 'contain'
           }}
         />
-      </div>
+      </Link>
 
       <div className="nav-links" style={{
         display: 'flex',
         gap: '2.5rem',
         alignItems: 'center',
       }}>
-        {['Solutions', 'Our Corridors', 'Impact', 'About Us', 'Contact'].map((item) => (
+        {navItems.map((item) => (
           <a
-            key={item}
-            href={`#${item.toLowerCase().replace(' ', '-')}`}
+            key={item.label}
+            href={item.href}
+            onClick={(e) => handleNavClick(item, e)}
             style={{
               fontSize: '0.9rem',
               fontWeight: '600',
@@ -53,7 +73,7 @@ const Navbar = ({ onGetStarted }) => {
             onMouseOver={(e) => (e.target.style.opacity = 1, e.target.style.color = 'var(--color-accent)')}
             onMouseOut={(e) => (e.target.style.opacity = 0.8, e.target.style.color = 'var(--color-white)')}
           >
-            {item}
+            {item.label}
           </a>
         ))}
         <button

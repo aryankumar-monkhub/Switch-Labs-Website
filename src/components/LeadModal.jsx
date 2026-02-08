@@ -5,37 +5,102 @@ import { X, ChevronRight, Truck, BarChart3, Mail, Phone, Building2, User, CheckC
 const LeadModal = ({ isOpen, onClose }) => {
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState({
-        interest: '',
-        fleetSize: '1-10',
-        routeType: 'Short Haul',
+        interests: [],
+        fleetSize: '',
+        routeType: '',
         name: '',
         company: '',
         email: '',
+        countryCode: '+91',
         phone: ''
     });
 
     const totalSteps = 4;
 
-    const handleInterestSelect = (interest) => {
-        setFormData({ ...formData, interest });
-        setStep(2);
+    const handleInterestSelect = (interestId) => {
+        setFormData(prev => {
+            const interests = prev.interests.includes(interestId)
+                ? prev.interests.filter(id => id !== interestId)
+                : [...prev.interests, interestId];
+            return { ...prev, interests };
+        });
     };
 
     const handleFleetSelect = (size) => {
         setFormData({ ...formData, fleetSize: size });
-        setStep(3);
+    };
+
+    const [errors, setErrors] = useState({});
+
+    const validateField = (name, value) => {
+        let error = '';
+        switch (name) {
+            case 'name':
+            case 'company':
+                if (!value.trim()) error = 'This field is required';
+                break;
+            case 'email':
+                if (!value.trim()) {
+                    error = 'Email is required';
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+                    error = 'Invalid email address';
+                }
+                break;
+            case 'phone':
+                if (!value.trim()) {
+                    error = 'Phone number is required';
+                } else if (!/^\d{10}$/.test(value.replace(/\D/g, ''))) {
+                    error = 'Invalid phone number (10 digits required)';
+                }
+                break;
+            default:
+                break;
+        }
+        return error;
+    };
+
+    const handleBlur = (e) => {
+        const { name, value } = e.target;
+        const error = validateField(name, value);
+        setErrors(prev => ({ ...prev, [name]: error }));
     };
 
     const handleInputChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+        if (errors[name]) {
+            setErrors(prev => ({ ...prev, [name]: '' }));
+        }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const newErrors = {};
+        Object.keys(formData).forEach(key => {
+            if (['name', 'company', 'email', 'phone'].includes(key)) {
+                const error = validateField(key, formData[key]);
+                if (error) newErrors[key] = error;
+            }
+        });
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+            return;
+        }
+
         setStep(4);
-        // In a real app, send to API here
         console.log('Form Submitted:', formData);
     };
+
+    // ... (variants definitions)
+
+    const getInputStyle = (fieldName) => ({
+        ...inputStyle,
+        border: errors[fieldName] ? '1px solid var(--color-error)' : inputStyle.border,
+        boxShadow: errors[fieldName] ? '0 0 10px rgba(239, 68, 68, 0.2)' : 'none'
+    });
+
+    // ... (variants definitions continued)
 
     const containerVariants = {
         hidden: { opacity: 0, scale: 0.95, y: 20 },
@@ -151,7 +216,7 @@ const LeadModal = ({ isOpen, onClose }) => {
                                 How can Switch Labs <span style={{ color: 'var(--color-accent)' }}>power</span> your growth?
                             </h2>
                             <p style={{ color: 'var(--color-grey-light)', marginBottom: '2rem' }}>
-                                Select the area that best fits your needs to get tailored insights.
+                                Select all areas that fit your needs.
                             </p>
 
                             <div style={{ display: 'grid', gap: '1rem' }}>
@@ -171,27 +236,33 @@ const LeadModal = ({ isOpen, onClose }) => {
                                             alignItems: 'center',
                                             gap: '1.5rem',
                                             transition: 'var(--transition-smooth)',
-                                            border: formData.interest === item.id ? '1px solid var(--color-accent)' : '1px solid rgba(255,255,255,0.05)'
+                                            border: formData.interests.includes(item.id) ? '1px solid var(--color-accent)' : '1px solid rgba(255,255,255,0.05)',
+                                            background: formData.interests.includes(item.id) ? 'rgba(76, 163, 255, 0.1)' : 'rgba(10, 12, 14, 0.4)'
                                         }}
                                         onMouseEnter={(e) => {
-                                            e.currentTarget.style.background = 'rgba(76, 163, 255, 0.05)';
+                                            if (!formData.interests.includes(item.id)) {
+                                                e.currentTarget.style.background = 'rgba(76, 163, 255, 0.05)';
+                                            }
                                             e.currentTarget.style.transform = 'translateX(10px)';
                                         }}
                                         onMouseLeave={(e) => {
-                                            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
+                                            if (!formData.interests.includes(item.id)) {
+                                                e.currentTarget.style.background = 'rgba(10, 12, 14, 0.4)';
+                                            }
                                             e.currentTarget.style.transform = 'translateX(0)';
                                         }}
                                     >
                                         <div style={{
-                                            background: 'var(--color-accent-glow)',
-                                            color: 'var(--color-accent)',
+                                            background: formData.interests.includes(item.id) ? 'var(--color-accent)' : 'rgba(255, 255, 255, 0.1)',
+                                            color: formData.interests.includes(item.id) ? 'var(--color-primary)' : 'var(--color-accent)',
                                             width: '50px',
                                             height: '50px',
                                             borderRadius: '12px',
                                             display: 'flex',
                                             alignItems: 'center',
                                             justifyContent: 'center',
-                                            flexShrink: 0
+                                            flexShrink: 0,
+                                            transition: 'var(--transition-smooth)'
                                         }}>
                                             {item.icon}
                                         </div>
@@ -199,10 +270,26 @@ const LeadModal = ({ isOpen, onClose }) => {
                                             <div style={{ fontWeight: '800', color: 'var(--color-white)' }}>{item.title}</div>
                                             <div style={{ fontSize: '0.85rem', color: 'var(--color-grey-light)' }}>{item.desc}</div>
                                         </div>
-                                        <ChevronRight size={20} style={{ marginLeft: 'auto', opacity: 0.3 }} />
+                                        {formData.interests.includes(item.id) && (
+                                            <CheckCircle2 size={20} style={{ marginLeft: 'auto', color: 'var(--color-accent)' }} />
+                                        )}
                                     </button>
                                 ))}
                             </div>
+
+                            <button
+                                onClick={() => setStep(2)}
+                                disabled={formData.interests.length === 0}
+                                className="button-primary"
+                                style={{
+                                    width: '100%',
+                                    marginTop: '2rem',
+                                    opacity: formData.interests.length > 0 ? 1 : 0.5,
+                                    cursor: formData.interests.length > 0 ? 'pointer' : 'not-allowed'
+                                }}
+                            >
+                                Continue <ChevronRight size={18} />
+                            </button>
                         </motion.div>
                     )}
 
@@ -253,8 +340,8 @@ const LeadModal = ({ isOpen, onClose }) => {
                                 </label>
                                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
                                     {[
-                                        { id: 'Short Haul', label: 'Short Haul (Hub-to-Hub)', icon: <Building2 size={18} /> },
-                                        { id: 'Long Haul', label: 'Long Haul (Expressway)', icon: <Factory size={18} /> }
+                                        { id: 'Short Haul', label: 'Short Haul', icon: <Building2 size={18} /> },
+                                        { id: 'Long Haul', label: 'Long Haul', icon: <Factory size={18} /> }
                                     ].map(route => (
                                         <button
                                             key={route.id}
@@ -281,8 +368,14 @@ const LeadModal = ({ isOpen, onClose }) => {
 
                             <button
                                 onClick={() => setStep(3)}
+                                disabled={!formData.fleetSize || !formData.routeType}
                                 className="button-primary"
-                                style={{ width: '100%', marginTop: '1rem' }}
+                                style={{
+                                    width: '100%',
+                                    marginTop: '1rem',
+                                    opacity: (!formData.fleetSize || !formData.routeType) ? 0.5 : 1,
+                                    cursor: (!formData.fleetSize || !formData.routeType) ? 'not-allowed' : 'pointer'
+                                }}
                             >
                                 Continue <ChevronRight size={18} />
                             </button>
@@ -309,63 +402,100 @@ const LeadModal = ({ isOpen, onClose }) => {
                             <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1.25rem' }}>
                                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                                     <div className="input-group">
-                                        <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', fontSize: '0.8rem', color: 'var(--color-grey-light)' }}>
+                                        <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', fontSize: '0.8rem', color: errors.name ? 'var(--color-error)' : 'var(--color-grey-light)' }}>
                                             <User size={14} /> Full Name
                                         </label>
                                         <input
                                             type="text"
                                             name="name"
-                                            required
                                             value={formData.name}
                                             onChange={handleInputChange}
+                                            onBlur={handleBlur}
                                             placeholder="John Doe"
-                                            style={inputStyle}
+                                            style={getInputStyle('name')}
                                         />
                                     </div>
                                     <div className="input-group">
-                                        <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', fontSize: '0.8rem', color: 'var(--color-grey-light)' }}>
+                                        <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', fontSize: '0.8rem', color: errors.company ? 'var(--color-error)' : 'var(--color-grey-light)' }}>
                                             <Building2 size={14} /> Company
                                         </label>
                                         <input
                                             type="text"
                                             name="company"
-                                            required
                                             value={formData.company}
                                             onChange={handleInputChange}
+                                            onBlur={handleBlur}
                                             placeholder="Logistics Inc"
-                                            style={inputStyle}
+                                            style={getInputStyle('company')}
                                         />
                                     </div>
                                 </div>
 
                                 <div className="input-group">
-                                    <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', fontSize: '0.8rem', color: 'var(--color-grey-light)' }}>
+                                    <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', fontSize: '0.8rem', color: errors.email ? 'var(--color-error)' : 'var(--color-grey-light)' }}>
                                         <Mail size={14} /> Work Email
                                     </label>
                                     <input
                                         type="email"
                                         name="email"
-                                        required
                                         value={formData.email}
                                         onChange={handleInputChange}
+                                        onBlur={handleBlur}
                                         placeholder="john@company.com"
-                                        style={inputStyle}
+                                        style={getInputStyle('email')}
                                     />
                                 </div>
 
                                 <div className="input-group">
-                                    <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', fontSize: '0.8rem', color: 'var(--color-grey-light)' }}>
+                                    <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', fontSize: '0.8rem', color: errors.phone ? 'var(--color-error)' : 'var(--color-grey-light)' }}>
                                         <Phone size={14} /> Phone Number
                                     </label>
-                                    <input
-                                        type="tel"
-                                        name="phone"
-                                        required
-                                        value={formData.phone}
-                                        onChange={handleInputChange}
-                                        placeholder="+91 98765 43210"
-                                        style={inputStyle}
-                                    />
+                                    <div style={{ ...getInputStyle('phone'), display: 'flex', alignItems: 'center', padding: '0 1rem' }}>
+                                        <select
+                                            name="countryCode"
+                                            value={formData.countryCode}
+                                            onChange={handleInputChange}
+                                            style={{
+                                                background: 'transparent',
+                                                border: 'none',
+                                                color: 'var(--color-accent)',
+                                                fontWeight: 'bold',
+                                                fontSize: '1rem',
+                                                outline: 'none',
+                                                cursor: 'pointer',
+                                                paddingRight: '0.5rem',
+                                                borderRight: '1px solid rgba(255,255,255,0.1)',
+                                                marginRight: '0.5rem',
+                                            }}
+                                        >
+                                            <option value="+91">+91</option>
+                                            <option value="+1">+1</option>
+                                            <option value="+44">+44</option>
+                                            <option value="+971">+971</option>
+                                        </select>
+                                        <input
+                                            type="tel"
+                                            name="phone"
+                                            maxLength={10}
+                                            value={formData.phone}
+                                            onBlur={handleBlur}
+                                            onChange={(e) => {
+                                                const val = e.target.value.replace(/\D/g, '');
+                                                e.target.value = val;
+                                                handleInputChange(e);
+                                            }}
+                                            placeholder="98765 43210"
+                                            style={{
+                                                background: 'transparent',
+                                                border: 'none',
+                                                color: 'var(--color-white)',
+                                                fontSize: '1rem',
+                                                outline: 'none',
+                                                width: '100%',
+                                                padding: '1rem 0'
+                                            }}
+                                        />
+                                    </div>
                                 </div>
 
                                 <button

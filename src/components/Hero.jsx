@@ -40,7 +40,7 @@ const Hero = ({ onAction }) => {
             </motion.div>
 
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-                <div style={{ maxWidth: '700px' }}>
+                <div style={{ maxWidth: '900px' }}>
                     <motion.h1
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -66,7 +66,7 @@ const Hero = ({ onAction }) => {
                             fontSize: '1.25rem',
                             color: 'var(--color-grey-light)',
                             marginBottom: '3rem',
-                            maxWidth: '550px',
+                            maxWidth: '700px',
                         }}
                     >
                         The full-stack EV transformation for heavy-duty freight. 40% lower costs. Zero emissions. 100% uptime.
@@ -109,46 +109,77 @@ const Hero = ({ onAction }) => {
             }}>
                 <div className="ticker" style={{
                     display: 'flex',
-                    gap: '4rem',
+                    gap: '6rem',
                     whiteSpace: 'nowrap',
-                    animation: 'scroll 40s linear infinite',
-                    alignItems: 'center'
+                    animation: 'scroll 30s linear infinite',
+                    alignItems: 'center',
+                    paddingLeft: '100%' // Start off-screen
                 }}>
-                    {['JK LAKSHMI', 'DALMIA CEMENTS', 'UPL', 'TATA STEEL', 'JSW', 'ADANI GROUP'].map((logo, i) => (
+                    {[
+                        { name: 'JK Lakshmi', src: '/assets/logos/jk_lakshmi.png' },
+                        { name: 'Dalmia', src: '/assets/logos/dalmia.png' },
+                        { name: 'UPL', src: '/assets/logos/upl.png' },
+                        { name: 'Tata Steel', src: '/assets/logos/tata_steel.png' },
+                        { name: 'JSW', src: '/assets/logos/jsw.svg' },
+                        { name: 'Adani', src: '/assets/logos/adani.svg' },
+                    ].map((logo, i) => (
                         <div key={i} style={{
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '1rem'
-                        }}>
-                            <div style={{ width: '40px', height: '40px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px' }}></div>
-                            <span style={{
-                                fontSize: '1rem',
-                                fontWeight: '800',
-                                color: 'var(--color-white)',
-                                opacity: 0.3,
-                                letterSpacing: '0.1rem',
-                            }}>
-                                {logo}
-                            </span>
+                            justifyContent: 'center',
+                            height: '60px',
+                            minWidth: '150px',
+                            filter: 'grayscale(100%) brightness(200%)', // Make white and consistent
+                            opacity: 0.7,
+                            transition: 'opacity 0.3s',
+                        }}
+                            onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
+                            onMouseOut={(e) => e.currentTarget.style.opacity = '0.7'}
+                        >
+                            <img
+                                src={logo.src}
+                                alt={`${logo.name} Logo`}
+                                style={{
+                                    height: '100%',
+                                    width: 'auto',
+                                    objectFit: 'contain',
+                                    maxHeight: '40px'
+                                }}
+                            />
                         </div>
                     ))}
-                    {/* Duplicate for seamless loop */}
-                    {['JK LAKSHMI', 'DALMIA CEMENTS', 'UPL', 'TATA STEEL', 'JSW', 'ADANI GROUP'].map((logo, i) => (
+                    {/* Duplicate for loop */}
+                    {[
+                        { name: 'JK Lakshmi', src: '/assets/logos/jk_lakshmi.png' },
+                        { name: 'Dalmia', src: '/assets/logos/dalmia.png' },
+                        { name: 'UPL', src: '/assets/logos/upl.png' },
+                        { name: 'Tata Steel', src: '/assets/logos/tata_steel.png' },
+                        { name: 'JSW', src: '/assets/logos/jsw.svg' },
+                        { name: 'Adani', src: '/assets/logos/adani.svg' },
+                    ].map((logo, i) => (
                         <div key={`dup-${i}`} style={{
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '1rem'
-                        }}>
-                            <div style={{ width: '40px', height: '40px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px' }}></div>
-                            <span style={{
-                                fontSize: '1rem',
-                                fontWeight: '800',
-                                color: 'var(--color-white)',
-                                opacity: 0.3,
-                                letterSpacing: '0.1rem',
-                            }}>
-                                {logo}
-                            </span>
+                            justifyContent: 'center',
+                            height: '60px',
+                            minWidth: '150px',
+                            filter: 'grayscale(100%) brightness(200%)',
+                            opacity: 0.7,
+                            transition: 'opacity 0.3s',
+                        }}
+                            onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
+                            onMouseOut={(e) => e.currentTarget.style.opacity = '0.7'}
+                        >
+                            <img
+                                src={logo.src}
+                                alt={`${logo.name} Logo`}
+                                style={{
+                                    height: '100%',
+                                    width: 'auto',
+                                    objectFit: 'contain',
+                                    maxHeight: '40px'
+                                }}
+                            />
                         </div>
                     ))}
                 </div>
