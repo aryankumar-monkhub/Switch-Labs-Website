@@ -101,11 +101,6 @@ const CorridorMap = () => {
                             <ZoomableGroup
                                 zoom={position.zoom}
                                 center={position.coordinates}
-                                transform={`translate(-400 - 300)`} // Simplify logic: react-simple-maps handles centering if we pass center/zoom properly to ZoomableGroup
-                            // Note: Framer Motion works best if we animate the props, but ZoomableGroup has built-in transition in older versions or needs manual CSS. 
-                            // React-simple-maps v3 ZoomableGroup handles transitions via 'motion' if configured or we rely on CSS transition on the SVG group.
-                            // Instead of relying on lib transition which can be jumpy, let's trust the default behavior which is usually instant or smooth depending on version.
-                            // For smoother "fly to" effect, sophisticated d3-interpolation is needed, but let's stick to standard prop updates.
                             >
                                 <Geographies geography={geoUrl}>
                                     {({ geographies }) =>

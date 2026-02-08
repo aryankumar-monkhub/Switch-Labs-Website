@@ -7,6 +7,10 @@ import Contact from './pages/Contact';
 
 // Solutions Pages
 import SolutionsOverview from './pages/solutions/SolutionsOverview';
+import VehiclesOperations from './pages/solutions/VehiclesOperations';
+import Infrastructure from './pages/solutions/Infrastructure';
+import IntelligencePlatform from './pages/solutions/IntelligencePlatform';
+import FinancingOptions from './pages/solutions/FinancingOptions';
 
 // Case Studies Pages
 import CaseStudies from './pages/CaseStudies';
@@ -29,10 +33,10 @@ function App() {
 
             {/* Solutions */}
             <Route path="/solutions" element={<SolutionsOverview />} />
-            <Route path="/solutions/vehicles-operations" element={<PlaceholderPage title="Vehicles & Operations" />} />
-            <Route path="/solutions/infrastructure" element={<PlaceholderPage title="Infrastructure" />} />
-            <Route path="/solutions/intelligence" element={<PlaceholderPage title="Intelligence Platform" />} />
-            <Route path="/solutions/financing" element={<PlaceholderPage title="Financing Options" />} />
+            <Route path="/solutions/vehicles-operations" element={<VehiclesOperations />} />
+            <Route path="/solutions/infrastructure" element={<Infrastructure />} />
+            <Route path="/solutions/intelligence" element={<IntelligencePlatform />} />
+            <Route path="/solutions/financing" element={<FinancingOptions />} />
 
             {/* Case Studies */}
             <Route path="/case-studies" element={<CaseStudies />} />

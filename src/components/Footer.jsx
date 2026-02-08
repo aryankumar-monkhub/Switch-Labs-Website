@@ -243,7 +243,7 @@ const Footer = ({ onAction }) => {
                     </div>
                 </div>
 
-                {/* Footer Links Section */}
+                {/* Footer Links Section - All Navbar Dropdowns */}
                 <div style={{
                     borderTop: '1px solid rgba(255,255,255,0.08)',
                     paddingTop: '3rem',
@@ -251,139 +251,82 @@ const Footer = ({ onAction }) => {
                 }}>
                     <div style={{
                         display: 'grid',
-                        gridTemplateColumns: 'repeat(3, 1fr)',
-                        gap: '4rem',
-                        maxWidth: '800px'
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+                        gap: '3rem'
                     }}>
+                        {/* Solutions */}
                         <div>
-                            <h4 style={{
-                                color: 'var(--color-accent)',
-                                marginBottom: '1.25rem',
-                                fontSize: '0.75rem',
-                                fontWeight: '800',
-                                textTransform: 'uppercase',
-                                letterSpacing: '0.15em'
-                            }}>Company</h4>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                                <Link
-                                    to="/about-us"
-                                    style={{
-                                        fontSize: '0.95rem',
-                                        color: 'var(--color-grey-light)',
-                                        textDecoration: 'none',
-                                        transition: 'var(--transition-smooth)'
-                                    }}
-                                    onMouseOver={e => (e.target.style.color = 'white')}
-                                    onMouseOut={e => (e.target.style.color = 'var(--color-grey-light)')}
-                                >
-                                    About Us
-                                </Link>
-                                <a
-                                    href="https://www.linkedin.com/company/switch-labs"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={{
-                                        fontSize: '0.95rem',
-                                        color: 'var(--color-grey-light)',
-                                        textDecoration: 'none',
-                                        transition: 'var(--transition-smooth)'
-                                    }}
-                                    onMouseOver={e => (e.target.style.color = 'white')}
-                                    onMouseOut={e => (e.target.style.color = 'var(--color-grey-light)')}
-                                >
-                                    LinkedIn ↗
-                                </a>
-                                <a
-                                    href="#"
-                                    style={{
-                                        fontSize: '0.95rem',
-                                        color: 'var(--color-grey-light)',
-                                        textDecoration: 'none',
-                                        transition: 'var(--transition-smooth)'
-                                    }}
-                                    onMouseOver={e => (e.target.style.color = 'white')}
-                                    onMouseOut={e => (e.target.style.color = 'var(--color-grey-light)')}
-                                >
-                                    Careers
-                                </a>
+                            <h4 style={sectionHeaderStyle}>Solutions</h4>
+                            <div style={linkContainerStyle}>
+                                <Link to="/solutions" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Overview</Link>
+                                <Link to="/solutions/vehicles-operations" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Vehicles & Operations</Link>
+                                <Link to="/solutions/infrastructure" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Infrastructure</Link>
+                                <Link to="/solutions/intelligence" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Intelligence Platform</Link>
+                                <Link to="/solutions/financing" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Financing Options</Link>
                             </div>
                         </div>
 
+                        {/* Case Studies */}
                         <div>
-                            <h4 style={{
-                                color: 'var(--color-accent)',
-                                marginBottom: '1.25rem',
-                                fontSize: '0.75rem',
-                                fontWeight: '800',
-                                textTransform: 'uppercase',
-                                letterSpacing: '0.15em'
-                            }}>Legal</h4>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                                <Link
-                                    to="/policies"
-                                    style={{
-                                        fontSize: '0.95rem',
-                                        color: 'var(--color-grey-light)',
-                                        textDecoration: 'none',
-                                        transition: 'var(--transition-smooth)'
-                                    }}
-                                    onMouseOver={e => (e.target.style.color = 'white')}
-                                    onMouseOut={e => (e.target.style.color = 'var(--color-grey-light)')}
-                                >
-                                    Privacy Policy
-                                </Link>
-                                <Link
-                                    to="/terms-and-conditions"
-                                    style={{
-                                        fontSize: '0.95rem',
-                                        color: 'var(--color-grey-light)',
-                                        textDecoration: 'none',
-                                        transition: 'var(--transition-smooth)'
-                                    }}
-                                    onMouseOver={e => (e.target.style.color = 'white')}
-                                    onMouseOut={e => (e.target.style.color = 'var(--color-grey-light)')}
-                                >
-                                    Terms & Conditions
-                                </Link>
+                            <h4 style={sectionHeaderStyle}>Case Studies</h4>
+                            <div style={linkContainerStyle}>
+                                <Link to="/case-studies" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>All Case Studies</Link>
+                                <Link to="/case-studies/jk-lakshmi-sirohi-balaram" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>JK Lakshmi Sirohi-Balaram</Link>
+                                <Link to="/case-studies/jk-lakshmi-sirohi-kalol" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>JK Lakshmi Sirohi-Kalol</Link>
+                                <Link to="/case-studies/upl-ankleshwar-jageria" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>UPL Ankleshwar-Jageria</Link>
                             </div>
                         </div>
 
+                        {/* Network */}
                         <div>
-                            <h4 style={{
-                                color: 'var(--color-accent)',
-                                marginBottom: '1.25rem',
-                                fontSize: '0.75rem',
-                                fontWeight: '800',
-                                textTransform: 'uppercase',
-                                letterSpacing: '0.15em'
-                            }}>Resources</h4>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                                <Link
-                                    to="/site-map"
-                                    style={{
-                                        fontSize: '0.95rem',
-                                        color: 'var(--color-grey-light)',
-                                        textDecoration: 'none',
-                                        transition: 'var(--transition-smooth)'
-                                    }}
-                                    onMouseOver={e => (e.target.style.color = 'white')}
-                                    onMouseOut={e => (e.target.style.color = 'var(--color-grey-light)')}
-                                >
-                                    Site Map
-                                </Link>
-                                <a
-                                    href="#contact"
-                                    style={{
-                                        fontSize: '0.95rem',
-                                        color: 'var(--color-grey-light)',
-                                        textDecoration: 'none',
-                                        transition: 'var(--transition-smooth)'
-                                    }}
-                                    onMouseOver={e => (e.target.style.color = 'white')}
-                                    onMouseOut={e => (e.target.style.color = 'var(--color-grey-light)')}
-                                >
-                                    Contact
-                                </a>
+                            <h4 style={sectionHeaderStyle}>Network</h4>
+                            <div style={linkContainerStyle}>
+                                <Link to="/network/corridors" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Operational Corridors</Link>
+                                <Link to="/network/infrastructure" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Charging Infrastructure</Link>
+                                <Link to="/network/expansion" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Expansion Plans</Link>
+                            </div>
+                        </div>
+
+                        {/* Impact */}
+                        <div>
+                            <h4 style={sectionHeaderStyle}>Impact</h4>
+                            <div style={linkContainerStyle}>
+                                <Link to="/impact/calculator" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>ROI Calculator</Link>
+                                <Link to="/impact/environmental" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Environmental Impact</Link>
+                                <Link to="/impact/economic" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Economic Analysis</Link>
+                                <Link to="/impact/reports" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Download Reports</Link>
+                            </div>
+                        </div>
+
+                        {/* Company */}
+                        <div>
+                            <h4 style={sectionHeaderStyle}>Company</h4>
+                            <div style={linkContainerStyle}>
+                                <Link to="/company/about" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>About Us</Link>
+                                <Link to="/company/team" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Leadership Team</Link>
+                                <Link to="/company/investors" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Investors</Link>
+                                <Link to="/company/partners" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Partners</Link>
+                                <Link to="/company/careers" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Careers</Link>
+                                <Link to="/company/newsroom" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Newsroom</Link>
+                            </div>
+                        </div>
+
+                        {/* Resources & Legal */}
+                        <div>
+                            <h4 style={sectionHeaderStyle}>Resources</h4>
+                            <div style={linkContainerStyle}>
+                                <Link to="/resources/blog" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Blog</Link>
+                                <Link to="/resources/whitepapers" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Whitepapers</Link>
+                                <Link to="/resources/guides" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Guides</Link>
+                                <Link to="/resources/faq" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>FAQ</Link>
+                                <Link to="/site-map" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Site Map</Link>
+                                <a href="#contact" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Contact</a>
+                            </div>
+                            <h4 style={{ ...sectionHeaderStyle, marginTop: '2rem' }}>Legal</h4>
+                            <div style={linkContainerStyle}>
+                                <Link to="/policies" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Privacy Policy</Link>
+                                <Link to="/terms-and-conditions" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Terms & Conditions</Link>
+                                <a href="https://www.linkedin.com/company/switch-labs" target="_blank" rel="noopener noreferrer" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>LinkedIn ↗</a>
                             </div>
                         </div>
                     </div>
@@ -403,6 +346,32 @@ const Footer = ({ onAction }) => {
         </footer>
     );
 };
+
+// Styles
+const sectionHeaderStyle = {
+    color: 'var(--color-accent)',
+    marginBottom: '1.25rem',
+    fontSize: '0.75rem',
+    fontWeight: '800',
+    textTransform: 'uppercase',
+    letterSpacing: '0.15em'
+};
+
+const linkContainerStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.75rem'
+};
+
+const linkStyle = {
+    fontSize: '0.95rem',
+    color: 'var(--color-grey-light)',
+    textDecoration: 'none',
+    transition: 'var(--transition-smooth)'
+};
+
+const linkHover = (e) => (e.target.style.color = 'white');
+const linkOut = (e) => (e.target.style.color = 'var(--color-grey-light)');
 
 const footerInputStyle = {
     width: '100%',
