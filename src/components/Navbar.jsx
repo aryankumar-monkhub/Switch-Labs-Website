@@ -9,7 +9,6 @@ const Navbar = ({ onGetStarted }) => {
   const navItems = [
     { label: 'Solutions', href: '#solutions', isHash: true },
     { label: 'Our Corridors', href: '#our-corridors', isHash: true },
-    { label: 'Case Studies', href: '/case-studies', isHash: false },
     { label: 'Impact', href: '#impact', isHash: true },
     { label: 'About Us', href: '#about-us', isHash: true },
     { label: 'Contact', href: '#contact', isHash: true },

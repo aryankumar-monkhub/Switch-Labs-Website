@@ -262,20 +262,10 @@ const Footer = ({ onAction }) => {
                                 <Link to="/solutions/vehicles-operations" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Vehicles & Operations</Link>
                                 <Link to="/solutions/infrastructure" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Infrastructure</Link>
                                 <Link to="/solutions/intelligence" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Intelligence Platform</Link>
-                                <Link to="/solutions/financing" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Financing Options</Link>
+                                <Link to="/solutions/financing" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>EV Truck as a Service</Link>
                             </div>
                         </div>
 
-                        {/* Case Studies */}
-                        <div>
-                            <h4 style={sectionHeaderStyle}>Case Studies</h4>
-                            <div style={linkContainerStyle}>
-                                <Link to="/case-studies" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>All Case Studies</Link>
-                                <Link to="/case-studies/jk-lakshmi-sirohi-balaram" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>JK Lakshmi Sirohi-Balaram</Link>
-                                <Link to="/case-studies/jk-lakshmi-sirohi-kalol" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>JK Lakshmi Sirohi-Kalol</Link>
-                                <Link to="/case-studies/upl-ankleshwar-jageria" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>UPL Ankleshwar-Jageria</Link>
-                            </div>
-                        </div>
 
                         {/* Network */}
                         <div>
@@ -283,7 +273,7 @@ const Footer = ({ onAction }) => {
                             <div style={linkContainerStyle}>
                                 <Link to="/network/corridors" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Operational Corridors</Link>
                                 <Link to="/network/infrastructure" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Charging Infrastructure</Link>
-                                <Link to="/network/expansion" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Expansion Plans</Link>
+
                             </div>
                         </div>
 
@@ -294,7 +284,7 @@ const Footer = ({ onAction }) => {
                                 <Link to="/impact/calculator" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>ROI Calculator</Link>
                                 <Link to="/impact/environmental" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Environmental Impact</Link>
                                 <Link to="/impact/economic" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Economic Analysis</Link>
-                                <Link to="/impact/reports" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Download Reports</Link>
+
                             </div>
                         </div>
 
@@ -316,7 +306,7 @@ const Footer = ({ onAction }) => {
                             <h4 style={sectionHeaderStyle}>Resources</h4>
                             <div style={linkContainerStyle}>
                                 <Link to="/resources/blog" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Blog</Link>
-                                <Link to="/resources/whitepapers" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Whitepapers</Link>
+
                                 <Link to="/resources/guides" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Guides</Link>
                                 <Link to="/resources/faq" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>FAQ</Link>
                                 <Link to="/site-map" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Site Map</Link>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Truck, Zap, Shield, TrendingUp, CheckCircle, ArrowRight } from 'lucide-react';
+import { Truck, Zap, Shield, TrendingUp, CheckCircle } from 'lucide-react';
 
 const VehiclesOperations = () => {
     const features = [
@@ -9,9 +9,9 @@ const VehiclesOperations = () => {
             title: 'Fleet Management',
             stats: [
                 '55-ton tractor fleet',
-                '24+ trucks operational',
+                '1hr Charging',
                 '155,000+ km proven',
-                '10,000 km/month avg'
+                '150-180+ Km'
             ]
         },
         {
@@ -46,37 +46,11 @@ const VehiclesOperations = () => {
         }
     ];
 
-    const caseStudies = [
-        {
-            title: 'JK Lakshmi Sirohi-Balaram',
-            distance: '70 km one-way',
-            fleet: '1 truck',
-            achievement: '155,000+ km in 16 months',
-            efficiency: '10,000 km/month average',
-            link: '/case-studies/jk-lakshmi-sirohi-balaram'
-        },
-        {
-            title: 'JK Lakshmi Sirohi-Kalol',
-            distance: '220 km one-way',
-            fleet: '15 trucks',
-            achievement: 'Long-haul pioneer',
-            efficiency: '25 trips/month per truck',
-            link: '/case-studies/jk-lakshmi-sirohi-kalol'
-        },
-        {
-            title: 'UPL Ankleshwar-Jageria',
-            distance: '20 km',
-            fleet: '4 trucks',
-            achievement: 'First EV chemical transport',
-            efficiency: 'Swappable tanker technology',
-            link: '/case-studies/upl-ankleshwar-jageria'
-        }
-    ];
 
     const serviceModels = [
         {
-            name: 'Pay-Per-Kilometer',
-            description: 'Zero upfront investment. Pay only for kilometers driven.',
+            name: 'Pay-per-ton pricing',
+            description: 'Zero upfront investment. Pay per ton of freight moved.',
             features: [
                 'No capital expenditure',
                 'All-inclusive service',
@@ -86,8 +60,8 @@ const VehiclesOperations = () => {
             ideal: 'Variable demand, pilot programs'
         },
         {
-            name: 'Monthly Subscription',
-            description: 'Fixed monthly fee with predictable budgeting.',
+            name: 'Hybrid Models',
+            description: 'Flexible pricing combining fixed and variable components.',
             features: [
                 'Unlimited kilometers*',
                 'Predictable expenses',
@@ -97,8 +71,8 @@ const VehiclesOperations = () => {
             ideal: 'Steady operations, established routes'
         },
         {
-            name: 'Custom Enterprise',
-            description: 'Tailored solutions for large-scale operations.',
+            name: 'Fixed Monthly Rentals',
+            description: 'Fixed monthly fee with predictable budgeting.',
             features: [
                 'Dedicated fleet',
                 'Custom SLAs',
@@ -106,6 +80,17 @@ const VehiclesOperations = () => {
                 'Flexible terms'
             ],
             ideal: 'Large enterprises, multi-route operations'
+        },
+        {
+            name: 'Pay-per-meter pricings',
+            description: 'Pay based on distance traveled per meter.',
+            features: [
+                'Per-meter billing',
+                'Transparent pricing',
+                'No hidden costs',
+                'Real-time tracking'
+            ],
+            ideal: 'Short-haul, precise distance operations'
         }
     ];
 
@@ -285,140 +270,6 @@ const VehiclesOperations = () => {
                     </div>
                 </div>
 
-                {/* Case Studies Section */}
-                <div style={{ marginBottom: '6rem' }}>
-                    <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                        <h2 style={{
-                            fontSize: '2.5rem',
-                            fontWeight: '900',
-                            color: 'var(--color-white)',
-                            marginBottom: '1rem',
-                        }}>
-                            Proven Track Record
-                        </h2>
-                        <p style={{
-                            fontSize: '1.1rem',
-                            color: 'var(--color-text-secondary)',
-                            maxWidth: '700px',
-                            margin: '0 auto',
-                        }}>
-                            Real operations delivering real results across India's industrial corridors
-                        </p>
-                    </div>
-
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                        gap: '2rem',
-                    }}>
-                        {caseStudies.map((study, index) => (
-                            <Link
-                                key={index}
-                                to={study.link}
-                                style={{ textDecoration: 'none', color: 'inherit' }}
-                            >
-                                <div
-                                    className="glass"
-                                    style={{
-                                        padding: '2rem',
-                                        height: '100%',
-                                        transition: 'var(--transition-smooth)',
-                                        cursor: 'pointer',
-                                    }}
-                                    onMouseOver={(e) => {
-                                        e.currentTarget.style.transform = 'translateY(-8px)';
-                                        e.currentTarget.style.borderColor = 'var(--color-accent)';
-                                    }}
-                                    onMouseOut={(e) => {
-                                        e.currentTarget.style.transform = 'translateY(0)';
-                                        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                                    }}
-                                >
-                                    <h3 style={{
-                                        fontSize: '1.35rem',
-                                        fontWeight: '800',
-                                        color: 'var(--color-white)',
-                                        marginBottom: '1.5rem',
-                                    }}>
-                                        {study.title}
-                                    </h3>
-                                    <div style={{ marginBottom: '1.5rem' }}>
-                                        <div style={{
-                                            display: 'grid',
-                                            gridTemplateColumns: '1fr 1fr',
-                                            gap: '1rem',
-                                        }}>
-                                            <div>
-                                                <div style={{
-                                                    fontSize: '0.8rem',
-                                                    color: 'var(--color-text-secondary)',
-                                                    marginBottom: '0.25rem',
-                                                }}>
-                                                    Distance
-                                                </div>
-                                                <div style={{
-                                                    fontSize: '1rem',
-                                                    color: 'var(--color-accent)',
-                                                    fontWeight: '700',
-                                                }}>
-                                                    {study.distance}
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div style={{
-                                                    fontSize: '0.8rem',
-                                                    color: 'var(--color-text-secondary)',
-                                                    marginBottom: '0.25rem',
-                                                }}>
-                                                    Fleet Size
-                                                </div>
-                                                <div style={{
-                                                    fontSize: '1rem',
-                                                    color: 'var(--color-accent)',
-                                                    fontWeight: '700',
-                                                }}>
-                                                    {study.fleet}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style={{
-                                        padding: '1rem',
-                                        background: 'rgba(0, 255, 136, 0.05)',
-                                        borderRadius: '8px',
-                                        marginBottom: '1rem',
-                                    }}>
-                                        <div style={{
-                                            fontSize: '0.9rem',
-                                            color: 'var(--color-white)',
-                                            fontWeight: '600',
-                                            marginBottom: '0.5rem',
-                                        }}>
-                                            {study.achievement}
-                                        </div>
-                                        <div style={{
-                                            fontSize: '0.85rem',
-                                            color: 'var(--color-text-secondary)',
-                                        }}>
-                                            {study.efficiency}
-                                        </div>
-                                    </div>
-                                    <div style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '0.5rem',
-                                        color: 'var(--color-accent)',
-                                        fontWeight: '700',
-                                        fontSize: '0.9rem',
-                                    }}>
-                                        View Details
-                                        <ArrowRight size={18} />
-                                    </div>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-                </div>
 
                 {/* CTA Section */}
                 <div

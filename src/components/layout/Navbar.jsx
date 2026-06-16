@@ -61,11 +61,7 @@ const Navbar = ({ onGetStarted }) => {
                     items={navigationConfig.solutions.items}
                     currentPath={location.pathname}
                 />
-                <Dropdown
-                    label={navigationConfig.caseStudies.label}
-                    items={navigationConfig.caseStudies.items}
-                    currentPath={location.pathname}
-                />
+
                 <Dropdown
                     label={navigationConfig.network.label}
                     items={navigationConfig.network.items}

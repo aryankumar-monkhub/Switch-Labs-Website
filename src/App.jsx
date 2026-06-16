@@ -12,15 +12,15 @@ import Infrastructure from './pages/solutions/Infrastructure';
 import IntelligencePlatform from './pages/solutions/IntelligencePlatform';
 import FinancingOptions from './pages/solutions/FinancingOptions';
 
-// Case Studies Pages
-import CaseStudies from './pages/CaseStudies';
-import CaseStudyDetail from './pages/CaseStudyDetail';
-
 // Placeholder Pages (to be implemented)
 import AboutUs from './pages/AboutUs';
 import Policies from './pages/Policies';
 import TermsAndConditions from './pages/TermsAndConditions';
 import SiteMap from './pages/SiteMap';
+import OperationalCorridors from './pages/network/OperationalCorridors';
+import ChargingInfrastructure from './pages/network/ChargingInfrastructure';
+import BlogList from './pages/resources/BlogList';
+import BlogPost from './pages/resources/BlogPost';
 
 function App() {
   return (
@@ -38,21 +38,15 @@ function App() {
             <Route path="/solutions/intelligence" element={<IntelligencePlatform />} />
             <Route path="/solutions/financing" element={<FinancingOptions />} />
 
-            {/* Case Studies */}
-            <Route path="/case-studies" element={<CaseStudies />} />
-            <Route path="/case-studies/:id" element={<CaseStudyDetail />} />
-            <Route path="/case-studies/industry/:industry" element={<PlaceholderPage title="Industry Overview" />} />
-
             {/* Network */}
-            <Route path="/network/corridors" element={<PlaceholderPage title="Operational Corridors" />} />
-            <Route path="/network/infrastructure" element={<PlaceholderPage title="Charging Infrastructure" />} />
-            <Route path="/network/expansion" element={<PlaceholderPage title="Expansion Plans" />} />
+            <Route path="/network/corridors" element={<OperationalCorridors />} />
+            <Route path="/network/infrastructure" element={<ChargingInfrastructure />} />
 
             {/* Impact */}
             <Route path="/impact/calculator" element={<PlaceholderPage title="ROI Calculator" />} />
             <Route path="/impact/environmental" element={<PlaceholderPage title="Environmental Impact" />} />
             <Route path="/impact/economic" element={<PlaceholderPage title="Economic Analysis" />} />
-            <Route path="/impact/reports" element={<PlaceholderPage title="Impact Reports" />} />
+
 
             {/* Company */}
             <Route path="/company/about" element={<AboutUs />} />
@@ -63,11 +57,11 @@ function App() {
             <Route path="/company/newsroom" element={<PlaceholderPage title="Newsroom" />} />
 
             {/* Resources */}
-            <Route path="/resources/blog" element={<PlaceholderPage title="Blog" />} />
-            <Route path="/resources/blog/:slug" element={<PlaceholderPage title="Blog Post" />} />
-            <Route path="/resources/whitepapers" element={<PlaceholderPage title="Whitepapers" />} />
+            <Route path="/resources/blog" element={<BlogList />} />
+            <Route path="/resources/blog/:slug" element={<BlogPost />} />
+
             <Route path="/resources/guides" element={<PlaceholderPage title="Implementation Guides" />} />
-            <Route path="/resources/webinars" element={<PlaceholderPage title="Webinars" />} />
+
             <Route path="/resources/faq" element={<PlaceholderPage title="FAQ" />} />
 
             {/* Contact */}

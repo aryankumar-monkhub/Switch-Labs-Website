@@ -448,23 +448,7 @@ const IntelligencePlatform = () => {
                         >
                             Request Platform Demo
                         </Link>
-                        <Link
-                            to="/case-studies"
-                            style={{
-                                background: 'transparent',
-                                color: 'var(--color-accent)',
-                                padding: '1rem 2.5rem',
-                                borderRadius: '4px',
-                                fontWeight: '800',
-                                textTransform: 'uppercase',
-                                fontSize: '0.9rem',
-                                textDecoration: 'none',
-                                display: 'inline-block',
-                                border: '2px solid var(--color-accent)',
-                            }}
-                        >
-                            View Case Studies
-                        </Link>
+
                     </div>
                 </div>
             </div>

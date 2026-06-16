@@ -98,7 +98,7 @@ const SolutionsOverview = () => {
                     >
                         <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>💰</div>
                         <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem', color: 'var(--color-white)' }}>
-                            Financing Options
+                            EV Truck as a Service
                         </h3>
                         <p style={{ color: 'var(--color-grey-light)', fontSize: '1rem', lineHeight: '1.7' }}>
                             Flexible financial models and ROI calculators to make your EV transition seamless and cost-effective.

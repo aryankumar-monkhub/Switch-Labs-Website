@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { DollarSign, TrendingDown, PiggyBank, Award, CheckCircle, Calculator, ArrowRight } from 'lucide-react';
+import { DollarSign, TrendingDown, PiggyBank, Award, CheckCircle, Calculator } from 'lucide-react';
 
 const FinancingOptions = () => {
     const [calculatorInputs, setCalculatorInputs] = useState({
@@ -119,7 +119,7 @@ const FinancingOptions = () => {
     const benefits = [
         {
             title: 'Operating Cost Savings',
-            value: '40-60%',
+            value: '5-10%',
             description: 'Lower energy costs vs. diesel'
         },
         {
@@ -127,28 +127,14 @@ const FinancingOptions = () => {
             value: '30-40%',
             description: 'Fewer moving parts, less wear'
         },
+
         {
-            title: 'FAME II Subsidy',
-            value: 'Up to ₹20L',
-            description: 'Government incentive per vehicle'
-        },
-        {
-            title: 'Payback Period',
-            value: '2.5-3 years',
-            description: 'For CAPEX purchase model'
+            title: 'CO\u2082 Reduction',
+            value: '60-70 Tons',
+            description: 'CO\u2082 reduced per year per truck'
         }
     ];
 
-    const caseStudyExample = {
-        route: 'JK Lakshmi Sirohi-Balaram',
-        distance: '70 km one-way',
-        trips: '3 trips/day',
-        monthlyKm: '10,000 km',
-        dieselBaseline: '₹25/km',
-        evCost: '₹15/km',
-        monthlySavings: '₹1,00,000',
-        annualSavings: '₹12 lakhs'
-    };
 
     return (
         <div style={{
@@ -169,7 +155,7 @@ const FinancingOptions = () => {
                         marginBottom: '1.5rem',
                         lineHeight: '1.1',
                     }}>
-                        Flexible Financing for Your EV Transition
+                        EV Truck as a Service
                     </h1>
                     <p style={{
                         fontSize: '1.35rem',
@@ -445,7 +431,7 @@ const FinancingOptions = () => {
                             color: 'var(--color-white)',
                             marginBottom: '1rem',
                         }}>
-                            Financing Models
+                            Truck as a Service
                         </h2>
                         <p style={{
                             fontSize: '1.1rem',
@@ -513,27 +499,6 @@ const FinancingOptions = () => {
                                         </li>
                                     ))}
                                 </ul>
-                                <div style={{
-                                    padding: '1rem',
-                                    background: 'rgba(0, 255, 136, 0.1)',
-                                    borderRadius: '6px',
-                                    marginBottom: '1rem',
-                                }}>
-                                    <div style={{
-                                        fontSize: '0.85rem',
-                                        color: 'var(--color-text-secondary)',
-                                        marginBottom: '0.25rem',
-                                    }}>
-                                        Typical Pricing
-                                    </div>
-                                    <div style={{
-                                        fontSize: '1rem',
-                                        color: 'var(--color-accent)',
-                                        fontWeight: '700',
-                                    }}>
-                                        {model.pricing}
-                                    </div>
-                                </div>
                                 <div style={{
                                     paddingTop: '1rem',
                                     borderTop: '1px solid rgba(255, 255, 255, 0.1)',
@@ -621,116 +586,6 @@ const FinancingOptions = () => {
                     </div>
                 </div>
 
-                {/* Real Case Study */}
-                <div style={{ marginBottom: '6rem' }}>
-                    <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                        <h2 style={{
-                            fontSize: '2.5rem',
-                            fontWeight: '900',
-                            color: 'var(--color-white)',
-                            marginBottom: '1rem',
-                        }}>
-                            Real-World Example
-                        </h2>
-                    </div>
-
-                    <div className="glass border-heavy" style={{ padding: '3rem', maxWidth: '800px', margin: '0 auto' }}>
-                        <h3 style={{
-                            fontSize: '1.75rem',
-                            fontWeight: '800',
-                            color: 'var(--color-accent)',
-                            marginBottom: '2rem',
-                            textAlign: 'center',
-                        }}>
-                            {caseStudyExample.route}
-                        </h3>
-                        <div style={{
-                            display: 'grid',
-                            gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-                            gap: '1.5rem',
-                            marginBottom: '2rem',
-                        }}>
-                            <div>
-                                <div style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>
-                                    Distance
-                                </div>
-                                <div style={{ fontSize: '1.1rem', color: 'var(--color-white)', fontWeight: '700' }}>
-                                    {caseStudyExample.distance}
-                                </div>
-                            </div>
-                            <div>
-                                <div style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>
-                                    Frequency
-                                </div>
-                                <div style={{ fontSize: '1.1rem', color: 'var(--color-white)', fontWeight: '700' }}>
-                                    {caseStudyExample.trips}
-                                </div>
-                            </div>
-                            <div>
-                                <div style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>
-                                    Monthly Distance
-                                </div>
-                                <div style={{ fontSize: '1.1rem', color: 'var(--color-white)', fontWeight: '700' }}>
-                                    {caseStudyExample.monthlyKm}
-                                </div>
-                            </div>
-                        </div>
-                        <div style={{
-                            padding: '2rem',
-                            background: 'rgba(0, 255, 136, 0.1)',
-                            borderRadius: '8px',
-                            marginBottom: '1.5rem',
-                        }}>
-                            <div style={{
-                                display: 'grid',
-                                gridTemplateColumns: '1fr auto 1fr',
-                                alignItems: 'center',
-                                gap: '1rem',
-                                marginBottom: '1rem',
-                            }}>
-                                <div style={{ textAlign: 'center' }}>
-                                    <div style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>
-                                        Diesel Baseline
-                                    </div>
-                                    <div style={{ fontSize: '1.5rem', fontWeight: '900', color: '#ff6b6b' }}>
-                                        {caseStudyExample.dieselBaseline}
-                                    </div>
-                                </div>
-                                <ArrowRight size={24} color="var(--color-accent)" />
-                                <div style={{ textAlign: 'center' }}>
-                                    <div style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>
-                                        EV Cost
-                                    </div>
-                                    <div style={{ fontSize: '1.5rem', fontWeight: '900', color: 'var(--color-accent)' }}>
-                                        {caseStudyExample.evCost}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div style={{
-                            display: 'grid',
-                            gridTemplateColumns: '1fr 1fr',
-                            gap: '1rem',
-                        }}>
-                            <div style={{ textAlign: 'center', padding: '1rem', background: 'rgba(0, 255, 136, 0.05)', borderRadius: '6px' }}>
-                                <div style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>
-                                    Monthly Savings
-                                </div>
-                                <div style={{ fontSize: '1.5rem', fontWeight: '900', color: 'var(--color-accent)' }}>
-                                    {caseStudyExample.monthlySavings}
-                                </div>
-                            </div>
-                            <div style={{ textAlign: 'center', padding: '1rem', background: 'rgba(0, 255, 136, 0.05)', borderRadius: '6px' }}>
-                                <div style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>
-                                    Annual Savings
-                                </div>
-                                <div style={{ fontSize: '1.5rem', fontWeight: '900', color: 'var(--color-accent)' }}>
-                                    {caseStudyExample.annualSavings}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 {/* CTA Section */}
                 <div
@@ -747,7 +602,7 @@ const FinancingOptions = () => {
                         color: 'var(--color-white)',
                         marginBottom: '1rem',
                     }}>
-                        Ready to Explore Financing Options?
+                        Ready to Explore EV Truck as a Service?
                     </h2>
                     <p style={{
                         color: 'var(--color-text-secondary)',
@@ -777,23 +632,7 @@ const FinancingOptions = () => {
                         >
                             Schedule Consultation
                         </Link>
-                        <Link
-                            to="/case-studies"
-                            style={{
-                                background: 'transparent',
-                                color: 'var(--color-accent)',
-                                padding: '1rem 2.5rem',
-                                borderRadius: '4px',
-                                fontWeight: '800',
-                                textTransform: 'uppercase',
-                                fontSize: '0.9rem',
-                                textDecoration: 'none',
-                                display: 'inline-block',
-                                border: '2px solid var(--color-accent)',
-                            }}
-                        >
-                            View Success Stories
-                        </Link>
+
                     </div>
                 </div>
             </div>
