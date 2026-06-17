@@ -44,7 +44,7 @@ const Contact = () => {
                         Get in <span style={{ color: 'var(--color-accent)' }}>Touch</span>
                     </h1>
                     <p style={{ color: 'var(--color-grey-light)', fontSize: '1.2rem' }}>
-                        Let's discuss how Switch Labs can transform your fleet operations.
+                        Let's discuss how SwitchLabs can transform your fleet operations.
                     </p>
                 </div>
 
@@ -80,7 +80,7 @@ const Contact = () => {
                                     Office
                                 </h4>
                                 <p style={{ color: 'var(--color-white)', fontSize: '1rem', lineHeight: '1.6' }}>
-                                    Switch Labs Private Limited<br />
+                                    SwitchLabs Private Limited<br />
                                     [Office Address]<br />
                                     India
                                 </p>

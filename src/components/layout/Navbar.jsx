@@ -37,7 +37,7 @@ const Navbar = ({ onGetStarted }) => {
             >
                 <img
                     src="/switch-labs-logo.png"
-                    alt="Switch Labs Logo"
+                    alt="SwitchLabs Logo"
                     style={{
                         height: '40px',
                         width: 'auto',

@@ -7,7 +7,7 @@ const SolutionsOverview = () => {
             <section className="container">
                 <div className="section-header">
                     <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>
-                        The Switch Labs <span style={{ color: 'var(--color-accent)' }}>Transformation Stack</span>
+                        The SwitchLabs <span style={{ color: 'var(--color-accent)' }}>Transformation Stack</span>
                     </h1>
                     <p style={{ color: 'var(--color-grey-light)', fontSize: '1.2rem', maxWidth: '800px', margin: '0 auto' }}>
                         Integrated solutions for a zero-emission industrial future. Full-stack EV transformation for heavy-duty freight.

@@ -5,7 +5,7 @@ export const blogPosts = [
         title: 'Understanding the Global Energy Transition in Heavy-Duty EV Freight',
         excerpt: 'How the shift from fossil fuels to electric mobility is transforming freight logistics worldwide.',
         date: 'June 16, 2026',
-        author: 'Switch Labs Team',
+        author: 'SwitchLabs Team',
         category: 'Industry',
         image: '/images/blog/energy-transition.jpg',
         content: `
@@ -40,7 +40,7 @@ export const blogPosts = [
         title: 'Challenges in EV Heavy-Duty Fleet Electrification',
         excerpt: 'By SwitchLabs Automobiles Pvt Ltd \u2014 Exploring the key operational, technological, and infrastructure challenges in large-scale heavy-duty EV fleet adoption.',
         date: 'June 16, 2026',
-        author: 'Switch Labs Team',
+        author: 'SwitchLabs Team',
         category: 'Technology',
         image: '/images/blog/ev-fleet-challenges.jpg',
         content: `
@@ -71,7 +71,7 @@ export const blogPosts = [
         title: 'Growth of India\u2019s EV Logistics Industry',
         excerpt: 'How SwitchLabs Automobiles Is Building the Future of Sustainable Freight Mobility.',
         date: 'June 16, 2026',
-        author: 'Switch Labs Team',
+        author: 'SwitchLabs Team',
         category: 'Industry',
         image: '/images/blog/ev-logistics.jpg',
         content: `
@@ -117,7 +117,7 @@ export const blogPosts = [
         <li><strong>Higher Uptime:</strong> With less time in the shop, your trucks spend more time on the road.</li>
       </ul>
       
-      <p>At Switch Labs, we've proven these savings with our fleet. On our JK Lakshmi routes, we're seeing operational cost reductions of over 50%.</p>
+      <p>At SwitchLabs, we've proven these savings with our fleet. On our JK Lakshmi routes, we're seeing operational cost reductions of over 50%.</p>
     `
     },
     {
@@ -131,7 +131,7 @@ export const blogPosts = [
         image: '/images/blog/milestone-truck.jpg',
         content: `
       <h2>A Milestone for Indian EV Logistics</h2>
-      <p>This month, Switch Labs crossed a significant milestone: 155,000 kilometers covered on a single heavy-duty EV route. This achievement on the Sirohi-Balaram corridor isn't just a number; it's a testament to the reliability of our technology and the robustness of our operations.</p>
+      <p>This month, SwitchLabs crossed a significant milestone: 155,000 kilometers covered on a single heavy-duty EV route. This achievement on the Sirohi-Balaram corridor isn't just a number; it's a testament to the reliability of our technology and the robustness of our operations.</p>
       
       <h3>Operational Excellence</h3>
       <p>Achieving this kind of mileage requires more than just good trucks. It requires a comprehensive ecosystem:</p>
@@ -158,7 +158,7 @@ export const blogPosts = [
         image: '/images/blog/battery-tech.jpg',
         content: `
       <h2>Powering the Giants</h2>
-      <p>Hauling 55 tons requires immense power. At Switch Labs, we use Lithium Iron Phosphate (LFP) batteries, which offer the perfect balance of safety, longevity, and performance for heavy-duty applications.</p>
+      <p>Hauling 55 tons requires immense power. At SwitchLabs, we use Lithium Iron Phosphate (LFP) batteries, which offer the perfect balance of safety, longevity, and performance for heavy-duty applications.</p>
       
       <h3>Why LFP?</h3>
       <p>LFP chemistry is known for its high thermal stability, making it ideal for India's hot climate. Unlike other chemistries, LFP is less prone to thermal runaway, ensuring the safety of our drivers and cargo.</p>

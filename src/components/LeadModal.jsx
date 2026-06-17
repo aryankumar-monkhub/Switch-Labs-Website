@@ -213,7 +213,7 @@ const LeadModal = ({ isOpen, onClose }) => {
                             transition={{ duration: 0.3 }}
                         >
                             <h2 style={{ fontSize: '1.8rem', marginBottom: '1rem', color: 'var(--color-white)' }}>
-                                How can Switch Labs <span style={{ color: 'var(--color-accent)' }}>power</span> your growth?
+                                How can SwitchLabs <span style={{ color: 'var(--color-accent)' }}>power</span> your growth?
                             </h2>
                             <p style={{ color: 'var(--color-grey-light)', marginBottom: '2rem' }}>
                                 Select all areas that fit your needs.

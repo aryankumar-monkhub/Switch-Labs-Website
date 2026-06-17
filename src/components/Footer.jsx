@@ -104,7 +104,7 @@ const Footer = ({ onAction }) => {
                         <Link to="/" style={{ textDecoration: 'none' }}>
                             <img
                                 src="/switch-labs-logo.png"
-                                alt="Switch Labs Logo"
+                                alt="SwitchLabs Logo"
                                 style={{
                                     height: '50px',
                                     width: 'auto',
@@ -330,7 +330,7 @@ const Footer = ({ onAction }) => {
                     color: 'rgba(255,255,255,0.3)',
                     fontSize: '0.85rem'
                 }}>
-                    © 2026 Switch Labs Private Limited. All Rights Reserved.
+                    © 2026 SwitchLabs Private Limited. All Rights Reserved.
                 </div>
             </div>
         </footer>

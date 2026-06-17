@@ -31,7 +31,7 @@ const TransformationStack = ({ onAction }) => {
         <section id="solutions">
             <div className="container">
                 <div className="section-header">
-                    <h2 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>The Switch Labs <span style={{ color: 'var(--color-accent)' }}>Transformation Stack</span></h2>
+                    <h2 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>The SwitchLabs <span style={{ color: 'var(--color-accent)' }}>Transformation Stack</span></h2>
                     <p style={{ color: 'var(--color-grey-light)', fontSize: '1.2rem' }}>Integrated solutions for a zero-emission industrial future.</p>
                 </div>
 

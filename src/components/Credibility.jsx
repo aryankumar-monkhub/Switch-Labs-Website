@@ -7,12 +7,12 @@ const Credibility = () => {
 
     const testimonials = [
         {
-            text: "We started with 1 pilot and now, with the great progress and service from Switch Labs, we have scaled to 15 trucks on our key route. They are true partners in our Net Zero journey.",
+            text: "We started with 1 pilot and now, with the great progress and service from SwitchLabs, we have scaled to 15 trucks on our key route. They are true partners in our Net Zero journey.",
             name: "Shishir Gupta",
             role: "DGM, JK Lakshmi Cement"
         },
         {
-            text: "Switch Labs helped us reduce our carbon footprint by 40% within the first year. The transition was seamless and the support has been exceptional.",
+            text: "SwitchLabs helped us reduce our carbon footprint by 40% within the first year. The transition was seamless and the support has been exceptional.",
             name: "Rajesh Kumar",
             role: "Logistics Head, UltraTech Cement"
         },

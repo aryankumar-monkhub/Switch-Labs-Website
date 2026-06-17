@@ -7,8 +7,8 @@ const BlogList = () => {
     return (
         <div style={{ minHeight: '100vh', paddingTop: '8rem', paddingBottom: '4rem' }}>
             <Helmet>
-                <title>Blog | Switch Labs</title>
-                <meta name="description" content="Insights, news, and updates from Switch Labs on heavy-duty EV logistics." />
+                <title>Blog | SwitchLabs</title>
+                <meta name="description" content="Insights, news, and updates from SwitchLabs on heavy-duty EV logistics." />
             </Helmet>
 
             <section className="container">

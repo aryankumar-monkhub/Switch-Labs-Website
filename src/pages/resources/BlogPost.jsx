@@ -19,7 +19,7 @@ const BlogPost = () => {
     return (
         <div style={{ minHeight: '100vh', paddingTop: '8rem', paddingBottom: '4rem' }}>
             <Helmet>
-                <title>{post.title} | Switch Labs Blog</title>
+                <title>{post.title} | SwitchLabs Blog</title>
                 <meta name="description" content={post.excerpt} />
             </Helmet>
 

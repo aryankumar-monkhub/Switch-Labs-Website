@@ -29,7 +29,7 @@ const Hero = ({ onAction }) => {
             >
                 <img
                     src="/assets/hero_truck.png"
-                    alt="Switch Labs 55T Electric Truck"
+                    alt="SwitchLabs 55T Electric Truck"
                     style={{
                         width: '100%',
                         height: 'auto',
@@ -116,12 +116,12 @@ const Hero = ({ onAction }) => {
                     paddingLeft: '100%' // Start off-screen
                 }}>
                     {[
-                        { name: 'JK Lakshmi', src: '/assets/logos/jk_lakshmi.png' },
-                        { name: 'Dalmia', src: '/assets/logos/dalmia.png' },
-                        { name: 'UPL', src: '/assets/logos/upl.png' },
-                        { name: 'Tata Steel', src: '/assets/logos/tata_steel.png' },
-                        { name: 'JSW', src: '/assets/logos/jsw.svg' },
-                        { name: 'Adani', src: '/assets/logos/adani.svg' },
+                        { name: 'JK Lakshmi Cements', src: '/assets/logos/jk_lakshmi.svg', maxH: '40px' },
+                        { name: 'Dalmia Cements', src: '/assets/logos/dalmia.svg', maxH: '60px' },
+                        { name: 'UPL', src: '/assets/logos/upl.png', maxH: '60px' },
+                        { name: 'Tata Steel', src: '/assets/logos/tata_steel.svg', maxH: '40px' },
+                        { name: 'JSW', src: '/assets/logos/jsw.svg', maxH: '40px' },
+                        { name: 'Adani', src: '/assets/logos/adani.svg', maxH: '40px' },
                     ].map((logo, i) => (
                         <div key={i} style={{
                             display: 'flex',
@@ -129,12 +129,11 @@ const Hero = ({ onAction }) => {
                             justifyContent: 'center',
                             height: '60px',
                             minWidth: '150px',
-                            filter: 'grayscale(100%) brightness(200%)', // Make white and consistent
-                            opacity: 0.7,
+                            opacity: 1,
                             transition: 'opacity 0.3s',
                         }}
                             onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
-                            onMouseOut={(e) => e.currentTarget.style.opacity = '0.7'}
+                            onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
                         >
                             <img
                                 src={logo.src}
@@ -143,19 +142,19 @@ const Hero = ({ onAction }) => {
                                     height: '100%',
                                     width: 'auto',
                                     objectFit: 'contain',
-                                    maxHeight: '40px'
+                                    maxHeight: logo.maxH
                                 }}
                             />
                         </div>
                     ))}
                     {/* Duplicate for loop */}
                     {[
-                        { name: 'JK Lakshmi', src: '/assets/logos/jk_lakshmi.png' },
-                        { name: 'Dalmia', src: '/assets/logos/dalmia.png' },
-                        { name: 'UPL', src: '/assets/logos/upl.png' },
-                        { name: 'Tata Steel', src: '/assets/logos/tata_steel.png' },
-                        { name: 'JSW', src: '/assets/logos/jsw.svg' },
-                        { name: 'Adani', src: '/assets/logos/adani.svg' },
+                        { name: 'JK Lakshmi Cements', src: '/assets/logos/jk_lakshmi.svg', maxH: '40px' },
+                        { name: 'Dalmia Cements', src: '/assets/logos/dalmia.svg', maxH: '60px' },
+                        { name: 'UPL', src: '/assets/logos/upl.png', maxH: '60px' },
+                        { name: 'Tata Steel', src: '/assets/logos/tata_steel.svg', maxH: '40px' },
+                        { name: 'JSW', src: '/assets/logos/jsw.svg', maxH: '40px' },
+                        { name: 'Adani', src: '/assets/logos/adani.svg', maxH: '40px' },
                     ].map((logo, i) => (
                         <div key={`dup-${i}`} style={{
                             display: 'flex',
@@ -163,12 +162,11 @@ const Hero = ({ onAction }) => {
                             justifyContent: 'center',
                             height: '60px',
                             minWidth: '150px',
-                            filter: 'grayscale(100%) brightness(200%)',
-                            opacity: 0.7,
+                            opacity: 1,
                             transition: 'opacity 0.3s',
                         }}
                             onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
-                            onMouseOut={(e) => e.currentTarget.style.opacity = '0.7'}
+                            onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
                         >
                             <img
                                 src={logo.src}
@@ -177,7 +175,7 @@ const Hero = ({ onAction }) => {
                                     height: '100%',
                                     width: 'auto',
                                     objectFit: 'contain',
-                                    maxHeight: '40px'
+                                    maxHeight: logo.maxH
                                 }}
                             />
                         </div>

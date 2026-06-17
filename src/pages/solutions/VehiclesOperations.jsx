@@ -295,7 +295,7 @@ const VehiclesOperations = () => {
                         maxWidth: '600px',
                         margin: '0 auto 2.5rem',
                     }}>
-                        Schedule a fleet assessment and discover how Switch Labs can optimize your logistics operations.
+                        Schedule a fleet assessment and discover how SwitchLabs can optimize your logistics operations.
                     </p>
                     <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                         <Link

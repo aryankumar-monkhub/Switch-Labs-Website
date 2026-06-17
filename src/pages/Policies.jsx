@@ -7,7 +7,7 @@ const Policies = () => {
             <div style={{ marginBottom: '3rem' }}>
                 <h2 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>Privacy Policy</h2>
                 <p style={{ fontSize: '1rem', lineHeight: '1.6', color: 'var(--color-grey-light)' }}>
-                    At Switch Labs, we prioritize the protection of your data. This policy outlines how we collect, use, and safeguard your personal information.
+                    At SwitchLabs, we prioritize the protection of your data. This policy outlines how we collect, use, and safeguard your personal information.
                     We collect data to provide better services, improve our platform, and communicate with you. We do not sell your personal data to third parties.
                 </p>
             </div>

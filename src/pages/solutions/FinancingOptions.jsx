@@ -191,7 +191,7 @@ const FinancingOptions = () => {
                             fontSize: '1.1rem',
                             color: 'var(--color-text-secondary)',
                         }}>
-                            Calculate your potential savings with Switch Labs EV operations
+                            Calculate your potential savings with SwitchLabs EV operations
                         </p>
                     </div>
 

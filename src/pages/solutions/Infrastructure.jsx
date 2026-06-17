@@ -55,9 +55,9 @@ const Infrastructure = () => {
             state: 'Rajasthan',
             stations: [
                 {
-                    name: 'Sirohi Hub',
-                    chargers: '2x 180 kW + 1x 120 kW',
-                    features: ['Solar canopy (50 kW)', '24/7 operation', 'Fleet parking'],
+                    name: 'J.K. Puram Hub',
+                    chargers: '1x 180 kW',
+                    features: ['Dual Gun GB/T Chargers', '1.5 Hr Charging Time', '24/7 Operation'],
                     uptime: '99.7%'
                 }
             ]
@@ -66,32 +66,32 @@ const Infrastructure = () => {
             state: 'Gujarat',
             stations: [
                 {
-                    name: 'Balaram Station',
-                    chargers: '1x 180 kW',
-                    features: ['11 kV grid connection', 'Covered parking'],
-                    uptime: '99.5%'
+                    name: 'Jhagadia Hub',
+                    chargers: '1x 240 kW',
+                    features: ['Dual Gun CCS2 Charger', '1.5 Hr Charging Time', '24/7 Operation', 'In-plant installation'],
+                    uptime: '99.6%'
                 },
                 {
-                    name: 'Kalol Depot',
-                    chargers: '4x 180 kW + 2x 240 kW',
-                    features: ['Fleet parking (20 trucks)', 'On-site maintenance', 'Driver amenities'],
+                    name: 'Mehsana',
+                    chargers: '2x 240 kW',
+                    features: ['Dual Gun CCS2 Charger', '1 Hr Charging Time', '24/7 Operation', 'Driver Amenities'],
                     uptime: '99.8%'
                 },
                 {
-                    name: 'Ankleshwar Industrial Hub',
-                    chargers: '2x 120 kW',
-                    features: ['In-plant installation', 'Dedicated UPL operations'],
-                    uptime: '99.6%'
+                    name: 'Amirgarh',
+                    chargers: '2x 240 kW',
+                    features: ['Dual Gun CCS2 Charger', '1 Hr Charging Time', '24/7 Operation', 'Driver Amenities'],
+                    uptime: '99.8%'
                 }
             ]
         },
         {
-            state: 'Madhya Pradesh',
+            state: 'Chhattisgarh',
             stations: [
                 {
                     name: 'Ahirwara Charging Point',
-                    chargers: '2x 180 kW',
-                    features: ['Near Adani Power', 'Covered parking', 'Security'],
+                    chargers: '1x 240 kW',
+                    features: ['Dual Gun CCS2 Charger', '1.5 Hr Charging Time', '24/7 Operation', 'In-plant installation'],
                     uptime: '99.4%'
                 }
             ]
@@ -471,70 +471,6 @@ const Infrastructure = () => {
                     </div>
                 </div>
 
-                {/* CTA Section */}
-                <div
-                    className="glass"
-                    style={{
-                        padding: '4rem 3rem',
-                        textAlign: 'center',
-                        background: 'linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 255, 136, 0.05) 100%)',
-                    }}
-                >
-                    <h2 style={{
-                        fontSize: '2.5rem',
-                        fontWeight: '900',
-                        color: 'var(--color-white)',
-                        marginBottom: '1rem',
-                    }}>
-                        Ready to Build Your Charging Infrastructure?
-                    </h2>
-                    <p style={{
-                        color: 'var(--color-text-secondary)',
-                        marginBottom: '2.5rem',
-                        fontSize: '1.15rem',
-                        maxWidth: '600px',
-                        margin: '0 auto 2.5rem',
-                    }}>
-                        Let's assess your site and design the perfect charging solution for your operations.
-                    </p>
-                    <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                        <Link
-                            to="/contact"
-                            className="cta-button"
-                            style={{
-                                background: 'var(--color-accent)',
-                                color: 'var(--color-primary)',
-                                padding: '1rem 2.5rem',
-                                borderRadius: '4px',
-                                fontWeight: '800',
-                                textTransform: 'uppercase',
-                                fontSize: '0.9rem',
-                                textDecoration: 'none',
-                                display: 'inline-block',
-                                boxShadow: '0 0 30px var(--color-accent-glow)',
-                            }}
-                        >
-                            Plan Your Infrastructure
-                        </Link>
-                        <Link
-                            to="/network/corridors"
-                            style={{
-                                background: 'transparent',
-                                color: 'var(--color-accent)',
-                                padding: '1rem 2.5rem',
-                                borderRadius: '4px',
-                                fontWeight: '800',
-                                textTransform: 'uppercase',
-                                fontSize: '0.9rem',
-                                textDecoration: 'none',
-                                display: 'inline-block',
-                                border: '2px solid var(--color-accent)',
-                            }}
-                        >
-                            View Network Map
-                        </Link>
-                    </div>
-                </div>
             </div>
         </div>
     );
