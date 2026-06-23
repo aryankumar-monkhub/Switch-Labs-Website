@@ -10,7 +10,7 @@ const Hero = ({ onAction }) => {
             position: 'relative',
             paddingTop: '6rem',
             overflow: 'hidden',
-            background: 'linear-gradient(90deg, rgba(17,18,20,0.9) 0%, rgba(17,18,20,0.4) 60%, transparent 100%), radial-gradient(circle at 80% 50%, var(--color-accent-glow) 0%, transparent 60%), var(--color-background)',
+            background: 'radial-gradient(circle at 80% 50%, var(--color-accent-glow) 0%, transparent 60%), var(--color-background)',
         }}>
             {/* Cinematic Truck Image */}
             <motion.div
@@ -24,7 +24,7 @@ const Hero = ({ onAction }) => {
                     width: '55%',
                     height: 'auto',
                     zIndex: 0,
-                    filter: 'drop-shadow(0 0 50px rgba(0,0,0,0.8))',
+                    filter: 'drop-shadow(0 0 50px var(--overlay-bg))',
                 }}
             >
                 <img
@@ -39,8 +39,8 @@ const Hero = ({ onAction }) => {
                 />
             </motion.div>
 
-            <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-                <div style={{ maxWidth: '900px' }}>
+            <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem 0 0', position: 'relative', zIndex: 1 }}>
+                <div style={{ maxWidth: '700px', textAlign: 'left' }}>
                     <motion.h1
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -57,20 +57,6 @@ const Hero = ({ onAction }) => {
                         <span style={{ color: 'var(--color-accent)' }}>Backbone</span> of <br />
                         Indian Industry.
                     </motion.h1>
-
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        style={{
-                            fontSize: '1.25rem',
-                            color: 'var(--color-grey-light)',
-                            marginBottom: '3rem',
-                            maxWidth: '700px',
-                        }}
-                    >
-                        The full-stack EV transformation for heavy-duty freight. 40% lower costs. Zero emissions. 100% uptime.
-                    </motion.p>
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -103,9 +89,9 @@ const Hero = ({ onAction }) => {
                 bottom: '0',
                 width: '100%',
                 overflow: 'hidden',
-                borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+                borderTop: 'var(--border-industrial)',
                 padding: '2rem 0',
-                background: 'rgba(0,0,0,0.5)',
+                background: 'var(--overlay-bg)',
             }}>
                 <div className="ticker" style={{
                     display: 'flex',
@@ -138,6 +124,7 @@ const Hero = ({ onAction }) => {
                             <img
                                 src={logo.src}
                                 alt={`${logo.name} Logo`}
+                                className="partner-logo"
                                 style={{
                                     height: '100%',
                                     width: 'auto',
@@ -171,6 +158,7 @@ const Hero = ({ onAction }) => {
                             <img
                                 src={logo.src}
                                 alt={`${logo.name} Logo`}
+                                className="partner-logo"
                                 style={{
                                     height: '100%',
                                     width: 'auto',

@@ -484,7 +484,7 @@ const LeadModal = ({ isOpen, onClose }) => {
                                                 e.target.value = val;
                                                 handleInputChange(e);
                                             }}
-                                            placeholder="98765 43210"
+                                            placeholder="XXXXX XXXXX"
                                             style={{
                                                 background: 'transparent',
                                                 border: 'none',

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ComposableMap, Geographies, Geography, Marker, Line } from 'react-simple-maps';
 
 // Using a GeoJSON that represents Indian states with detailed boundaries
@@ -14,8 +14,6 @@ const routes = [
 ];
 
 const CorridorMap = () => {
-    const [hoveredRoute, setHoveredRoute] = useState(null);
-
     return (
         <section id="our-corridors" style={{ padding: '4rem 0' }}>
             <div className="container">
@@ -47,76 +45,68 @@ const CorridorMap = () => {
                             top: '1rem',
                             left: '1rem',
                             zIndex: 10,
-                            background: 'rgba(15, 23, 42, 0.8)',
+                            background: 'var(--color-primary)',
                             padding: '0.5rem 1rem',
                             borderRadius: '20px',
-                            border: '1px solid rgba(255,255,255,0.1)',
+                            border: 'var(--border-industrial)',
                             backdropFilter: 'blur(4px)',
                             display: 'flex',
                             alignItems: 'center',
                             gap: '0.5rem'
                         }}>
                             <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }} />
-                            <span style={{ fontSize: '0.8rem', color: '#fff', fontWeight: 600 }}>Pan-India Network</span>
+                            <span style={{ fontSize: '0.8rem', color: 'var(--color-white)', fontWeight: 600 }}>Pan-India Network</span>
                         </div>
-
-                        {/* Info Popup */}
-                        {hoveredRoute && (
-                            <div style={{
-                                position: 'absolute',
-                                bottom: '1rem',
-                                right: '1rem',
-                                zIndex: 20,
-                                background: 'rgba(15, 23, 42, 0.95)',
-                                backdropFilter: 'blur(8px)',
-                                padding: '1rem 1.25rem',
-                                borderRadius: '12px',
-                                border: '1px solid rgba(255,255,255,0.1)',
-                                minWidth: '180px',
-                                boxShadow: '0 8px 32px rgba(0,0,0,0.4)'
-                            }}>
-                                <div style={{ fontSize: '0.85rem', fontWeight: '700', color: 'var(--color-accent)', marginBottom: '0.5rem' }}>
-                                    {hoveredRoute.name}
-                                </div>
-                                <div style={{ fontSize: '0.75rem', color: 'var(--color-grey-light)', marginBottom: '0.25rem' }}>
-                                    Distance: {hoveredRoute.distance}
-                                </div>
-                                <div style={{ fontSize: '0.75rem', color: 'var(--color-grey-light)', marginBottom: '0.25rem' }}>
-                                    No. of Trucks: {hoveredRoute.trucks}
-                                </div>
-                                <div style={{ fontSize: '0.75rem', color: 'var(--color-grey-light)' }}>
-                                    Route: {hoveredRoute.routeDescription}
-                                </div>
-                            </div>
-                        )}
 
                         <ComposableMap
                             projection="geoMercator"
-                            projectionConfig={{ scale: 1020, center: [78, 22] }}
-                            width={800}
-                            height={600}
+                            projectionConfig={{ scale: 750, center: [82, 21] }}
+                            width={700}
+                            height={500}
                             style={{ width: "100%", height: "100%" }}
                         >
                             <Geographies geography={geoUrl}>
                                 {({ geographies }) =>
                                     geographies.map((geo) => (
-                                        <Geography
-                                            key={geo.rsmKey}
-                                            geography={geo}
-                                            fill="#ffffff"
-                                            stroke="#d0d0d0"
-                                            strokeWidth={0.5}
-                                            style={{
-                                                default: { fill: "#ffffff", outline: "none" },
-                                                hover: { fill: "#f5f5f5", outline: "none" },
-                                                pressed: { fill: "#ffffff", outline: "none" }
-                                            }}
+                                    <Geography
+                                        key={geo.rsmKey}
+                                        geography={geo}
+                                        fill="#ffffff"
+                                        stroke="#ffffff"
+                                        strokeWidth={0}
+                                        style={{
+                                            default: { fill: "#ffffff", outline: "none" },
+                                            hover: { fill: "#ffffff", outline: "none" },
+                                            pressed: { fill: "#ffffff", outline: "none" }
+                                        }}
                                         />
                                     ))
                                 }
                             </Geographies>
 
-                            {routes.map((route, i) => (
+                            {routes.map((route, i) => {
+                                const isLeft = i < 3;
+                                const isAbove = i === 0;
+                                const isRoute2 = i === 2;
+                                const boxWidth = 180;
+                                const boxX = isLeft ? -195 : (i === 4 ? 165 : 180);
+                                const lineX = isLeft ? [-105, -70, 0][i] : (i === 4 ? 255 : 270);
+                                const yOff = isLeft ? [-100, 60, 110][i] : 20;
+                                const lineY = isAbove ? yOff + 62 : yOff;
+
+                                const boxCenterY = yOff + 31;
+                                const boxRightEdge = boxX + boxWidth;
+                                const pathD = isRoute2 ? `M 0,-6 L 0,${boxCenterY} L ${boxRightEdge},${boxCenterY}` : `M 0,-6 L ${lineX},-6 L ${lineX},${lineY}`;
+                                let arrowPoints;
+                                if (isRoute2) {
+                                    arrowPoints = `${boxRightEdge+5},${boxCenterY-4} ${boxRightEdge+5},${boxCenterY+4} ${boxRightEdge},${boxCenterY}`;
+                                } else if (isAbove) {
+                                    arrowPoints = `${lineX-4},${lineY+5} ${lineX+4},${lineY+5} ${lineX},${lineY}`;
+                                } else {
+                                    arrowPoints = `${lineX-4},${lineY-5} ${lineX+4},${lineY-5} ${lineX},${lineY}`;
+                                }
+
+                                return (
                                 <React.Fragment key={i}>
                                     <Line
                                         from={route.coordinates[0]}
@@ -124,26 +114,32 @@ const CorridorMap = () => {
                                         stroke="var(--color-accent)"
                                         strokeWidth={1.5}
                                         strokeLinecap="round"
-                                        style={{ opacity: 0.7 }}
                                     />
-                                    <Marker
-                                        coordinates={route.coordinates[0]}
-                                        onMouseEnter={() => setHoveredRoute(route)}
-                                        onMouseLeave={() => setHoveredRoute(null)}
-                                        onTouchStart={() => setHoveredRoute(hoveredRoute && hoveredRoute.name === route.name ? null : route)}
-                                        style={{ cursor: 'pointer' }}
-                                    >
+                                    <Marker coordinates={route.coordinates[0]}>
+                                        {/* Pin */}
                                         <g transform="translate(-6, -12)">
                                             <title>{route.start}</title>
                                             <path d="M6 0C2.7 0 0 2.7 0 6c0 3.3 6 10 6 10s6-6.7 6-10c0-3.3-2.7-6-6-6zm0 8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="#ef4444" />
                                             <circle cx="6" cy="6" r="2" fill="#fff" />
                                         </g>
+                                        {/* Connecting line with arrow */}
+                                        <path d={pathD} stroke="var(--color-accent)" strokeWidth={1} fill="none" opacity="1" strokeLinejoin="round" />
+                                        <polygon points={arrowPoints} fill="var(--color-accent)" opacity="1" />
+                                        {/* Info box */}
+                                        <g transform={`translate(${boxX}, ${yOff})`}>
+                                            <rect width={boxWidth} height="62" rx="4" ry="4" fill="rgba(15,23,42,0.85)" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+                                            <text x="8" y="16" fill="var(--color-accent)" fontSize="10" fontFamily="Montserrat, sans-serif" fontWeight="700">{route.name}</text>
+                                            <text x="8" y="30" fill="var(--color-grey-light)" fontSize="9" fontFamily="Inter, sans-serif">Distance: {route.distance}</text>
+                                            <text x="8" y="42" fill="var(--color-grey-light)" fontSize="9" fontFamily="Inter, sans-serif">No. of Trucks: {route.trucks}</text>
+                                            <text x="8" y="54" fill="var(--color-grey-light)" fontSize="9" fontFamily="Inter, sans-serif">Route: {route.routeDescription}</text>
+                                        </g>
                                     </Marker>
                                     <Marker coordinates={route.coordinates[1]}>
-                                        <circle r={4} fill="#ef4444" style={{ cursor: 'pointer' }} />
+                                        <circle r={4} fill="#ef4444" />
                                     </Marker>
                                 </React.Fragment>
-                            ))}
+                                );
+                            })}
                         </ComposableMap>
 
                         {/* Overlay Gradient */}
@@ -163,13 +159,13 @@ const CorridorMap = () => {
                                 Implementation Roadmap
                             </h3>
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
-                                <div className="stat-card glass" style={{ padding: '1.5rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                                <div className="stat-card glass" style={{ padding: '1.5rem', borderRadius: '12px' }}>
                                     <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--color-accent)', lineHeight: 1 }}>20</div>
                                     <div style={{ marginTop: '0.5rem', color: 'var(--color-grey)', fontSize: '0.85rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                                         Routes Live Today
                                     </div>
                                 </div>
-                                <div className="stat-card glass" style={{ padding: '1.5rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                                <div className="stat-card glass" style={{ padding: '1.5rem', borderRadius: '12px' }}>
                                     <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--color-white)', lineHeight: 1 }}>60+</div>
                                     <div style={{ marginTop: '0.5rem', color: 'var(--color-grey)', fontSize: '0.85rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                                         Planned for Q3 2026

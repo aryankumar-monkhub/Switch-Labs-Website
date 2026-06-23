@@ -85,28 +85,6 @@ const SolutionsOverview = () => {
                         </div>
                     </Link>
 
-                    <Link
-                        to="/solutions/financing"
-                        className="glass border-heavy"
-                        style={{
-                            padding: '3rem',
-                            borderRadius: '12px',
-                            textDecoration: 'none',
-                            color: 'inherit',
-                            transition: 'var(--transition-smooth)'
-                        }}
-                    >
-                        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>💰</div>
-                        <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem', color: 'var(--color-white)' }}>
-                            EV Truck as a Service
-                        </h3>
-                        <p style={{ color: 'var(--color-grey-light)', fontSize: '1rem', lineHeight: '1.7' }}>
-                            Flexible financial models and ROI calculators to make your EV transition seamless and cost-effective.
-                        </p>
-                        <div style={{ marginTop: '2rem', color: 'var(--color-accent)', fontWeight: '600' }}>
-                            Learn More →
-                        </div>
-                    </Link>
                 </div>
 
                 {/* CTA Section */}

@@ -80,7 +80,7 @@ const Footer = ({ onAction }) => {
     });
 
     return (
-        <footer id="contact" style={{ background: '#0D0E10', padding: '6rem 0 2rem', position: 'relative' }}>
+        <footer id="contact" style={{ background: 'var(--color-primary)', padding: '6rem 0 2rem', position: 'relative' }}>
             {/* Visual background element */}
             <div style={{
                 position: 'absolute',
@@ -105,6 +105,7 @@ const Footer = ({ onAction }) => {
                             <img
                                 src="/switch-labs-logo.png"
                                 alt="SwitchLabs Logo"
+                                className="logo-img"
                                 style={{
                                     height: '50px',
                                     width: 'auto',
@@ -182,7 +183,7 @@ const Footer = ({ onAction }) => {
                                                 type="tel"
                                                 name="phone"
                                                 maxLength={10}
-                                                placeholder="98765 43210"
+                                                placeholder="XXXXX XXXXX"
                                                 value={formData.phone}
                                                 onBlur={handleBlur}
                                                 onChange={(e) => {
@@ -262,7 +263,6 @@ const Footer = ({ onAction }) => {
                                 <Link to="/solutions/vehicles-operations" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Vehicles & Operations</Link>
                                 <Link to="/solutions/infrastructure" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Infrastructure</Link>
                                 <Link to="/solutions/intelligence" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Intelligence Platform</Link>
-                                <Link to="/solutions/financing" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>EV Truck as a Service</Link>
                             </div>
                         </div>
 
@@ -366,7 +366,7 @@ const linkOut = (e) => (e.target.style.color = 'var(--color-grey-light)');
 const footerInputStyle = {
     width: '100%',
     background: 'rgba(255,255,255,0.03)',
-    border: '1px solid rgba(255,255,255,0.1)',
+    border: '1px solid var(--color-accent-dark)',
     padding: '1.25rem',
     color: 'white',
     borderRadius: '8px',

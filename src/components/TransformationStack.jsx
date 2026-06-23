@@ -47,7 +47,7 @@ const TransformationStack = ({ onAction }) => {
                             className="border-heavy"
                             style={{
                                 padding: '3rem 2rem',
-                                background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%)',
+                                background: 'linear-gradient(135deg, var(--subtle-bg) 0%, transparent 100%)',
                                 borderRadius: '8px',
                                 position: 'relative',
                                 overflow: 'hidden',

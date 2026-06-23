@@ -7,8 +7,7 @@ export const navigationConfig = {
             { type: 'divider' },
             { label: 'Vehicles & Operations', path: '/solutions/vehicles-operations', icon: '🚛', description: 'Full-stack EV-as-a-Service' },
             { label: 'Infrastructure', path: '/solutions/infrastructure', icon: '⚡', description: 'Charging & swapping stations' },
-            { label: 'Intelligence Platform', path: '/solutions/intelligence', icon: '🧠', description: 'Route optimization & energy management' },
-            { label: 'EV Truck as a Service', path: '/solutions/financing', icon: '💰', description: 'Financial models & ROI calculator' }
+            { label: 'Intelligence Platform', path: '/solutions/intelligence', icon: '🧠', description: 'Route optimization & energy management' }
         ]
     },
 
@@ -61,8 +60,7 @@ export const footerNavigation = {
         { label: 'Overview', path: '/solutions' },
         { label: 'Vehicles & Operations', path: '/solutions/vehicles-operations' },
         { label: 'Infrastructure', path: '/solutions/infrastructure' },
-        { label: 'Intelligence', path: '/solutions/intelligence' },
-        { label: 'EV Truck as a Service', path: '/solutions/financing' }
+        { label: 'Intelligence', path: '/solutions/intelligence' }
     ],
     company: [
         { label: 'About Us', path: '/company/about' },

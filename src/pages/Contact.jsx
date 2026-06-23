@@ -4,7 +4,7 @@ const inputStyle = {
     width: '100%',
     padding: '0.9rem 1rem',
     background: 'rgba(255,255,255,0.03)',
-    border: '1px solid rgba(255,255,255,0.1)',
+    border: '1px solid var(--color-accent-dark)',
     borderRadius: '8px',
     color: '#fff',
     fontSize: '0.95rem',
@@ -61,9 +61,7 @@ const Contact = () => {
                                 <a href="mailto:switchlabsautomobiles@gmail.com" style={{ color: 'var(--color-white)', fontSize: '1.1rem', textDecoration: 'none' }}>
                                     switchlabsautomobiles@gmail.com
                                 </a>
-                                <a href="mailto:info@switchlabs.in" style={{ color: 'var(--color-white)', fontSize: '1.1rem', textDecoration: 'none', display: 'block', marginTop: '0.3rem' }}>
-                                    info@switchlabs.in
-                                </a>
+
                             </div>
 
                             <div>
@@ -80,9 +78,8 @@ const Contact = () => {
                                     Office
                                 </h4>
                                 <p style={{ color: 'var(--color-white)', fontSize: '1rem', lineHeight: '1.6' }}>
-                                    SwitchLabs Private Limited<br />
-                                    [Office Address]<br />
-                                    India
+                                    Team Coworks, Prop no - 55 Lane - 2, Westend Marg,<br />
+                                    New Delhi, Delhi - 110030
                                 </p>
                             </div>
 

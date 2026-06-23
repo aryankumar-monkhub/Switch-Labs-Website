@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Brain, Route, Battery, BarChart3, Smartphone, Cloud, CheckCircle, ArrowRight, TrendingUp } from 'lucide-react';
+import { Brain, Route, Battery, BarChart3, CheckCircle, TrendingUp } from 'lucide-react';
 
 const IntelligencePlatform = () => {
     const platformFeatures = [
@@ -81,33 +81,6 @@ const IntelligencePlatform = () => {
                 'Carbon credits earned'
             ]
         }
-    ];
-
-    const integrations = [
-        {
-            name: 'API Access',
-            description: 'RESTful APIs for seamless integration with your existing systems',
-            features: ['Real-time data access', 'Webhook notifications', 'Custom endpoints']
-        },
-        {
-            name: 'ERP/TMS Integration',
-            description: 'Connect with enterprise resource planning and transport management systems',
-            features: ['SAP integration', 'Oracle compatibility', 'Custom connectors']
-        },
-        {
-            name: 'Mobile Applications',
-            description: 'iOS and Android apps for drivers and fleet managers',
-            features: ['Trip tracking', 'Charging locator', 'Performance reports']
-        }
-    ];
-
-    const techStack = [
-        { label: 'Cloud Infrastructure', value: 'AWS / Azure' },
-        { label: 'Machine Learning', value: 'TensorFlow-based models' },
-        { label: 'Real-time Processing', value: 'Edge computing' },
-        { label: 'Data Security', value: 'End-to-end encryption' },
-        { label: 'Uptime SLA', value: '99.9% platform availability' },
-        { label: 'Data Retention', value: '5 years historical data' }
     ];
 
     return (
@@ -274,134 +247,7 @@ const IntelligencePlatform = () => {
                     </div>
                 </div>
 
-                {/* Integration Capabilities */}
-                <div style={{ marginBottom: '6rem' }}>
-                    <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                        <h2 style={{
-                            fontSize: '2.5rem',
-                            fontWeight: '900',
-                            color: 'var(--color-white)',
-                            marginBottom: '1rem',
-                        }}>
-                            Seamless Integration
-                        </h2>
-                        <p style={{
-                            fontSize: '1.1rem',
-                            color: 'var(--color-text-secondary)',
-                            maxWidth: '700px',
-                            margin: '0 auto',
-                        }}>
-                            Connect with your existing systems and workflows
-                        </p>
-                    </div>
 
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                        gap: '2rem',
-                    }}>
-                        {integrations.map((integration, index) => (
-                            <div
-                                key={index}
-                                className="glass"
-                                style={{
-                                    padding: '2.5rem',
-                                    transition: 'var(--transition-smooth)',
-                                }}
-                            >
-                                <div style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.75rem',
-                                    marginBottom: '1rem',
-                                }}>
-                                    {index === 0 && <Cloud size={32} color="var(--color-accent)" />}
-                                    {index === 1 && <BarChart3 size={32} color="var(--color-accent)" />}
-                                    {index === 2 && <Smartphone size={32} color="var(--color-accent)" />}
-                                    <h3 style={{
-                                        fontSize: '1.35rem',
-                                        fontWeight: '800',
-                                        color: 'var(--color-white)',
-                                        margin: 0,
-                                    }}>
-                                        {integration.name}
-                                    </h3>
-                                </div>
-                                <p style={{
-                                    color: 'var(--color-text-secondary)',
-                                    marginBottom: '1.5rem',
-                                    lineHeight: '1.6',
-                                }}>
-                                    {integration.description}
-                                </p>
-                                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                                    {integration.features.map((feature, idx) => (
-                                        <li key={idx} style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '0.5rem',
-                                            marginBottom: '0.5rem',
-                                            color: 'var(--color-accent)',
-                                            fontSize: '0.9rem',
-                                            fontWeight: '600',
-                                        }}>
-                                            <ArrowRight size={14} />
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Technology Stack */}
-                <div style={{ marginBottom: '6rem' }}>
-                    <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                        <h2 style={{
-                            fontSize: '2.5rem',
-                            fontWeight: '900',
-                            color: 'var(--color-white)',
-                            marginBottom: '1rem',
-                        }}>
-                            Enterprise-Grade Technology
-                        </h2>
-                    </div>
-
-                    <div className="glass" style={{ padding: '3rem' }}>
-                        <div style={{
-                            display: 'grid',
-                            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                            gap: '2rem',
-                        }}>
-                            {techStack.map((spec, index) => (
-                                <div key={index} style={{
-                                    padding: '1.5rem',
-                                    background: 'rgba(0, 255, 136, 0.05)',
-                                    borderRadius: '8px',
-                                    border: '1px solid rgba(0, 255, 136, 0.1)',
-                                }}>
-                                    <div style={{
-                                        fontSize: '0.85rem',
-                                        color: 'var(--color-text-secondary)',
-                                        marginBottom: '0.5rem',
-                                        textTransform: 'uppercase',
-                                        letterSpacing: '0.5px',
-                                    }}>
-                                        {spec.label}
-                                    </div>
-                                    <div style={{
-                                        fontSize: '1.1rem',
-                                        color: 'var(--color-white)',
-                                        fontWeight: '700',
-                                    }}>
-                                        {spec.value}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
 
                 {/* CTA Section */}
                 <div

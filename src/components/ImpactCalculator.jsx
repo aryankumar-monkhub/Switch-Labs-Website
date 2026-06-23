@@ -131,9 +131,9 @@ const ImpactCalculator = ({ onAction }) => {
                                                     borderRadius: '8px',
                                                     cursor: 'pointer',
                                                     transition: 'all 0.3s ease',
-                                                    background: energySource === source ? 'var(--color-accent-glow)' : 'rgba(255,255,255,0.02)',
+                                                    background: energySource === source ? 'var(--color-accent-glow)' : 'var(--subtle-bg)',
                                                     color: energySource === source ? 'var(--color-accent)' : 'var(--color-grey-light)',
-                                                    borderColor: energySource === source ? 'var(--color-accent)' : 'rgba(255,255,255,0.1)',
+                                                    borderColor: energySource === source ? 'var(--color-accent)' : 'var(--subtle-border)',
                                                     fontWeight: '700',
                                                     textTransform: 'uppercase',
                                                     letterSpacing: '1px',
@@ -148,16 +148,16 @@ const ImpactCalculator = ({ onAction }) => {
 
                                 {/* Visualization moved to Left */}
                                 <div style={{
-                                    background: 'rgba(255,255,255,0.03)',
+                                    background: 'var(--subtle-bg)',
                                     padding: '1.5rem',
                                     borderRadius: '12px',
-                                    border: '1px solid rgba(255,255,255,0.05)'
+                                    border: '1px solid var(--subtle-border)'
                                 }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', marginBottom: '0.5rem', textTransform: 'uppercase', color: 'var(--color-grey-light)', letterSpacing: '0.5px' }}>
                                         <span>Diesel Baseline</span>
                                         <span>{Math.round(metrics.dieselBase)}t CO₂</span>
                                     </div>
-                                    <div style={{ height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '3px', overflow: 'hidden', marginBottom: '1.2rem' }}>
+                                    <div style={{ height: '6px', background: 'var(--subtle-bg)', borderRadius: '3px', overflow: 'hidden', marginBottom: '1.2rem' }}>
                                         <motion.div
                                             initial={{ width: 0 }}
                                             animate={{ width: '100%' }}
@@ -169,7 +169,7 @@ const ImpactCalculator = ({ onAction }) => {
                                         <span>Switch EV Impact</span>
                                         <span style={{ color: 'var(--color-accent)' }}>{Math.round(metrics.evImpact)}t CO₂</span>
                                     </div>
-                                    <div style={{ height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '3px', overflow: 'hidden' }}>
+                                    <div style={{ height: '6px', background: 'var(--subtle-bg)', borderRadius: '3px', overflow: 'hidden' }}>
                                         <motion.div
                                             initial={{ width: 0 }}
                                             animate={{ width: `${(metrics.evImpact / metrics.dieselBase) * 100}%` }}
@@ -181,7 +181,7 @@ const ImpactCalculator = ({ onAction }) => {
 
                             {/* RIGHT PANEL: RESULTS */}
                             <div style={{
-                                background: 'linear-gradient(145deg, rgba(16,18,20,0.6) 0%, rgba(5,7,9,0.9) 100%)',
+                                background: 'var(--color-primary)',
                                 border: '1px solid var(--color-accent-glow)',
                                 borderRadius: '20px',
                                 padding: '2.5rem',
@@ -192,7 +192,7 @@ const ImpactCalculator = ({ onAction }) => {
                                 gap: '2rem'
                             }}>
                                 <div>
-                                    <h4 style={{ color: 'var(--color-grey-light)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '1rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem' }}>
+                                    <h4 style={{ color: 'var(--color-grey-light)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '1rem', borderBottom: '1px solid var(--subtle-border)', paddingBottom: '1rem' }}>
                                         Projected Savings
                                     </h4>
                                     <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.8rem', marginBottom: '0.5rem' }}>
@@ -205,7 +205,7 @@ const ImpactCalculator = ({ onAction }) => {
                                     </div>
                                 </div>
 
-                                <div style={{ padding: '1.5rem', background: 'rgba(46, 204, 113, 0.05)', borderRadius: '12px', border: '1px solid rgba(46, 204, 113, 0.2)' }}>
+                                <div style={{ padding: '1.5rem', background: 'rgba(46, 204, 113, 0.12)', borderRadius: '12px', border: '1px solid rgba(46, 204, 113, 0.4)' }}>
                                     <p style={{ color: '#2ecc71', fontSize: '0.7rem', marginBottom: '0.5rem', textTransform: 'uppercase' }}>Equiv. Trees Planted</p>
                                     <div style={{ fontSize: '2rem', fontWeight: '800', color: '#2ecc71', display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

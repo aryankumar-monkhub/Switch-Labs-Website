@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import Dropdown from './Dropdown';
 import { navigationConfig } from '../../data/navigation';
+import { useTheme } from '../../context/ThemeContext';
 
 const Navbar = ({ onGetStarted }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const location = useLocation();
+    const { theme, toggleTheme } = useTheme();
 
     return (
         <nav
@@ -38,6 +40,7 @@ const Navbar = ({ onGetStarted }) => {
                 <img
                     src="/switch-labs-logo.png"
                     alt="SwitchLabs Logo"
+                    className="logo-img"
                     style={{
                         height: '40px',
                         width: 'auto',
@@ -108,6 +111,33 @@ const Navbar = ({ onGetStarted }) => {
                     Contact
                 </Link>
 
+                {/* Theme Toggle */}
+                <button
+                    onClick={toggleTheme}
+                    style={{
+                        background: 'none',
+                        border: 'none',
+                        cursor: 'pointer',
+                        color: 'var(--color-white)',
+                        opacity: 0.7,
+                        display: 'flex',
+                        alignItems: 'center',
+                        padding: '0.5rem',
+                        transition: 'var(--transition-smooth)',
+                    }}
+                    onMouseOver={(e) => {
+                        e.target.style.opacity = 1;
+                        e.target.style.color = 'var(--color-accent)';
+                    }}
+                    onMouseOut={(e) => {
+                        e.target.style.opacity = 0.7;
+                        e.target.style.color = 'var(--color-white)';
+                    }}
+                    aria-label="Toggle theme"
+                >
+                    {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+                </button>
+
                 {/* CTA Button */}
                 <button
                     onClick={onGetStarted}
@@ -148,7 +178,7 @@ const Navbar = ({ onGetStarted }) => {
                         padding: '0.5rem'
                     }}
                 >
-                    {isMobileMenuOpen ? <X color="white" size={24} /> : <Menu color="white" size={24} />}
+                    {isMobileMenuOpen ? <X color="var(--color-white)" size={24} /> : <Menu color="var(--color-white)" size={24} />}
                 </button>
             </div>
 
@@ -167,7 +197,7 @@ const Navbar = ({ onGetStarted }) => {
                         padding: '2rem',
                         maxHeight: '80vh',
                         overflowY: 'auto',
-                        border: '1px solid rgba(255,255,255,0.1)',
+                        border: 'var(--border-industrial)',
                         boxShadow: '0 10px 40px rgba(0,0,0,0.5)'
                     }}
                 >
@@ -209,6 +239,26 @@ const Navbar = ({ onGetStarted }) => {
                         >
                             Contact
                         </Link>
+                        <button
+                            onClick={toggleTheme}
+                            style={{
+                                background: 'none',
+                                border: '1px solid var(--color-grey-dark)',
+                                cursor: 'pointer',
+                                color: 'var(--color-white)',
+                                padding: '0.75rem 1rem',
+                                borderRadius: '4px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: '0.5rem',
+                                fontSize: '0.85rem',
+                                fontWeight: '600',
+                            }}
+                        >
+                            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+                            {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+                        </button>
                         <button
                             onClick={() => {
                                 setIsMobileMenuOpen(false);

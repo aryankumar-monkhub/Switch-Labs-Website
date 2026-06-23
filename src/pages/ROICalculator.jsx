@@ -341,17 +341,6 @@ const ROICalculator = () => {
                             >
                                 Get Custom Analysis
                             </Link>
-                            <Link
-                                to="/solutions/financing"
-                                style={{
-                                    flex: 1, textAlign: 'center', padding: '1.1rem',
-                                    border: '2px solid var(--color-accent)', borderRadius: '4px',
-                                    color: 'var(--color-accent)', fontWeight: '800',
-                                    textTransform: 'uppercase', fontSize: '0.85rem', letterSpacing: '1px',
-                                }}
-                            >
-                                EV Truck as a Service
-                            </Link>
                         </div>
 
                         {/* Disclaimer */}

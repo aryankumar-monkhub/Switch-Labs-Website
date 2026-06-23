@@ -47,7 +47,7 @@ const Credibility = () => {
     return (
         <div id="about-us">
             {/* Testimonial Slider */}
-            <section style={{ background: 'rgba(76, 163, 255, 0.02)', padding: '4rem 0', position: 'relative', overflow: 'hidden' }}>
+            <section style={{ background: 'var(--subtle-bg)', padding: '4rem 0', position: 'relative', overflow: 'hidden' }}>
                 <div className="container" style={{ position: 'relative', minHeight: '400px' }}>
                     <div style={{ position: 'relative', maxWidth: '1000px', margin: '0 auto' }}>
 
@@ -59,8 +59,8 @@ const Credibility = () => {
                                 left: '-60px',
                                 top: '50%',
                                 transform: 'translateY(-50%)',
-                                background: 'rgba(255,255,255,0.05)',
-                                border: '1px solid rgba(255,255,255,0.1)',
+                                background: 'var(--subtle-bg)',
+                                border: '1px solid var(--subtle-border)',
                                 borderRadius: '50%',
                                 width: '40px',
                                 height: '40px',
@@ -84,8 +84,8 @@ const Credibility = () => {
                                 right: '-60px',
                                 top: '50%',
                                 transform: 'translateY(-50%)',
-                                background: 'rgba(255,255,255,0.05)',
-                                border: '1px solid rgba(255,255,255,0.1)',
+                                background: 'var(--subtle-bg)',
+                                border: '1px solid var(--subtle-border)',
                                 borderRadius: '50%',
                                 width: '40px',
                                 height: '40px',
@@ -130,7 +130,7 @@ const Credibility = () => {
                                     justifyContent: 'center',
                                     boxShadow: '0 20px 40px rgba(0,0,0,0.2)'
                                 }}>
-                                    <div style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.1)' }}>
+                                    <div style={{ textAlign: 'center', color: 'var(--color-grey-light)' }}>
                                         <div style={{ fontSize: '0.8rem', fontWeight: '800' }}>PHOTO_HOLDER</div>
                                         <div style={{ fontSize: '0.6rem' }}>{testimonials[activeTestimonial].name}</div>
                                     </div>
@@ -162,7 +162,7 @@ const Credibility = () => {
                                         width: '12px',
                                         height: '12px',
                                         borderRadius: '50%',
-                                        background: idx === activeTestimonial ? 'var(--color-accent)' : 'rgba(255,255,255,0.2)',
+                                        background: idx === activeTestimonial ? 'var(--color-accent)' : 'var(--subtle-border)',
                                         border: 'none',
                                         cursor: 'pointer',
                                         transition: 'all 0.3s ease'
@@ -190,7 +190,7 @@ const Credibility = () => {
             </section>
 
             {/* Investors */}
-            <section style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+            <section style={{ borderTop: '1px solid var(--subtle-border)' }}>
                 <div className="container">
                     <div className="section-header">
                         <h2 style={{ fontSize: '3.5rem' }}>Backed by <span style={{ color: 'var(--color-accent)' }}>Industry Visionaries</span></h2>
