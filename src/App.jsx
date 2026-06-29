@@ -43,7 +43,6 @@ function App() {
             <Route path="/network/infrastructure" element={<ChargingInfrastructure />} />
 
             {/* Impact */}
-            <Route path="/impact/calculator" element={<PlaceholderPage title="ROI Calculator" />} />
             <Route path="/impact/environmental" element={<PlaceholderPage title="Environmental Impact" />} />
             <Route path="/impact/economic" element={<PlaceholderPage title="Economic Analysis" />} />
 

@@ -55,7 +55,7 @@ const TransformationStack = ({ onAction }) => {
                                 flexDirection: 'column'
                             }}
                         >
-                            <div style={{ color: 'var(--color-accent-glow)', fontWeight: '900', fontSize: '5rem', position: 'absolute', right: '-10px', top: '-10px', zIndex: 0 }}>
+                            <div style={{ color: 'var(--color-accent)', fontWeight: '900', fontSize: '5rem', position: 'absolute', right: '1rem', top: '-10px', zIndex: 0 }}>
                                 {p.tag.split(' ')[1]}
                             </div>
 

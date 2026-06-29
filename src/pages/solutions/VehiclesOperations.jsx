@@ -288,15 +288,7 @@ const VehiclesOperations = () => {
                     }}>
                         Ready to Transform Your Fleet?
                     </h2>
-                    <p style={{
-                        color: 'var(--color-text-secondary)',
-                        marginBottom: '2.5rem',
-                        fontSize: '1.15rem',
-                        maxWidth: '600px',
-                        margin: '0 auto 2.5rem',
-                    }}>
-                        Schedule a fleet assessment and discover how SwitchLabs can optimize your logistics operations.
-                    </p>
+
                     <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                         <Link
                             to="/contact"
@@ -317,24 +309,7 @@ const VehiclesOperations = () => {
                         >
                             Schedule Assessment
                         </Link>
-                        <Link
-                            to="/impact/calculator"
-                            style={{
-                                background: 'transparent',
-                                color: 'var(--color-accent)',
-                                padding: '1rem 2.5rem',
-                                borderRadius: '4px',
-                                fontWeight: '800',
-                                textTransform: 'uppercase',
-                                fontSize: '0.9rem',
-                                textDecoration: 'none',
-                                display: 'inline-block',
-                                border: '2px solid var(--color-accent)',
-                                transition: 'var(--transition-smooth)',
-                            }}
-                        >
-                            Calculate ROI
-                        </Link>
+
                     </div>
                 </div>
             </div>

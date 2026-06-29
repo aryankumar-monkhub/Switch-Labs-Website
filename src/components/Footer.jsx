@@ -230,9 +230,7 @@ const Footer = ({ onAction }) => {
                                     Initialize Transformation
                                 </button>
 
-                                <p style={{ textAlign: 'center', fontSize: '0.8rem', color: 'rgba(255,255,255,0.3)' }}>
-                                    OR <button onClick={(e) => { e.preventDefault(); onAction(); }} style={{ color: 'var(--color-accent)', fontWeight: 'bold', textDecoration: 'underline' }}>Take the interactive ROI tour</button>
-                                </p>
+
                             </form>
                         ) : (
                             <div style={{ textAlign: 'center', padding: '3rem 0' }}>
@@ -281,7 +279,6 @@ const Footer = ({ onAction }) => {
                         <div>
                             <h4 style={sectionHeaderStyle}>Impact</h4>
                             <div style={linkContainerStyle}>
-                                <Link to="/impact/calculator" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>ROI Calculator</Link>
                                 <Link to="/impact/environmental" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Environmental Impact</Link>
                                 <Link to="/impact/economic" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Economic Analysis</Link>
 

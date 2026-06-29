@@ -543,7 +543,7 @@ const LeadModal = ({ isOpen, onClose }) => {
                                 All Systems <span style={{ color: 'var(--color-accent)' }}>GO!</span>
                             </h2>
                             <p style={{ color: 'var(--color-grey-light)', fontSize: '1.2rem', marginBottom: '2.5rem' }}>
-                                Thank you, {formData.name.split(' ')[0]}. Our team is preparing your custom ROI roadmap for {formData.company}. We'll reach out within 24 hours.
+                                Thank you, {formData.name.split(' ')[0]}. Our team is preparing your custom roadmap for {formData.company}. We'll reach out within 24 hours.
                             </p>
 
                             <button

@@ -40,7 +40,7 @@ const Hero = ({ onAction }) => {
             </motion.div>
 
             <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem 0 0', position: 'relative', zIndex: 1 }}>
-                <div style={{ maxWidth: '700px', textAlign: 'left' }}>
+                <div style={{ maxWidth: '700px', textAlign: 'left', marginTop: '-10%', marginLeft: '-10%' }}>
                     <motion.h1
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -62,7 +62,7 @@ const Hero = ({ onAction }) => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        style={{ display: 'flex', gap: '1.5rem' }}
+                        style={{ display: 'flex', gap: '1.5rem', marginTop: '-1rem' }}
                     >
                         <button
                             onClick={onAction}
@@ -77,7 +77,7 @@ const Hero = ({ onAction }) => {
                                 boxShadow: '0 0 30px var(--color-accent-glow)',
                             }}
                         >
-                            Request a Callback
+                            Let's Talk
                         </button>
                     </motion.div>
                 </div>
@@ -88,95 +88,65 @@ const Hero = ({ onAction }) => {
                 position: 'absolute',
                 bottom: '0',
                 width: '100%',
-                overflow: 'hidden',
                 borderTop: 'var(--border-industrial)',
                 padding: '2rem 0',
                 background: 'var(--overlay-bg)',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
             }}>
                 <div className="ticker" style={{
+                    width: '100%',
                     display: 'flex',
-                    gap: '6rem',
-                    whiteSpace: 'nowrap',
-                    animation: 'scroll 30s linear infinite',
+                    justifyContent: 'center',
                     alignItems: 'center',
-                    paddingLeft: '100%' // Start off-screen
+                    paddingTop: '12px',
                 }}>
-                    {[
-                        { name: 'JK Lakshmi Cements', src: '/assets/logos/jk_lakshmi.svg', maxH: '40px' },
-                        { name: 'Dalmia Cements', src: '/assets/logos/dalmia.svg', maxH: '60px' },
-                        { name: 'UPL', src: '/assets/logos/upl.png', maxH: '60px' },
-                        { name: 'Tata Steel', src: '/assets/logos/tata_steel.svg', maxH: '40px' },
-                        { name: 'JSW', src: '/assets/logos/jsw.svg', maxH: '40px' },
-                        { name: 'Adani', src: '/assets/logos/adani.svg', maxH: '40px' },
-                    ].map((logo, i) => (
-                        <div key={i} style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            height: '60px',
-                            minWidth: '150px',
-                            opacity: 1,
-                            transition: 'opacity 0.3s',
-                        }}
-                            onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
-                            onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
-                        >
-                            <img
-                                src={logo.src}
-                                alt={`${logo.name} Logo`}
-                                className="partner-logo"
-                                style={{
-                                    height: '100%',
-                                    width: 'auto',
-                                    objectFit: 'contain',
-                                    maxHeight: logo.maxH
-                                }}
-                            />
-                        </div>
-                    ))}
-                    {/* Duplicate for loop */}
-                    {[
-                        { name: 'JK Lakshmi Cements', src: '/assets/logos/jk_lakshmi.svg', maxH: '40px' },
-                        { name: 'Dalmia Cements', src: '/assets/logos/dalmia.svg', maxH: '60px' },
-                        { name: 'UPL', src: '/assets/logos/upl.png', maxH: '60px' },
-                        { name: 'Tata Steel', src: '/assets/logos/tata_steel.svg', maxH: '40px' },
-                        { name: 'JSW', src: '/assets/logos/jsw.svg', maxH: '40px' },
-                        { name: 'Adani', src: '/assets/logos/adani.svg', maxH: '40px' },
-                    ].map((logo, i) => (
-                        <div key={`dup-${i}`} style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            height: '60px',
-                            minWidth: '150px',
-                            opacity: 1,
-                            transition: 'opacity 0.3s',
-                        }}
-                            onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
-                            onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
-                        >
-                            <img
-                                src={logo.src}
-                                alt={`${logo.name} Logo`}
-                                className="partner-logo"
-                                style={{
-                                    height: '100%',
-                                    width: 'auto',
-                                    objectFit: 'contain',
-                                    maxHeight: logo.maxH
-                                }}
-                            />
-                        </div>
-                    ))}
+                    <div className="partner-chip-card" style={{
+                        width: '100%',
+                        display: 'flex',
+                        justifyContent: 'space-evenly',
+                        alignItems: 'center',
+                        padding: '24px 0',
+                        borderRadius: '0',
+                    }}>
+                        {[
+                            { name: 'JK Lakshmi Cements', src: '/assets/logos/jk_lakshmi.png' },
+                            { name: 'Dalmia Cements', src: '/assets/logos/dalmia.svg' },
+                            { name: 'UPL', src: '/assets/logos/upl.svg' },
+                            { name: 'Tata Steel', src: '/assets/logos/tata_steel.svg' },
+
+                        ].map((logo, i) => (
+                            <div key={i} className="partner-logo-card" style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                width: '260px',
+                                height: '96px',
+                                borderRadius: '12px',
+                                background: 'rgba(63, 63, 63, 0.6)',
+                                backdropFilter: 'blur(16px)',
+                                WebkitBackdropFilter: 'blur(16px)',
+                                border: '1px solid rgba(255, 255, 255, 0.25)',
+                                padding: '12px 20px',
+                                boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.15)',
+                            }}>
+                                <img
+                                    src={logo.src}
+                                    alt={`${logo.name} Logo`}
+                                    className="partner-logo"
+                                    style={{
+                                        maxWidth: '100%',
+                                        maxHeight: '100%',
+                                        objectFit: 'contain',
+                                        transition: 'transform 0.6s ease',
+                                    }}
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
-
-            <style>{`
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
         </section>
     );
 };

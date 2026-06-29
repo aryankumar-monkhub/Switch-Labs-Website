@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { feature } from 'topojson-client';
 import { ComposableMap, Geographies, Geography, Marker, Line } from 'react-simple-maps';
 
-// Using a GeoJSON that represents Indian states with detailed boundaries
+// Using a TopoJSON file that represents Indian states with detailed boundaries
 // This file is stored locally in the public folder for reliable access
 const geoUrl = "/india-states.json";
 
@@ -14,6 +15,18 @@ const routes = [
 ];
 
 const CorridorMap = () => {
+    const [statesData, setStatesData] = useState(null);
+
+    useEffect(() => {
+        fetch(geoUrl)
+            .then(res => res.json())
+            .then(topojson => {
+                const states = feature(topojson, topojson.objects.states);
+                setStatesData(states);
+            })
+            .catch(err => console.error('Failed to load map data:', err));
+    }, []);
+
     return (
         <section id="our-corridors" style={{ padding: '4rem 0' }}>
             <div className="container">
@@ -65,24 +78,26 @@ const CorridorMap = () => {
                             height={500}
                             style={{ width: "100%", height: "100%" }}
                         >
-                            <Geographies geography={geoUrl}>
+                            {statesData && (
+                            <Geographies geography={statesData}>
                                 {({ geographies }) =>
                                     geographies.map((geo) => (
                                     <Geography
                                         key={geo.rsmKey}
                                         geography={geo}
                                         fill="#ffffff"
-                                        stroke="#ffffff"
-                                        strokeWidth={0}
+                                        stroke="rgba(0,0,0,0.15)"
+                                        strokeWidth={0.5}
                                         style={{
-                                            default: { fill: "#ffffff", outline: "none" },
-                                            hover: { fill: "#ffffff", outline: "none" },
+                                            default: { fill: "#ffffff", outline: "none", stroke: "rgba(0,0,0,0.15)", strokeWidth: 0.5 },
+                                            hover: { fill: "#f0f0f0", outline: "none", stroke: "rgba(0,0,0,0.25)", strokeWidth: 0.7 },
                                             pressed: { fill: "#ffffff", outline: "none" }
                                         }}
                                         />
                                     ))
                                 }
                             </Geographies>
+                            )}
 
                             {routes.map((route, i) => {
                                 const isLeft = i < 3;
@@ -91,7 +106,7 @@ const CorridorMap = () => {
                                 const boxWidth = 180;
                                 const boxX = isLeft ? -195 : (i === 4 ? 165 : 180);
                                 const lineX = isLeft ? [-105, -70, 0][i] : (i === 4 ? 255 : 270);
-                                const yOff = isLeft ? [-100, 60, 110][i] : 20;
+                                const yOff = isLeft ? [-130, 60, 110][i] : 20;
                                 const lineY = isAbove ? yOff + 62 : yOff;
 
                                 const boxCenterY = yOff + 31;

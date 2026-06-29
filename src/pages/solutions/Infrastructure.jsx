@@ -99,7 +99,7 @@ const Infrastructure = () => {
     ];
 
     const technicalSpecs = [
-        { label: 'Charging Standards', value: 'CCS2, CHAdeMO compatible' },
+        { label: 'Charging Standards', value: 'CCS2' },
         { label: 'Power Output', value: '60-240 kW per dispenser' },
         { label: 'Uptime Guarantee', value: '99.5% SLA' },
         { label: 'Remote Monitoring', value: '24/7 cloud-based platform' },
@@ -282,13 +282,12 @@ const Infrastructure = () => {
                                         }}>
                                             {station.name}
                                         </h4>
-                                        <div style={{
+                                        <div className="charger-badge" style={{
                                             display: 'flex',
                                             alignItems: 'center',
                                             gap: '0.5rem',
                                             marginBottom: '1rem',
                                             padding: '0.75rem',
-                                            background: 'rgba(0, 255, 136, 0.1)',
                                             borderRadius: '6px',
                                         }}>
                                             <Zap size={20} color="var(--color-accent)" />
@@ -358,9 +357,8 @@ const Infrastructure = () => {
                             gap: '2rem',
                         }}>
                             {technicalSpecs.map((spec, index) => (
-                                <div key={index} style={{
+                                <div key={index} className="tech-spec-card" style={{
                                     padding: '1.5rem',
-                                    background: 'rgba(0, 255, 136, 0.05)',
                                     borderRadius: '8px',
                                 }}>
                                     <div style={{

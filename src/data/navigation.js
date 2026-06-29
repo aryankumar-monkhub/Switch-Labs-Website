@@ -24,7 +24,6 @@ export const navigationConfig = {
         label: 'Impact',
         path: '/impact',
         items: [
-            { label: 'ROI Calculator', path: '/impact/calculator', icon: '🧮', description: 'Calculate your savings' },
             { label: 'Environmental Impact', path: '/impact/environmental', icon: '🌱', description: 'Carbon reduction metrics' },
             { label: 'Economic Analysis', path: '/impact/economic', icon: '💵', description: 'TCO comparison & analysis' },
 
