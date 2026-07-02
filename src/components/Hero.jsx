@@ -102,48 +102,45 @@ const Hero = ({ onAction }) => {
                     alignItems: 'center',
                     paddingTop: '12px',
                 }}>
-                    <div className="partner-chip-card" style={{
-                        width: '100%',
-                        display: 'flex',
-                        justifyContent: 'space-evenly',
-                        alignItems: 'center',
-                        padding: '24px 0',
-                        borderRadius: '0',
-                    }}>
-                        {[
-                            { name: 'JK Lakshmi Cements', src: '/assets/logos/jk_lakshmi.png' },
-                            { name: 'Dalmia Cements', src: '/assets/logos/dalmia.svg' },
-                            { name: 'UPL', src: '/assets/logos/upl.svg' },
-                            { name: 'Tata Steel', src: '/assets/logos/tata_steel.svg' },
-
-                        ].map((logo, i) => (
-                            <div key={i} className="partner-logo-card" style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                width: '260px',
-                                height: '96px',
-                                borderRadius: '12px',
-                                background: 'rgba(63, 63, 63, 0.6)',
-                                backdropFilter: 'blur(16px)',
-                                WebkitBackdropFilter: 'blur(16px)',
-                                border: '1px solid rgba(255, 255, 255, 0.25)',
-                                padding: '12px 20px',
-                                boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.15)',
-                            }}>
+                        <div style={{
+                            width: '99.7%',
+                            marginLeft: '0.3%',
+                            background: 'linear-gradient(90deg, #FBE9E7, #FFCCBC, #FBE9E7)',
+                            borderRadius: '12px',
+                            overflow: 'hidden',
+                            border: 'var(--oem-border)',
+                            padding: '0.8rem 0',
+                        }}>
+                        <div style={{
+                            display: 'flex',
+                            gap: '6rem',
+                            width: 'max-content',
+                            animation: 'marquee 30s linear infinite',
+                        }}>
+                            {[
+                                { name: 'JK Lakshmi Cements', src: '/assets/logos/jk_lakshmi.png' },
+                                { name: 'Dalmia Cements', src: '/assets/logos/dalmia.svg' },
+                                { name: 'UPL', src: '/assets/logos/upl.svg' },
+                                { name: 'Tata Steel', src: '/assets/logos/tata_steel.svg' },
+                                { name: 'JK Lakshmi Cements', src: '/assets/logos/jk_lakshmi.png' },
+                                { name: 'Dalmia Cements', src: '/assets/logos/dalmia.svg' },
+                                { name: 'UPL', src: '/assets/logos/upl.svg' },
+                                { name: 'Tata Steel', src: '/assets/logos/tata_steel.svg' },
+                            ].map((logo, i) => (
                                 <img
+                                    key={i}
                                     src={logo.src}
                                     alt={`${logo.name} Logo`}
                                     className="partner-logo"
                                     style={{
-                                        maxWidth: '100%',
-                                        maxHeight: '100%',
+                                        width: i === 0 || i === 3 || i === 4 || i === 7 ? '220px' : i === 2 || i === 6 ? '162px' : '180px',
+                                        height: 'auto',
                                         objectFit: 'contain',
-                                        transition: 'transform 0.6s ease',
+                                        flexShrink: 0,
                                     }}
                                 />
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

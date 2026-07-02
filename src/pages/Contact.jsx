@@ -88,7 +88,7 @@ const Contact = () => {
                                     Follow Us
                                 </h4>
                                 <div style={{ display: 'flex', gap: '1rem' }}>
-                                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-white)', fontSize: '0.9rem' }}>
+                                    <a href="https://www.linkedin.com/company/switchlabs-ev/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-white)', fontSize: '0.9rem' }}>
                                         LinkedIn
                                     </a>
 

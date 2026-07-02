@@ -20,6 +20,12 @@
   --color-grey-dark: #2C2F33;
   --color-background: #111214;
   --color-error: #ef4444;
+  --color-card-heading: var(--color-white);
+  --color-vision-icon: #00ff88;
+  --color-blue-icon: #4CA3FF;
+  --color-blue-icon-border: rgba(21, 83, 148, 0.5);
+  --color-icon-border: rgba(0, 80, 0, 0.5);
+  --color-card-bg: linear-gradient(135deg, rgba(21, 83, 148, 0.35), rgba(0, 100, 0, 0.25));
 
   /* Typography */
   --font-heading: 'Montserrat', sans-serif;
@@ -32,6 +38,7 @@
   --noise-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   --border-industrial: 1px solid rgba(255, 255, 255, 0.1);
   --glow-teal-subtle: 0 0 20px rgba(0, 242, 255, 0.2);
+  --oem-border: 2px solid #00ff88;
 }
 
 [data-theme="light"] {
@@ -44,8 +51,15 @@
   --color-grey-light: #6B7280;
   --color-grey-dark: #E5E7EB;
   --color-background: #FAFBFC;
+  --color-card-heading: var(--color-white);
+  --color-vision-icon: #059669;
+  --color-blue-icon: #155394;
+  --color-blue-icon-border: rgba(21, 83, 148, 0.5);
+  --color-icon-border: rgba(0, 80, 0, 0.5);
+  --color-card-bg: linear-gradient(135deg, rgba(76, 163, 255, 0.15), rgba(0, 255, 136, 0.1));
   --border-industrial: 1px solid rgba(0, 0, 0, 0.1);
   --glow-teal-subtle: 0 0 20px rgba(76, 163, 255, 0.15);
+  --oem-border: 2px solid #155394;
 }
 
 .noise-overlay {
@@ -68,6 +82,14 @@
 .border-heavy {
   border: var(--border-industrial);
   position: relative;
+}
+
+.white-card-border {
+  border: 1px solid #FFFFFF;
+}
+
+[data-theme="light"] .white-card-border {
+  border: var(--border-industrial);
 }
 
 .border-heavy::before {
@@ -131,6 +153,14 @@ button {
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid var(--color-accent-dark);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+}
+
+.industrial-card {
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+[data-theme="light"] .industrial-card {
+  border: 1px solid var(--color-accent-dark) !important;
 }
 
 [data-theme="light"] .oem-partners-card {
@@ -246,12 +276,36 @@ section {
   filter: brightness(0);
 }
 
+.logo-card-wrapper {
+  background: #FFFFFF;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme="light"] .logo-card-wrapper {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
 .logo-img {
-  transition: transform 0.6s ease;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  cursor: pointer;
 }
 
 .logo-img:hover {
-  transform: perspective(500px) rotateY(-360deg) scale(1.1);
+  transform: scale(1.12);
 }
 
 .partner-chip-card {
@@ -263,6 +317,11 @@ section {
 }
 
 /* Animations */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 @keyframes pulse-blue {
   0% {
     transform: scale(1);
@@ -391,4 +450,24 @@ section {
 .custom-slider::-webkit-slider-thumb:hover {
   transform: scale(1.2);
   box-shadow: 0 0 25px var(--color-accent);
+}
+
+.info-card-bg {
+  background: var(--color-card-bg) !important;
+}
+
+.info-card-bg-green {
+  background: linear-gradient(135deg, rgba(0, 80, 0, 0.3), rgba(0, 50, 0, 0.2)) !important;
+}
+
+[data-theme="light"] .info-card-bg-green {
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.12), rgba(0, 200, 100, 0.08)) !important;
+}
+
+.info-card-bg-blue {
+  background: linear-gradient(135deg, rgba(21, 83, 148, 0.4), rgba(10, 40, 80, 0.3)) !important;
+}
+
+[data-theme="light"] .info-card-bg-blue {
+  background: linear-gradient(135deg, rgba(76, 163, 255, 0.12), rgba(76, 163, 255, 0.06)) !important;
 }

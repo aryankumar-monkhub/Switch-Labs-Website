@@ -37,16 +37,19 @@ const Navbar = ({ onGetStarted }) => {
                     textDecoration: 'none'
                 }}
             >
-                <img
-                    src="/switch-labs-logo.png"
-                    alt="SwitchLabs Logo"
-                    className="logo-img"
-                    style={{
-                        height: '40px',
-                        width: 'auto',
-                        objectFit: 'contain'
-                    }}
-                />
+                <div className="logo-card-wrapper">
+                    <img
+                        src="/switch-labs-logo.png"
+                        alt="SwitchLabs Logo"
+                        className="logo-img"
+                        style={{
+                            height: '80px',
+                            width: 'auto',
+                            objectFit: 'contain',
+                            filter: 'none',
+                        }}
+                    />
+                </div>
             </Link>
 
             {/* Desktop Navigation */}
@@ -68,11 +71,6 @@ const Navbar = ({ onGetStarted }) => {
                 <Dropdown
                     label={navigationConfig.network.label}
                     items={navigationConfig.network.items}
-                    currentPath={location.pathname}
-                />
-                <Dropdown
-                    label={navigationConfig.impact.label}
-                    items={navigationConfig.impact.items}
                     currentPath={location.pathname}
                 />
                 <Dropdown

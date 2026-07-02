@@ -9,7 +9,6 @@ const Navbar = ({ onGetStarted }) => {
   const navItems = [
     { label: 'Solutions', href: '#solutions', isHash: true },
     { label: 'Our Corridors', href: '#our-corridors', isHash: true },
-    { label: 'Impact', href: '#impact', isHash: true },
     { label: 'About Us', href: '#about-us', isHash: true },
     { label: 'Contact', href: '#contact', isHash: true },
   ];
@@ -41,16 +40,19 @@ const Navbar = ({ onGetStarted }) => {
         gap: '1rem',
         textDecoration: 'none',
       }}>
-        <img
-          src="/switch-labs-logo.png"
-          alt="SwitchLabs Logo"
-          className="logo-img"
-          style={{
-            height: '40px',
-            width: 'auto',
-            objectFit: 'contain'
-          }}
-        />
+        <div className="logo-card-wrapper">
+          <img
+            src="/switch-labs-logo.png"
+            alt="SwitchLabs Logo"
+            className="logo-img"
+            style={{
+              height: '80px',
+              width: 'auto',
+              objectFit: 'contain',
+              filter: 'none',
+            }}
+          />
+        </div>
       </Link>
 
       <div className="nav-links" style={{

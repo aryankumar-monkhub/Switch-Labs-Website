@@ -101,17 +101,20 @@ const Footer = ({ onAction }) => {
                     marginBottom: '4rem'
                 }}>
                     <div>
-                        <Link to="/" style={{ textDecoration: 'none' }}>
-                            <img
-                                src="/switch-labs-logo.png"
-                                alt="SwitchLabs Logo"
-                                className="logo-img"
-                                style={{
-                                    height: '50px',
-                                    width: 'auto',
-                                    marginBottom: '2rem'
-                                }}
-                            />
+                        <Link to="/" style={{ textDecoration: 'none', display: 'flex', justifyContent: 'flex-start' }}>
+                            <div className="logo-card-wrapper" style={{ padding: '0.3rem 0.8rem', marginBottom: '2rem' }}>
+                                <img
+                                    src="/switch-labs-logo.png"
+                                    alt="SwitchLabs Logo"
+                                    className="logo-img"
+                                    style={{
+                                        height: '75px',
+                                        width: 'auto',
+                                        objectFit: 'contain',
+                                        filter: 'none',
+                                    }}
+                                />
+                            </div>
                         </Link>
                         <h2 style={{ fontSize: '3.5rem', lineHeight: '1', marginBottom: '2rem', fontWeight: '900' }}>
                             Ready for a <br />
@@ -255,65 +258,51 @@ const Footer = ({ onAction }) => {
                     }}>
                         {/* Solutions */}
                         <div>
-                            <h4 style={sectionHeaderStyle}>Solutions</h4>
+                            <h4 style={{ ...sectionHeaderStyle, color: 'var(--color-blue-icon)' }}>Solutions</h4>
                             <div style={linkContainerStyle}>
-                                <Link to="/solutions" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Overview</Link>
-                                <Link to="/solutions/vehicles-operations" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Vehicles & Operations</Link>
-                                <Link to="/solutions/infrastructure" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Infrastructure</Link>
-                                <Link to="/solutions/intelligence" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Intelligence Platform</Link>
+                                <Link to="/solutions" style={linkStyle} onMouseOver={linkHoverBlue} onMouseOut={linkOutBlue}>Overview</Link>
+                                <Link to="/solutions/vehicles-operations" style={linkStyle} onMouseOver={linkHoverBlue} onMouseOut={linkOutBlue}>Vehicles & Operations</Link>
+                                <Link to="/solutions/infrastructure" style={linkStyle} onMouseOver={linkHoverBlue} onMouseOut={linkOutBlue}>Infrastructure</Link>
+                                <Link to="/solutions/intelligence" style={linkStyle} onMouseOver={linkHoverBlue} onMouseOut={linkOutBlue}>Intelligence Platform</Link>
                             </div>
                         </div>
 
 
                         {/* Network */}
                         <div>
-                            <h4 style={sectionHeaderStyle}>Network</h4>
+                            <h4 style={{ ...sectionHeaderStyle, color: 'var(--color-vision-icon)' }}>Network</h4>
                             <div style={linkContainerStyle}>
-                                <Link to="/network/corridors" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Operational Corridors</Link>
-                                <Link to="/network/infrastructure" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Charging Infrastructure</Link>
-
-                            </div>
-                        </div>
-
-                        {/* Impact */}
-                        <div>
-                            <h4 style={sectionHeaderStyle}>Impact</h4>
-                            <div style={linkContainerStyle}>
-                                <Link to="/impact/environmental" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Environmental Impact</Link>
-                                <Link to="/impact/economic" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Economic Analysis</Link>
-
+                                <Link to="/network/corridors" style={linkStyle} onMouseOver={linkHoverGreen} onMouseOut={linkOutGreen}>Operational Corridors</Link>
                             </div>
                         </div>
 
                         {/* Company */}
                         <div>
-                            <h4 style={sectionHeaderStyle}>Company</h4>
+                            <h4 style={{ ...sectionHeaderStyle, color: 'var(--color-blue-icon)' }}>Company</h4>
                             <div style={linkContainerStyle}>
-                                <Link to="/company/about" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>About Us</Link>
-                                <Link to="/company/team" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Leadership Team</Link>
-                                <Link to="/company/investors" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Investors</Link>
-                                <Link to="/company/partners" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Partners</Link>
-                                <Link to="/company/careers" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Careers</Link>
-                                <Link to="/company/newsroom" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Newsroom</Link>
+                                <Link to="/company/about" style={linkStyle} onMouseOver={linkHoverBlue} onMouseOut={linkOutBlue}>About Us</Link>
+                                <Link to="/company/team" style={linkStyle} onMouseOver={linkHoverBlue} onMouseOut={linkOutBlue}>Leadership Team</Link>
+                                <Link to="/company/newsroom" style={linkStyle} onMouseOver={linkHoverBlue} onMouseOut={linkOutBlue}>Newsroom</Link>
                             </div>
                         </div>
 
                         {/* Resources & Legal */}
                         <div>
-                            <h4 style={sectionHeaderStyle}>Resources</h4>
+                            <h4 style={{ ...sectionHeaderStyle, color: 'var(--color-vision-icon)' }}>Resources</h4>
                             <div style={linkContainerStyle}>
-                                <Link to="/resources/blog" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Blog</Link>
+                                <Link to="/resources/blog" style={linkStyle} onMouseOver={linkHoverGreen} onMouseOut={linkOutGreen}>Blog</Link>
 
-                                <Link to="/resources/guides" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Guides</Link>
-                                <Link to="/resources/faq" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>FAQ</Link>
-                                <Link to="/site-map" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Site Map</Link>
-                                <a href="#contact" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Contact</a>
+                                <Link to="/resources/guides" style={linkStyle} onMouseOver={linkHoverGreen} onMouseOut={linkOutGreen}>Guides</Link>
+                                <Link to="/resources/faq" style={linkStyle} onMouseOver={linkHoverGreen} onMouseOut={linkOutGreen}>FAQ</Link>
+                                <Link to="/resources/gallery" style={linkStyle} onMouseOver={linkHoverGreen} onMouseOut={linkOutGreen}>Gallery</Link>
+                                <Link to="/site-map" style={linkStyle} onMouseOver={linkHoverGreen} onMouseOut={linkOutGreen}>Site Map</Link>
+                                <a href="#contact" style={linkStyle} onMouseOver={linkHoverGreen} onMouseOut={linkOutGreen}>Contact</a>
                             </div>
-                            <h4 style={{ ...sectionHeaderStyle, marginTop: '2rem' }}>Legal</h4>
+                            <h4 style={{ ...sectionHeaderStyle, color: 'var(--color-blue-icon)', marginTop: '2rem' }}>Legal</h4>
                             <div style={linkContainerStyle}>
-                                <Link to="/policies" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Privacy Policy</Link>
-                                <Link to="/terms-and-conditions" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>Terms & Conditions</Link>
-                                <a href="https://www.linkedin.com/company/switch-labs" target="_blank" rel="noopener noreferrer" style={linkStyle} onMouseOver={linkHover} onMouseOut={linkOut}>LinkedIn ↗</a>
+                                <Link to="/policies" style={linkStyle} onMouseOver={linkHoverBlue} onMouseOut={linkOutBlue}>Privacy Policy</Link>
+                                <Link to="/terms-and-conditions" style={linkStyle} onMouseOver={linkHoverBlue} onMouseOut={linkOutBlue}>Terms & Conditions</Link>
+                                <a href="https://www.linkedin.com/company/switchlabs-ev/" target="_blank" rel="noopener noreferrer" style={linkStyle} onMouseOver={linkHoverBlue} onMouseOut={linkOutBlue}>LinkedIn ↗</a>
                             </div>
                         </div>
                     </div>
@@ -352,13 +341,15 @@ const linkContainerStyle = {
 
 const linkStyle = {
     fontSize: '0.95rem',
-    color: 'var(--color-grey-light)',
+    color: 'var(--color-white)',
     textDecoration: 'none',
     transition: 'var(--transition-smooth)'
 };
 
-const linkHover = (e) => (e.target.style.color = 'white');
-const linkOut = (e) => (e.target.style.color = 'var(--color-grey-light)');
+const linkHoverBlue = (e) => (e.target.style.color = 'var(--color-blue-icon)');
+const linkOutBlue = (e) => (e.target.style.color = 'var(--color-white)');
+const linkHoverGreen = (e) => (e.target.style.color = 'var(--color-vision-icon)');
+const linkOutGreen = (e) => (e.target.style.color = 'var(--color-white)');
 
 const footerInputStyle = {
     width: '100%',

@@ -20,7 +20,7 @@ const VehiclesOperations = () => {
             stats: [
                 'IPL Tech (258-282 kWh)',
                 'Energy in Motion (282 kWh)',
-                'CCS2 fast charging',
+                'Tata Motors (301-450 kWh)',
                 'Swappable battery tech'
             ]
         },
@@ -38,61 +38,14 @@ const VehiclesOperations = () => {
             icon: <TrendingUp size={40} />,
             title: 'Service Models',
             stats: [
+                'Pay-per-ton pricing',
                 'Pay-per-km pricing',
-                'Fixed monthly contracts',
-                'Hybrid models',
+                'Fixed monthly rentals',
                 'Custom enterprise SLAs'
             ]
         }
     ];
 
-
-    const serviceModels = [
-        {
-            name: 'Pay-per-ton pricing',
-            description: 'Zero upfront investment. Pay per ton of freight moved.',
-            features: [
-                'No capital expenditure',
-                'All-inclusive service',
-                'Flexible scaling',
-                'Immediate cost savings'
-            ],
-            ideal: 'Variable demand, pilot programs'
-        },
-        {
-            name: 'Hybrid Models',
-            description: 'Flexible pricing combining fixed and variable components.',
-            features: [
-                'Unlimited kilometers*',
-                'Predictable expenses',
-                'Long-term planning',
-                'Volume discounts'
-            ],
-            ideal: 'Steady operations, established routes'
-        },
-        {
-            name: 'Fixed Monthly Rentals',
-            description: 'Fixed monthly fee with predictable budgeting.',
-            features: [
-                'Dedicated fleet',
-                'Custom SLAs',
-                'Priority support',
-                'Flexible terms'
-            ],
-            ideal: 'Large enterprises, multi-route operations'
-        },
-        {
-            name: 'Pay-per-meter pricings',
-            description: 'Pay based on distance traveled per meter.',
-            features: [
-                'Per-meter billing',
-                'Transparent pricing',
-                'No hidden costs',
-                'Real-time tracking'
-            ],
-            ideal: 'Short-haul, precise distance operations'
-        }
-    ];
 
     return (
         <div style={{
@@ -182,95 +135,6 @@ const VehiclesOperations = () => {
                 </div>
 
                 {/* Service Models Section */}
-                <div style={{ marginBottom: '6rem' }}>
-                    <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                        <h2 style={{
-                            fontSize: '2.5rem',
-                            fontWeight: '900',
-                            color: 'var(--color-white)',
-                            marginBottom: '1rem',
-                        }}>
-                            Flexible Service Models
-                        </h2>
-                        <p style={{
-                            fontSize: '1.1rem',
-                            color: 'var(--color-text-secondary)',
-                            maxWidth: '700px',
-                            margin: '0 auto',
-                        }}>
-                            Choose the model that best fits your operational and financial requirements
-                        </p>
-                    </div>
-
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                        gap: '2rem',
-                    }}>
-                        {serviceModels.map((model, index) => (
-                            <div
-                                key={index}
-                                className="glass border-heavy"
-                                style={{
-                                    padding: '2.5rem',
-                                    transition: 'var(--transition-smooth)',
-                                }}
-                            >
-                                <h3 style={{
-                                    fontSize: '1.75rem',
-                                    fontWeight: '800',
-                                    color: 'var(--color-accent)',
-                                    marginBottom: '1rem',
-                                }}>
-                                    {model.name}
-                                </h3>
-                                <p style={{
-                                    color: 'var(--color-text-secondary)',
-                                    marginBottom: '1.5rem',
-                                    lineHeight: '1.6',
-                                }}>
-                                    {model.description}
-                                </p>
-                                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
-                                    {model.features.map((feature, idx) => (
-                                        <li key={idx} style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '0.75rem',
-                                            marginBottom: '0.75rem',
-                                            color: 'var(--color-white)',
-                                            fontSize: '0.95rem',
-                                        }}>
-                                            <CheckCircle size={16} color="var(--color-accent)" />
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
-                                <div style={{
-                                    paddingTop: '1rem',
-                                    borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-                                }}>
-                                    <div style={{
-                                        fontSize: '0.85rem',
-                                        color: 'var(--color-text-secondary)',
-                                        marginBottom: '0.5rem',
-                                    }}>
-                                        Ideal for:
-                                    </div>
-                                    <div style={{
-                                        fontSize: '0.95rem',
-                                        color: 'var(--color-accent)',
-                                        fontWeight: '600',
-                                    }}>
-                                        {model.ideal}
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-
                 {/* CTA Section */}
                 <div
                     className="glass"

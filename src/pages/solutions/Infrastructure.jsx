@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Zap, Battery, MapPin, Gauge, CheckCircle, ArrowRight, Sun, Clock } from 'lucide-react';
+import { Zap, Battery, MapPin, Gauge, CheckCircle, ArrowRight, Clock } from 'lucide-react';
 
 const Infrastructure = () => {
     const chargingTypes = [
@@ -37,17 +37,6 @@ const Infrastructure = () => {
                 'Zero downtime operations'
             ]
         },
-        {
-            icon: <Sun size={40} />,
-            title: 'Renewable Integration',
-            power: 'Solar-powered',
-            features: [
-                'On-site solar canopies',
-                'Grid independence',
-                'Lower energy costs',
-                'True zero-emission'
-            ]
-        }
     ];
 
     const locations = [
@@ -96,15 +85,6 @@ const Infrastructure = () => {
                 }
             ]
         }
-    ];
-
-    const technicalSpecs = [
-        { label: 'Charging Standards', value: 'CCS2' },
-        { label: 'Power Output', value: '60-240 kW per dispenser' },
-        { label: 'Uptime Guarantee', value: '99.5% SLA' },
-        { label: 'Remote Monitoring', value: '24/7 cloud-based platform' },
-        { label: 'Payment Options', value: 'Contactless, RFID, App-based' },
-        { label: 'Grid Connection', value: '11 kV / 33 kV' }
     ];
 
     const installationSteps = [
@@ -176,7 +156,7 @@ const Infrastructure = () => {
                     {chargingTypes.map((type, index) => (
                         <div
                             key={index}
-                            className="glass"
+                            className="glass industrial-card"
                             style={{
                                 padding: '2.5rem',
                                 transition: 'var(--transition-smooth)',
@@ -271,7 +251,7 @@ const Infrastructure = () => {
                                 {location.stations.map((station, idx) => (
                                     <div
                                         key={idx}
-                                        className="glass border-heavy"
+                                        className="glass border-heavy industrial-card"
                                         style={{ padding: '2rem' }}
                                     >
                                         <h4 style={{
@@ -319,7 +299,7 @@ const Infrastructure = () => {
                                             alignItems: 'center',
                                             gap: '0.5rem',
                                             paddingTop: '1rem',
-                                            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+                                            borderTop: '1px solid var(--color-accent)',
                                         }}>
                                             <Clock size={16} color="var(--color-accent)" />
                                             <span style={{
@@ -337,52 +317,6 @@ const Infrastructure = () => {
                     ))}
                 </div>
 
-                {/* Technical Specifications */}
-                <div style={{ marginBottom: '6rem' }}>
-                    <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                        <h2 style={{
-                            fontSize: '2.5rem',
-                            fontWeight: '900',
-                            color: 'var(--color-white)',
-                            marginBottom: '1rem',
-                        }}>
-                            Technical Specifications
-                        </h2>
-                    </div>
-
-                    <div className="glass" style={{ padding: '3rem' }}>
-                        <div style={{
-                            display: 'grid',
-                            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                            gap: '2rem',
-                        }}>
-                            {technicalSpecs.map((spec, index) => (
-                                <div key={index} className="tech-spec-card" style={{
-                                    padding: '1.5rem',
-                                    borderRadius: '8px',
-                                }}>
-                                    <div style={{
-                                        fontSize: '0.85rem',
-                                        color: 'var(--color-text-secondary)',
-                                        marginBottom: '0.5rem',
-                                        textTransform: 'uppercase',
-                                        letterSpacing: '0.5px',
-                                    }}>
-                                        {spec.label}
-                                    </div>
-                                    <div style={{
-                                        fontSize: '1.1rem',
-                                        color: 'var(--color-white)',
-                                        fontWeight: '700',
-                                    }}>
-                                        {spec.value}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
                 {/* Installation Process */}
                 <div style={{ marginBottom: '6rem' }}>
                     <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
@@ -394,14 +328,6 @@ const Infrastructure = () => {
                         }}>
                             Installation Process
                         </h2>
-                        <p style={{
-                            fontSize: '1.1rem',
-                            color: 'var(--color-text-secondary)',
-                            maxWidth: '700px',
-                            margin: '0 auto',
-                        }}>
-                            From assessment to activation in 8-12 weeks
-                        </p>
                     </div>
 
                     <div style={{
@@ -452,17 +378,6 @@ const Infrastructure = () => {
                                     }}>
                                         {item.description}
                                     </p>
-                                    <div style={{
-                                        display: 'inline-block',
-                                        padding: '0.5rem 1rem',
-                                        background: 'rgba(0, 255, 136, 0.1)',
-                                        borderRadius: '4px',
-                                        color: 'var(--color-accent)',
-                                        fontSize: '0.85rem',
-                                        fontWeight: '700',
-                                    }}>
-                                        {item.duration}
-                                    </div>
                                 </div>
                             </div>
                         ))}

@@ -12,7 +12,6 @@ const SiteMap = () => {
                     <ul style={{ listStyle: 'none', padding: 0 }}>
                         <li style={{ marginBottom: '1rem' }}><Link to="/" style={{ color: 'white', textDecoration: 'none' }}>Home</Link></li>
                         <li style={{ marginBottom: '1rem' }}><Link to="/about-us" style={{ color: 'white', textDecoration: 'none' }}>About Us</Link></li>
-                        <li style={{ marginBottom: '1rem' }}><Link to="/#impact" style={{ color: 'white', textDecoration: 'none' }}>Impact Calculator</Link></li>
                         <li style={{ marginBottom: '1rem' }}><Link to="/#map" style={{ color: 'white', textDecoration: 'none' }}>Corridor Map</Link></li>
                     </ul>
                 </div>

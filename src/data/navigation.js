@@ -5,7 +5,7 @@ export const navigationConfig = {
         items: [
             { label: 'Overview', path: '/solutions', description: 'Complete transformation stack' },
             { type: 'divider' },
-            { label: 'Vehicles & Operations', path: '/solutions/vehicles-operations', icon: '🚛', description: 'Full-stack EV-as-a-Service' },
+            { label: 'Vehicles & Operations', path: '/solutions/vehicles-operations', icon: '🚛', description: 'End-to-end Electric Truck-as-a-Service—from vehicle deployment to fleet operations' },
             { label: 'Infrastructure', path: '/solutions/infrastructure', icon: '⚡', description: 'Charging & swapping stations' },
             { label: 'Intelligence Platform', path: '/solutions/intelligence', icon: '🧠', description: 'Route optimization & energy management' }
         ]
@@ -16,16 +16,6 @@ export const navigationConfig = {
         path: '/network',
         items: [
             { label: 'Operational Corridors', path: '/network/corridors', icon: '🗺️', description: 'Interactive route map' },
-            { label: 'Charging Infrastructure', path: '/network/infrastructure', icon: '🔌', description: 'Station locations & specs' },
-
-        ]
-    },
-    impact: {
-        label: 'Impact',
-        path: '/impact',
-        items: [
-            { label: 'Environmental Impact', path: '/impact/environmental', icon: '🌱', description: 'Carbon reduction metrics' },
-            { label: 'Economic Analysis', path: '/impact/economic', icon: '💵', description: 'TCO comparison & analysis' },
 
         ]
     },
@@ -35,9 +25,6 @@ export const navigationConfig = {
         items: [
             { label: 'About Us', path: '/company/about', description: 'Our mission & story' },
             { label: 'Leadership Team', path: '/company/team', description: 'Meet our team' },
-            { label: 'Investors', path: '/company/investors', description: 'Backed by industry visionaries' },
-            { label: 'Partners', path: '/company/partners', description: 'Strategic OEM partners' },
-            { label: 'Careers', path: '/company/careers', description: 'Join our team' },
             { label: 'Newsroom', path: '/company/newsroom', description: 'Press releases & media' }
         ]
     },
@@ -49,7 +36,8 @@ export const navigationConfig = {
 
             { label: 'Implementation Guides', path: '/resources/guides', icon: '📚', description: 'Step-by-step guides' },
 
-            { label: 'FAQ', path: '/resources/faq', icon: '❓', description: 'Frequently asked questions' }
+            { label: 'FAQ', path: '/resources/faq', icon: '❓', description: 'Frequently asked questions' },
+            { label: 'Gallery', path: '/resources/gallery', icon: '🖼️', description: 'Photo gallery' }
         ]
     }
 };
@@ -64,16 +52,14 @@ export const footerNavigation = {
     company: [
         { label: 'About Us', path: '/company/about' },
         { label: 'Team', path: '/company/team' },
-        { label: 'Investors', path: '/company/investors' },
-        { label: 'Partners', path: '/company/partners' },
-        { label: 'Careers', path: '/company/careers' },
         { label: 'Newsroom', path: '/company/newsroom' }
     ],
     resources: [
         { label: 'Blog', path: '/resources/blog' },
 
         { label: 'Guides', path: '/resources/guides' },
-        { label: 'FAQ', path: '/resources/faq' }
+        { label: 'FAQ', path: '/resources/faq' },
+        { label: 'Gallery', path: '/resources/gallery' }
     ],
     legal: [
         { label: 'Privacy Policy', path: '/policies' },

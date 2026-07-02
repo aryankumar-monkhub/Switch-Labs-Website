@@ -18,9 +18,11 @@ import Policies from './pages/Policies';
 import TermsAndConditions from './pages/TermsAndConditions';
 import SiteMap from './pages/SiteMap';
 import OperationalCorridors from './pages/network/OperationalCorridors';
-import ChargingInfrastructure from './pages/network/ChargingInfrastructure';
 import BlogList from './pages/resources/BlogList';
 import BlogPost from './pages/resources/BlogPost';
+import FAQ from './pages/resources/FAQ';
+import Gallery from './pages/resources/Gallery';
+import LeadershipTeam from './pages/LeadershipTeam';
 
 function App() {
   return (
@@ -40,19 +42,10 @@ function App() {
 
             {/* Network */}
             <Route path="/network/corridors" element={<OperationalCorridors />} />
-            <Route path="/network/infrastructure" element={<ChargingInfrastructure />} />
-
-            {/* Impact */}
-            <Route path="/impact/environmental" element={<PlaceholderPage title="Environmental Impact" />} />
-            <Route path="/impact/economic" element={<PlaceholderPage title="Economic Analysis" />} />
-
 
             {/* Company */}
             <Route path="/company/about" element={<AboutUs />} />
-            <Route path="/company/team" element={<PlaceholderPage title="Leadership Team" />} />
-            <Route path="/company/investors" element={<PlaceholderPage title="Investors" />} />
-            <Route path="/company/partners" element={<PlaceholderPage title="Partners" />} />
-            <Route path="/company/careers" element={<PlaceholderPage title="Careers" />} />
+            <Route path="/company/team" element={<LeadershipTeam />} />
             <Route path="/company/newsroom" element={<PlaceholderPage title="Newsroom" />} />
 
             {/* Resources */}
@@ -61,7 +54,8 @@ function App() {
 
             <Route path="/resources/guides" element={<PlaceholderPage title="Implementation Guides" />} />
 
-            <Route path="/resources/faq" element={<PlaceholderPage title="FAQ" />} />
+            <Route path="/resources/faq" element={<FAQ />} />
+            <Route path="/resources/gallery" element={<Gallery />} />
 
             {/* Contact */}
             <Route path="/contact" element={<Contact />} />

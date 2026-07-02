@@ -18,7 +18,7 @@ const SolutionsOverview = () => {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2rem', marginTop: '4rem' }}>
                     <Link
                         to="/solutions/vehicles-operations"
-                        className="glass border-heavy"
+                        className="glass border-heavy white-card-border"
                         style={{
                             padding: '3rem',
                             borderRadius: '12px',
@@ -32,7 +32,7 @@ const SolutionsOverview = () => {
                             Vehicles & Operations
                         </h3>
                         <p style={{ color: 'var(--color-grey-light)', fontSize: '1rem', lineHeight: '1.7' }}>
-                            Full-stack EV-as-a-Service. We own, operate, and maintain the 55T tractor fleet so you don't have to.
+                            End-to-end Electric Truck-as-a-Service—from vehicle deployment to fleet operations.
                         </p>
                         <div style={{ marginTop: '2rem', color: 'var(--color-accent)', fontWeight: '600' }}>
                             Learn More →
@@ -41,7 +41,7 @@ const SolutionsOverview = () => {
 
                     <Link
                         to="/solutions/infrastructure"
-                        className="glass border-heavy"
+                        className="glass border-heavy white-card-border"
                         style={{
                             padding: '3rem',
                             borderRadius: '12px',
@@ -64,7 +64,7 @@ const SolutionsOverview = () => {
 
                     <Link
                         to="/solutions/intelligence"
-                        className="glass border-heavy"
+                        className="glass border-heavy white-card-border"
                         style={{
                             padding: '3rem',
                             borderRadius: '12px',

@@ -7,11 +7,11 @@ import { ComposableMap, Geographies, Geography, Marker, Line } from 'react-simpl
 const geoUrl = "/india-states.json";
 
 const routes = [
-    { name: 'Sirohi ↔ Kalol', start: 'Sirohi', end: 'Kalol', distance: '220 km', trucks: '15', routeDescription: 'Sirohi to Kalol', coordinates: [[72.858894, 24.882618], [72.6186, 23.0338]] },
-    { name: 'Ankaleshwar ↔ Jhagadia', start: 'Ankaleshwar', end: 'Jhagadia', distance: '20 km', trucks: '4', routeDescription: 'Ankaleshwar to Jhagadia', coordinates: [[72.99001, 21.63236], [73.151009, 21.719477]] },
-    { name: 'Kalamboli ↔ Khopoli', start: 'Kalamboli', end: 'Khopoli', distance: '50 km', trucks: '8', routeDescription: 'Kalamboli to Khopoli', coordinates: [[73.1012, 19.0328], [73.34589, 18.78562]] },
-    { name: 'Dalmiapuram ↔ Karaikal Port', start: 'Dalmiapuram', end: 'Karaikal Port', distance: '280 km', trucks: '12', routeDescription: 'Dalmiapuram to Karaikal Port', coordinates: [[78.95250, 10.97667], [79.8573, 10.8327]] },
-    { name: 'Ahiwara ↔ Adani Raipur', start: 'Ahiwara', end: 'Adani Raipur', distance: '45 km', trucks: '6', routeDescription: 'Ahiwara to Adani Raipur', coordinates: [[81.412346, 21.356577], [81.629997, 21.250000]] },
+    { name: 'Sirohi ↔ Kalol', start: 'Sirohi', end: 'Kalol', distance: '220 km/side', trucks: '25', routeDescription: 'Sirohi to Kalol', coordinates: [[72.858894, 24.882618], [72.6186, 23.0338]] },
+    { name: 'Ankaleshwar ↔ Jhagadia', start: 'Ankaleshwar', end: 'Jhagadia', distance: '20 km/side', trucks: '4', routeDescription: 'Ankaleshwar to Jhagadia', coordinates: [[72.99001, 21.63236], [73.151009, 21.719477]] },
+    { name: 'Kalamboli ↔ Khopoli', start: 'Kalamboli', end: 'Khopoli', distance: '50 km/side', trucks: '8', routeDescription: 'Kalamboli to Khopoli', coordinates: [[73.1012, 19.0328], [73.34589, 18.78562]] },
+    { name: 'Dalmiapuram ↔ Karaikal Port', start: 'Dalmiapuram', end: 'Karaikal Port', distance: '140 km/side', trucks: '24', routeDescription: 'Dalmiapuram to Karaikal Port', coordinates: [[78.95250, 10.97667], [79.8573, 10.8327]] },
+    { name: 'Ahiwara ↔ Adani Raipur', start: 'Ahiwara', end: 'Adani Raipur', distance: '80 km/side', trucks: '4', routeDescription: 'Ahiwara to Adani Raipur', coordinates: [[81.412346, 21.356577], [81.629997, 21.250000]] },
 ];
 
 const CorridorMap = () => {
@@ -107,7 +107,7 @@ const CorridorMap = () => {
                                 const boxX = isLeft ? -195 : (i === 4 ? 165 : 180);
                                 const lineX = isLeft ? [-105, -70, 0][i] : (i === 4 ? 255 : 270);
                                 const yOff = isLeft ? [-130, 60, 110][i] : 20;
-                                const lineY = isAbove ? yOff + 62 : yOff;
+                                const lineY = isAbove ? yOff + 76 : yOff;
 
                                 const boxCenterY = yOff + 31;
                                 const boxRightEdge = boxX + boxWidth;
@@ -123,13 +123,6 @@ const CorridorMap = () => {
 
                                 return (
                                 <React.Fragment key={i}>
-                                    <Line
-                                        from={route.coordinates[0]}
-                                        to={route.coordinates[1]}
-                                        stroke="var(--color-accent)"
-                                        strokeWidth={1.5}
-                                        strokeLinecap="round"
-                                    />
                                     <Marker coordinates={route.coordinates[0]}>
                                         {/* Pin */}
                                         <g transform="translate(-6, -12)">
@@ -142,19 +135,55 @@ const CorridorMap = () => {
                                         <polygon points={arrowPoints} fill="var(--color-accent)" opacity="1" />
                                         {/* Info box */}
                                         <g transform={`translate(${boxX}, ${yOff})`}>
-                                            <rect width={boxWidth} height="62" rx="4" ry="4" fill="rgba(15,23,42,0.85)" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+                                            <rect width={boxWidth} height="76" rx="4" ry="4" fill="rgba(15,23,42,0.85)" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
                                             <text x="8" y="16" fill="var(--color-accent)" fontSize="10" fontFamily="Montserrat, sans-serif" fontWeight="700">{route.name}</text>
-                                            <text x="8" y="30" fill="var(--color-grey-light)" fontSize="9" fontFamily="Inter, sans-serif">Distance: {route.distance}</text>
-                                            <text x="8" y="42" fill="var(--color-grey-light)" fontSize="9" fontFamily="Inter, sans-serif">No. of Trucks: {route.trucks}</text>
-                                            <text x="8" y="54" fill="var(--color-grey-light)" fontSize="9" fontFamily="Inter, sans-serif">Route: {route.routeDescription}</text>
+                                            <g transform="translate(8, 23)">
+                                                <path d="M1 4 L5 1 L9 4 M5 1 L5 9" stroke="#60a5fa" strokeWidth="1.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                                            </g>
+                                            <text x="20" y="30" fill="#ffffff" fontSize="9" fontFamily="Inter, sans-serif">Distance: {route.distance}</text>
+                                            <g transform="translate(8, 37)">
+                                                <rect x="1" y="2" width="7" height="4" rx="0.5" stroke="#fbbf24" strokeWidth="1" fill="none" />
+                                                <rect x="0" y="3" width="2" height="3" rx="0.3" stroke="#fbbf24" strokeWidth="1" fill="none" />
+                                                <circle cx="2.5" cy="7" r="1" stroke="#fbbf24" strokeWidth="0.8" fill="none" />
+                                                <circle cx="6.5" cy="7" r="1" stroke="#fbbf24" strokeWidth="0.8" fill="none" />
+                                            </g>
+                                            <text x="20" y="46" fill="#ffffff" fontSize="9" fontFamily="Inter, sans-serif">No. of Trucks: {route.trucks}</text>
+                                            <g transform="translate(8, 51)">
+                                                <path d="M4 0 C1.5 0 0 2 0 4.5 C0 7 4 9.5 4 9.5 C4 9.5 8 7 8 4.5 C8 2 6.5 0 4 0Z" stroke="#a78bfa" strokeWidth="1" fill="none" />
+                                                <circle cx="4" cy="4.5" r="1.2" fill="#a78bfa" />
+                                            </g>
+                                            <text x="20" y="60" fill="#ffffff" fontSize="9" fontFamily="Inter, sans-serif">Route: {route.routeDescription}</text>
                                         </g>
-                                    </Marker>
-                                    <Marker coordinates={route.coordinates[1]}>
-                                        <circle r={4} fill="#ef4444" />
                                     </Marker>
                                 </React.Fragment>
                                 );
                             })}
+
+                            {/* Sirohi ↔ Balaram Card with connecting line */}
+                            <Marker coordinates={[72.858894, 24.882618]}>
+                                <path d="M 0,-6 L 210,-6 L 210,-74" stroke="var(--color-accent)" strokeWidth={1} fill="none" strokeLinejoin="round" />
+                                <polygon points="206,-69 214,-69 210,-74" fill="var(--color-accent)" />
+                                <g transform="translate(120, -150)">
+                                    <rect width={180} height="76" rx="4" ry="4" fill="rgba(15,23,42,0.85)" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+                                    <text x="8" y="16" fill="var(--color-accent)" fontSize="10" fontFamily="Montserrat, sans-serif" fontWeight="700">Sirohi ↔ Balaram</text>
+                                    <g transform="translate(8, 23)">
+                                        <path d="M1 4 L5 1 L9 4 M5 1 L5 9" stroke="#60a5fa" strokeWidth="1.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                                    </g>
+                                    <text x="20" y="30" fill="#ffffff" fontSize="9" fontFamily="Inter, sans-serif">Distance: 70 km/side</text>
+                                    <g transform="translate(8, 37)">
+                                        <rect x="1" y="2" width="7" height="4" rx="0.5" stroke="#fbbf24" strokeWidth="1" fill="none" />
+                                        <rect x="0" y="3" width="2" height="3" rx="0.3" stroke="#fbbf24" strokeWidth="1" fill="none" />
+                                        <circle cx="2.5" cy="7" r="1" stroke="#fbbf24" strokeWidth="0.8" fill="none" />
+                                        <circle cx="6.5" cy="7" r="1" stroke="#fbbf24" strokeWidth="0.8" fill="none" />
+                                    </g>
+                                    <text x="20" y="46" fill="#ffffff" fontSize="9" fontFamily="Inter, sans-serif">No. of Trucks: 1</text>
+                                    <g transform="translate(8, 51)">
+                                        <path d="M4 0 C1.5 0 0 2 0 4.5 C0 7 4 9.5 4 9.5 C4 9.5 8 7 8 4.5 C8 2 6.5 0 4 0Z" stroke="#a78bfa" strokeWidth="1" fill="none" />
+                                        <circle cx="4" cy="4.5" r="1.2" fill="#a78bfa" />
+                                    </g>
+                                    <text x="20" y="60" fill="#ffffff" fontSize="9" fontFamily="Inter, sans-serif">Route: Sirohi to Balaram</text>
+                                </g>
+                            </Marker>
                         </ComposableMap>
 
                         {/* Overlay Gradient */}
@@ -164,10 +193,13 @@ const CorridorMap = () => {
                             background: 'radial-gradient(circle at 70% 30%, transparent 60%, rgba(0,0,0,0.6))',
                             pointerEvents: 'none'
                         }} />
+
+
                     </div>
 
                     {/* Stats & Growth */}
                     <div className="stats-container" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+
                         <div>
                             <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                 <span style={{ width: '4px', height: '24px', background: 'var(--color-accent)', borderRadius: '2px', display: 'block' }}></span>
@@ -175,21 +207,19 @@ const CorridorMap = () => {
                             </h3>
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
                                 <div className="stat-card glass" style={{ padding: '1.5rem', borderRadius: '12px' }}>
-                                    <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--color-accent)', lineHeight: 1 }}>20</div>
+                                    <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--color-accent)', lineHeight: 1 }}>5</div>
                                     <div style={{ marginTop: '0.5rem', color: 'var(--color-grey)', fontSize: '0.85rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                                         Routes Live Today
                                     </div>
                                 </div>
                                 <div className="stat-card glass" style={{ padding: '1.5rem', borderRadius: '12px' }}>
-                                    <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--color-white)', lineHeight: 1 }}>60+</div>
+                                    <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--color-white)', lineHeight: 1 }}>10+</div>
                                     <div style={{ marginTop: '0.5rem', color: 'var(--color-grey)', fontSize: '0.85rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                                         Planned for Q3 2026
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>

@@ -1,32 +1,7 @@
 import React from 'react';
-import { Truck, Zap, Cpu } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { BadgeDollarSign, Plug, Gauge, Leaf, GraduationCap } from 'lucide-react';
 
 const TransformationStack = ({ onAction }) => {
-    const pillars = [
-        {
-            title: 'Vehicle & Ops',
-            icon: <Truck size={40} />,
-            desc: 'Full-stack EV-as-a-Service. We own, operate, and maintain the 55T tractor fleet so you don\'t have to.',
-            tag: 'Pillar 01',
-            image: '/assets/battery_tech.png'
-        },
-        {
-            title: 'Infrastructure',
-            icon: <Zap size={40} />,
-            desc: 'State-of-the-art charging and swapping stations optimized for industrial loop utilization.',
-            tag: 'Pillar 02',
-            image: '/assets/charging_hub.png'
-        },
-        {
-            title: 'Intelligence',
-            icon: <Cpu size={40} />,
-            desc: 'Proprietary route optimization and energy management tech ensuring 24/7 uptime in heavy-duty cycles.',
-            tag: 'Pillar 03',
-            image: '/assets/intelligence.png'
-        }
-    ];
-
     return (
         <section id="solutions">
             <div className="container">
@@ -38,70 +13,277 @@ const TransformationStack = ({ onAction }) => {
                 <div id="stack-pillars" style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(3, 1fr)',
-                    gap: '2rem'
+                    gap: '1.5rem',
                 }}>
-                    {pillars.map((p, i) => (
-                        <motion.div
-                            key={i}
-                            whileHover={{ y: -10 }}
-                            className="border-heavy"
-                            style={{
-                                padding: '3rem 2rem',
-                                background: 'linear-gradient(135deg, var(--subtle-bg) 0%, transparent 100%)',
-                                borderRadius: '8px',
-                                position: 'relative',
-                                overflow: 'hidden',
-                                display: 'flex',
-                                flexDirection: 'column'
-                            }}
-                        >
-                            <div style={{ color: 'var(--color-accent)', fontWeight: '900', fontSize: '5rem', position: 'absolute', right: '1rem', top: '-10px', zIndex: 0 }}>
-                                {p.tag.split(' ')[1]}
-                            </div>
-
-                            <div style={{ position: 'relative', zIndex: 1 }}>
-                                <div style={{ color: 'var(--color-accent)', marginBottom: '2rem' }}>
-                                    {p.icon}
-                                </div>
-
-                                <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--color-white)' }}>{p.title}</h3>
-                                <p style={{ color: 'var(--color-grey-light)', fontSize: '1rem', lineHeight: '1.7', marginBottom: '2rem' }}>
-                                    {p.desc}
-                                </p>
-                            </div>
-
+                    <div
+                        className="glass border-heavy white-card-border info-card-bg-blue"
+                        style={{
+                            aspectRatio: '1',
+                            padding: '2rem',
+                            borderRadius: '12px',
+                            transition: 'var(--transition-smooth)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            textAlign: 'center',
+                        }}
+                        onMouseOver={(e) => {
+                            e.currentTarget.style.transform = 'translateY(-6px)';
+                            e.currentTarget.style.boxShadow = '0 20px 60px rgba(76, 163, 255, 0.15)';
+                        }}
+                        onMouseOut={(e) => {
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = 'none';
+                        }}
+                    >
+                        <div>
                             <div style={{
-                                marginTop: 'auto',
-                                width: '100%',
-                                height: '180px',
-                                borderRadius: '4px',
-                                overflow: 'hidden',
-                                position: 'relative',
-                                zIndex: 1
+                                width: '56px',
+                                height: '56px',
+                                borderRadius: '12px',
+                                border: '2px solid var(--color-blue-icon-border)',
+                                background: 'rgba(76, 163, 255, 0.12)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                margin: '0 auto 1rem',
+                                color: '#4CA3FF',
                             }}>
-                                <img
-                                    src={p.image}
-                                    alt={p.title}
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'cover',
-                                        opacity: 0.6,
-                                        filter: 'grayscale(0.5) contrast(1.2)',
-                                        transition: 'var(--transition-smooth)'
-                                    }}
-                                    onMouseOver={(e) => {
-                                        e.currentTarget.style.opacity = '1';
-                                        e.currentTarget.style.filter = 'grayscale(0) contrast(1.2)';
-                                    }}
-                                    onMouseOut={(e) => {
-                                        e.currentTarget.style.opacity = '0.6';
-                                        e.currentTarget.style.filter = 'grayscale(0.5) contrast(1.2)';
-                                    }}
-                                />
+                                <BadgeDollarSign size={28} />
                             </div>
-                        </motion.div>
-                    ))}
+                            <h3 style={{
+                                fontSize: '1.25rem',
+                                fontWeight: '800',
+                                color: 'var(--color-card-heading)',
+                                marginBottom: '0.75rem',
+                            }}>
+                                Cost Effective Sustainability
+                            </h3>
+                            <p style={{
+                                fontSize: '0.9rem',
+                                lineHeight: '1.7',
+                                color: 'var(--color-white)',
+                            }}>
+                                Long-term contracts and affordable leasing options make our smart financing an easy choice, enabling businesses to embrace green solutions without hefty upfront costs or increased freight expenses.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        className="glass border-heavy white-card-border info-card-bg-green"
+                        style={{
+                            aspectRatio: '1',
+                            padding: '2rem',
+                            borderRadius: '12px',
+                            transition: 'var(--transition-smooth)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            textAlign: 'center',
+                        }}
+                        onMouseOver={(e) => {
+                            e.currentTarget.style.transform = 'translateY(-6px)';
+                            e.currentTarget.style.boxShadow = '0 20px 60px rgba(0, 255, 136, 0.15)';
+                        }}
+                        onMouseOut={(e) => {
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = 'none';
+                        }}
+                    >
+                        <div>
+                            <div style={{
+                                width: '56px',
+                                height: '56px',
+                                borderRadius: '12px',
+                                border: '2px solid var(--color-icon-border)',
+                                background: 'rgba(0, 255, 136, 0.12)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                margin: '0 auto 1rem',
+                                color: '#00ff88',
+                            }}>
+                                <Plug size={28} />
+                            </div>
+                            <h3 style={{
+                                fontSize: '1.25rem',
+                                fontWeight: '800',
+                                color: 'var(--color-card-heading)',
+                                marginBottom: '0.75rem',
+                            }}>
+                                Strategic Charging Infra Creation
+                            </h3>
+                            <p style={{
+                                fontSize: '0.9rem',
+                                lineHeight: '1.7',
+                                color: 'var(--color-white)',
+                            }}>
+                                Creating a dedicated charging network along key routes for seamless access to our electric fleet, optimizing efficiency and ensuring sustainable, reliable transportation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        className="glass border-heavy white-card-border info-card-bg-blue"
+                        style={{
+                            aspectRatio: '1',
+                            padding: '2rem',
+                            borderRadius: '12px',
+                            transition: 'var(--transition-smooth)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            textAlign: 'center',
+                        }}
+                        onMouseOver={(e) => {
+                            e.currentTarget.style.transform = 'translateY(-6px)';
+                            e.currentTarget.style.boxShadow = '0 20px 60px rgba(76, 163, 255, 0.15)';
+                        }}
+                        onMouseOut={(e) => {
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = 'none';
+                        }}
+                    >
+                        <div>
+                            <div style={{
+                                width: '56px',
+                                height: '56px',
+                                borderRadius: '12px',
+                                border: '2px solid var(--color-blue-icon-border)',
+                                background: 'rgba(76, 163, 255, 0.12)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                margin: '0 auto 1rem',
+                                color: '#4CA3FF',
+                            }}>
+                                <Gauge size={28} />
+                            </div>
+                            <h3 style={{
+                                fontSize: '1.25rem',
+                                fontWeight: '800',
+                                color: 'var(--color-card-heading)',
+                                marginBottom: '0.75rem',
+                            }}>
+                                Efficient Operation & Management
+                            </h3>
+                            <p style={{
+                                fontSize: '0.9rem',
+                                lineHeight: '1.7',
+                                color: 'var(--color-white)',
+                            }}>
+                                With robust SOPs, trained drivers, and advanced telematics, our fleet management optimizes in real time, boosting efficiency for maximum benefits in sustainable transportation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        className="glass border-heavy white-card-border info-card-bg-green"
+                        style={{
+                            aspectRatio: '1',
+                            padding: '2rem',
+                            borderRadius: '12px',
+                            transition: 'var(--transition-smooth)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            textAlign: 'center',
+                        }}
+                        onMouseOver={(e) => {
+                            e.currentTarget.style.transform = 'translateY(-6px)';
+                            e.currentTarget.style.boxShadow = '0 20px 60px rgba(0, 255, 136, 0.15)';
+                        }}
+                        onMouseOut={(e) => {
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = 'none';
+                        }}
+                    >
+                        <div>
+                            <div style={{
+                                width: '56px',
+                                height: '56px',
+                                borderRadius: '12px',
+                                border: '2px solid var(--color-icon-border)',
+                                background: 'rgba(0, 255, 136, 0.12)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                margin: '0 auto 1rem',
+                                color: '#00ff88',
+                            }}>
+                                <Leaf size={28} />
+                            </div>
+                            <h3 style={{
+                                fontSize: '1.25rem',
+                                fontWeight: '800',
+                                color: 'var(--color-card-heading)',
+                                marginBottom: '0.75rem',
+                            }}>
+                                Tailored Green Solutions
+                            </h3>
+                            <p style={{
+                                fontSize: '0.9rem',
+                                lineHeight: '1.7',
+                                color: 'var(--color-white)',
+                            }}>
+                                From charging infrastructure to sourcing renewable energy and generating carbon credits, we collaborate with businesses to tailor sustainable plans, aligning with unique goals and reducing scope 3 emissions.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        className="glass border-heavy white-card-border info-card-bg-blue"
+                        style={{
+                            aspectRatio: '1',
+                            padding: '2rem',
+                            borderRadius: '12px',
+                            transition: 'var(--transition-smooth)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            textAlign: 'center',
+                        }}
+                        onMouseOver={(e) => {
+                            e.currentTarget.style.transform = 'translateY(-6px)';
+                            e.currentTarget.style.boxShadow = '0 20px 60px rgba(76, 163, 255, 0.15)';
+                        }}
+                        onMouseOut={(e) => {
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = 'none';
+                        }}
+                    >
+                        <div>
+                            <div style={{
+                                width: '56px',
+                                height: '56px',
+                                borderRadius: '12px',
+                                border: '2px solid var(--color-blue-icon-border)',
+                                background: 'rgba(76, 163, 255, 0.12)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                margin: '0 auto 1rem',
+                                color: '#4CA3FF',
+                            }}>
+                                <GraduationCap size={28} />
+                            </div>
+                            <h3 style={{
+                                fontSize: '1.25rem',
+                                fontWeight: '800',
+                                color: 'var(--color-card-heading)',
+                                marginBottom: '0.75rem',
+                            }}>
+                                Driver Training for Optimal Performance
+                            </h3>
+                            <p style={{
+                                fontSize: '0.9rem',
+                                lineHeight: '1.7',
+                                color: 'var(--color-white)',
+                            }}>
+                                Our EV truck driver training program equips operators with essential skills for efficient and safe electric vehicle handling, emphasizing battery management and eco-friendly driving practices.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
                 <div style={{ textAlign: 'center', marginTop: '5rem' }}>

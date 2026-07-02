@@ -9,35 +9,45 @@ const Credibility = () => {
                     <h4 style={{ color: 'var(--color-grey-light)', fontSize: '1rem', textTransform: 'uppercase', letterSpacing: '0.3rem', marginBottom: '3rem' }}>
                         Strategic OEM Partners
                     </h4>
-                    <div className="glass oem-partners-card" style={{ margin: '0 -4rem', padding: '2.7rem 3rem', borderRadius: '16px' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
+                    <div style={{
+                        width: '99.2vw',
+                        position: 'relative',
+                        left: '50%',
+                        right: '50%',
+                        marginLeft: '-49.5vw',
+                        marginRight: '-49.5vw',
+                        background: 'linear-gradient(90deg, #FBE9E7, #FFCCBC, #FBE9E7)',
+                        border: 'var(--oem-border)',
+                        borderRadius: '12px',
+                        boxSizing: 'border-box',
+                        padding: '0.8rem 0',
+                        overflow: 'hidden',
+                    }}>
+                        <div style={{
+                            display: 'flex',
+                            gap: '6rem',
+                            width: 'max-content',
+                            animation: 'marquee 30s linear infinite',
+                        }}>
                             {[
                                 { name: 'Tata Motors', src: '/assets/logos/tata_motors.png' },
-                                { name: 'Energy in Motion', src: '/assets/logos/energy_in_motion.png' },
+                                { name: 'Energy in Motion', src: '/assets/logos/energy_in_motion.png', width: '150px' },
+                                { name: 'IPL Tech Electric', src: '/assets/logos/ipl_tech.png' },
+                                { name: 'Tata Motors', src: '/assets/logos/tata_motors.png' },
+                                { name: 'Energy in Motion', src: '/assets/logos/energy_in_motion.png', width: '150px' },
                                 { name: 'IPL Tech Electric', src: '/assets/logos/ipl_tech.png' },
                             ].map((logo, i) => (
-                                <div key={i} className="oem-logo-card" style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    width: '256px',
-                                    height: '115px',
-                                    borderRadius: '12px',
-                                    background: '#ffffff',
-                                    padding: '4px 8px',
-                                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-                                }}>
-                                    <img
-                                        src={logo.src}
-                                        alt={`${logo.name} Logo`}
-                                        style={{
-                                            width: '100%',
-                                            height: '100%',
-                                            objectFit: 'contain',
-                                            transition: 'transform 0.6s ease',
-                                        }}
-                                    />
-                                </div>
+                                <img
+                                    key={i}
+                                    src={logo.src}
+                                    alt={`${logo.name} Logo`}
+                                    style={{
+                                        width: logo.width || '180px',
+                                        height: 'auto',
+                                        objectFit: 'contain',
+                                        flexShrink: 0,
+                                    }}
+                                />
                             ))}
                         </div>
                     </div>
