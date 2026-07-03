@@ -83,6 +83,65 @@ const Hero = ({ onAction }) => {
                 </div>
             </div>
 
+            {/* Impact Stats Cards */}
+            <div style={{
+                position: 'absolute',
+                bottom: '11rem',
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '1.5rem',
+                padding: '0 2rem 0 22rem',
+                zIndex: 2,
+            }}>
+                {[
+                    { label: 'Clean Run', value: '1.5L+ Kms' },
+                    { label: 'Fuel Saved', value: '45K+ Litres' },
+                    { label: 'CO₂ Saved', value: '120+ Tons' },
+                    { label: 'Tree Saved', value: '5.5K+' },
+                ].map((stat, i) => (
+                    <div key={i} className="glass" style={{
+                        padding: '1.5rem 2rem',
+                        textAlign: 'center',
+                        minWidth: '160px',
+                        background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.25), rgba(59, 130, 246, 0.2))',
+                        backdropFilter: 'blur(16px)',
+                        transform: 'perspective(800px) rotateX(3deg)',
+                        border: '1px solid rgba(76, 163, 255, 0.15)',
+                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+                        transition: 'var(--transition-smooth)',
+                    }}
+                    onMouseOver={(e) => {
+                        e.currentTarget.style.transform = 'perspective(800px) rotateX(0deg) translateY(-4px)';
+                        e.currentTarget.style.boxShadow = '0 16px 48px rgba(76, 163, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15)';
+                    }}
+                    onMouseOut={(e) => {
+                        e.currentTarget.style.transform = 'perspective(800px) rotateX(3deg)';
+                        e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)';
+                    }}
+                    >
+                        <div style={{
+                            fontSize: '0.75rem',
+                            color: i < 2 ? 'var(--stat-heading-primary)' : '#00ff88',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.5px',
+                            fontWeight: '600',
+                        }}>
+                            {stat.label}
+                        </div>
+                        <div style={{
+                            fontSize: '1.5rem',
+                            fontWeight: '800',
+                            color: 'var(--color-accent)',
+                            lineHeight: 1.2,
+                            marginTop: '0.25rem',
+                        }}>
+                            {stat.value}
+                        </div>
+                    </div>
+                ))}
+            </div>
+
             {/* Trust Bar Placeholder Logic */}
             <div style={{
                 position: 'absolute',

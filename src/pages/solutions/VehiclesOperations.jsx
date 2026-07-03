@@ -94,6 +94,7 @@ const VehiclesOperations = () => {
                                 padding: '2.5rem',
                                 transition: 'var(--transition-smooth)',
                                 cursor: 'pointer',
+                                background: 'var(--color-card-bg)',
                             }}
                             onMouseOver={(e) => {
                                 e.currentTarget.style.transform = 'translateY(-8px)';

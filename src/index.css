@@ -39,6 +39,8 @@
   --border-industrial: 1px solid rgba(255, 255, 255, 0.1);
   --glow-teal-subtle: 0 0 20px rgba(0, 242, 255, 0.2);
   --oem-border: 2px solid #00ff88;
+  --stat-heading-primary: #00ff88;
+  --gallery-heading: var(--color-accent);
 }
 
 [data-theme="light"] {
@@ -56,10 +58,12 @@
   --color-blue-icon: #155394;
   --color-blue-icon-border: rgba(21, 83, 148, 0.5);
   --color-icon-border: rgba(0, 80, 0, 0.5);
-  --color-card-bg: linear-gradient(135deg, rgba(76, 163, 255, 0.15), rgba(0, 255, 136, 0.1));
+  --color-card-bg: linear-gradient(135deg, rgba(180, 225, 255, 0.4), rgba(160, 255, 190, 0.35));
   --border-industrial: 1px solid rgba(0, 0, 0, 0.1);
   --glow-teal-subtle: 0 0 20px rgba(76, 163, 255, 0.15);
   --oem-border: 2px solid #155394;
+  --stat-heading-primary: #155394;
+  --gallery-heading: var(--color-accent-dark);
 }
 
 .noise-overlay {

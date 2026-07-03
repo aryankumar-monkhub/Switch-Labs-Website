@@ -1,44 +1,4 @@
 import React from 'react';
-import { Users, Target, Award, Lightbulb, Globe, Heart } from 'lucide-react';
-
-const leaders = [
-  {
-    icon: <Users size={32} />,
-    name: 'Rajesh Mehta',
-    role: 'Chief Executive Officer',
-    desc: '20+ years in EV and logistics, driving the vision for zero-emission freight.',
-  },
-  {
-    icon: <Target size={32} />,
-    name: 'Anita Sharma',
-    role: 'Chief Operating Officer',
-    desc: 'Expert in fleet operations and scaling sustainable transportation networks.',
-  },
-  {
-    icon: <Lightbulb size={32} />,
-    name: 'Vikram Patil',
-    role: 'Chief Technology Officer',
-    desc: 'Pioneering EV battery tech and intelligent charging infrastructure solutions.',
-  },
-  {
-    icon: <Award size={32} />,
-    name: 'Priya Desai',
-    role: 'Chief Financial Officer',
-    desc: 'Strategic financial leadership driving growth and sustainable investment.',
-  },
-  {
-    icon: <Globe size={32} />,
-    name: 'Arun Kapoor',
-    role: 'VP of Business Development',
-    desc: 'Building strategic partnerships across OEMs, energy, and logistics sectors.',
-  },
-  {
-    icon: <Heart size={32} />,
-    name: 'Neha Gupta',
-    role: 'VP of People & Culture',
-    desc: 'Fostering a culture of innovation, inclusion, and operational excellence.',
-  },
-];
 
 const LeadershipTeam = () => {
   return (
@@ -80,67 +40,69 @@ const LeadershipTeam = () => {
           gridTemplateColumns: 'repeat(3, 1fr)',
           gap: '2rem',
         }}>
-          {leaders.map((leader, i) => (
+          {[
+            { name: 'ajay_pratap', role: "Co-Founder & CEO", linkedin: "https://www.linkedin.com/in/ajay-pratap" },
+            { name: 'anish_kumar', role: 'Co-Founder' },
+            { name: 'gazal_kalra', role: 'Advisor' },
+          ].map((member, i) => (
             <div
               key={i}
-              className="glass border-heavy white-card-border info-card-bg"
+              className="glass border-heavy white-card-border"
               style={{
-                aspectRatio: '1',
-                padding: '2.5rem 2rem',
                 borderRadius: '12px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                textAlign: 'center',
-                transition: 'var(--transition-smooth)',
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-8px)';
-                e.currentTarget.style.boxShadow = '0 20px 60px rgba(76, 163, 255, 0.15)';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'none';
+                overflow: 'hidden',
+                border: '1px solid var(--subtle-border)',
+                position: 'relative',
+                paddingBottom: '130%',
               }}
             >
+              <img
+                src={`/assets/${member.name}.png`}
+                alt={member.name}
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
+                }}
+              />
               <div style={{
-                width: '64px',
-                height: '64px',
-                borderRadius: '50%',
-                background: 'rgba(76, 163, 255, 0.12)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                margin: '0 auto 1.25rem',
-                color: 'var(--color-accent)',
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                background: 'linear-gradient(transparent, rgba(0,0,0,0.85))',
+                padding: '3rem 1.5rem 1.5rem',
               }}>
-                {leader.icon}
+                <h3 style={{
+                  fontSize: '1.1rem',
+                  fontWeight: '800',
+                  color: '#ffffff',
+                  marginBottom: '0.25rem',
+                }}>
+                  {member.name.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
+                </h3>
+                <div style={{
+                  fontSize: '0.8rem',
+                  color: 'var(--color-accent-sky)',
+                  marginBottom: '0.5rem',
+                }}>
+                  {member.role}
+                </div>
+                <a
+                  href={member.linkedin || "https://www.linkedin.com/company/switchlabs-ev/"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', textDecoration: 'none', color: '#ffffff', fontSize: '0.85rem' }}
+                >
+                  Linked
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
               </div>
-              <h3 style={{
-                fontSize: '1.2rem',
-                fontWeight: '800',
-                color: 'var(--color-card-heading)',
-                marginBottom: '0.35rem',
-              }}>
-                {leader.name}
-              </h3>
-              <div style={{
-                fontSize: '0.8rem',
-                fontWeight: '600',
-                color: 'var(--color-accent)',
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px',
-                marginBottom: '0.75rem',
-              }}>
-                {leader.role}
-              </div>
-              <p style={{
-                fontSize: '0.85rem',
-                lineHeight: '1.7',
-                color: 'var(--color-white)',
-              }}>
-                {leader.desc}
-              </p>
             </div>
           ))}
         </div>

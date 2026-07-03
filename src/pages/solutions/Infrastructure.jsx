@@ -160,6 +160,7 @@ const Infrastructure = () => {
                             style={{
                                 padding: '2.5rem',
                                 transition: 'var(--transition-smooth)',
+                                background: 'var(--color-card-bg)',
                             }}
                             onMouseOver={(e) => {
                                 e.currentTarget.style.transform = 'translateY(-8px)';
@@ -252,7 +253,7 @@ const Infrastructure = () => {
                                     <div
                                         key={idx}
                                         className="glass border-heavy industrial-card"
-                                        style={{ padding: '2rem' }}
+                                        style={{ padding: '2rem', background: 'var(--color-card-bg)' }}
                                     >
                                         <h4 style={{
                                             fontSize: '1.25rem',
@@ -342,6 +343,7 @@ const Infrastructure = () => {
                                 style={{
                                     padding: '2rem',
                                     position: 'relative',
+                                    background: 'var(--color-card-bg)',
                                 }}
                             >
                                 <div style={{

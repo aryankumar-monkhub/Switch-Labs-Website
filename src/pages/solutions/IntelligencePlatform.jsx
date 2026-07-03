@@ -129,6 +129,7 @@ const IntelligencePlatform = () => {
                             style={{
                                 padding: '2.5rem',
                                 transition: 'var(--transition-smooth)',
+                                background: 'var(--color-card-bg)',
                             }}
                             onMouseOver={(e) => {
                                 e.currentTarget.style.transform = 'translateY(-8px)';
@@ -206,7 +207,7 @@ const IntelligencePlatform = () => {
                             <div
                                 key={index}
                                 className="glass border-heavy"
-                                style={{ padding: '2.5rem' }}
+                                style={{ padding: '2.5rem', background: 'var(--color-card-bg)' }}
                             >
                                 <div style={{
                                     display: 'flex',

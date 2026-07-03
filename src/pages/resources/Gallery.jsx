@@ -21,23 +21,148 @@ const Gallery = () => {
                     </p>
                 </div>
 
+                <h2 style={{
+                    fontSize: '1.75rem',
+                    fontWeight: '800',
+                    color: 'var(--gallery-heading)',
+                    marginBottom: '1.5rem',
+                }}>
+                    JK Lakshmi Cement Ltd.
+                </h2>
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+                    gridTemplateColumns: 'repeat(3, 1fr)',
                     gap: '1.5rem',
                 }}>
-                    {[1, 2, 3, 4, 5, 6].map((i) => (
+                    {[1, 2, 3, 4].map((i) => (
                         <div key={i} className="glass" style={{
-                            aspectRatio: '4/3',
                             borderRadius: '12px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
+                            overflow: 'hidden',
                             border: '1px solid var(--subtle-border)',
-                            color: 'var(--color-grey-light)',
-                            fontSize: '1rem',
                         }}>
-                            Gallery Image {i}
+                            <img
+                                src={`/assets/jk_lakshmi_${i}.png`}
+                                alt={`JK Lakshmi ${i}`}
+                                style={{
+                                    width: '100%',
+                                    height: 'auto',
+                                    display: 'block',
+                                }}
+                            />
+                        </div>
+                    ))}
+                </div>
+
+                <h2 style={{
+                    fontSize: '1.75rem',
+                    fontWeight: '800',
+                    color: 'var(--gallery-heading)',
+                    marginBottom: '1.5rem',
+                    marginTop: '4rem',
+                }}>
+                    Energy In Motion
+                </h2>
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(3, 1fr)',
+                    gap: '1.5rem',
+                }}>
+                    {[1, 2, 3].map((i) => (
+                        <div key={i} className="glass" style={{
+                            borderRadius: '12px',
+                            overflow: 'hidden',
+                            border: '1px solid var(--subtle-border)',
+                            position: 'relative',
+                            paddingBottom: '75%',
+                        }}>
+                            <img
+                                src={`/assets/energy_in_motion_${i}.png`}
+                                alt={`Energy In Motion ${i}`}
+                                style={{
+                                    position: 'absolute',
+                                    inset: 0,
+                                    width: '100%',
+                                    height: '100%',
+                                    objectFit: 'cover',
+                                    display: 'block',
+                                }}
+                            />
+                        </div>
+                    ))}
+                </div>
+
+                <h2 style={{
+                    fontSize: '1.75rem',
+                    fontWeight: '800',
+                    color: 'var(--gallery-heading)',
+                    marginBottom: '1.5rem',
+                    marginTop: '4rem',
+                }}>
+                    Smart Freight Centre India with GERMI
+                </h2>
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(3, 1fr)',
+                    gap: '1.5rem',
+                }}>
+                    {[1, 2].map((i) => (
+                        <div key={i} className="glass" style={{
+                            borderRadius: '12px',
+                            overflow: 'hidden',
+                            border: '1px solid var(--subtle-border)',
+                            position: 'relative',
+                            paddingBottom: '75%',
+                        }}>
+                            <img
+                                src={`/assets/germi_${i}.png`}
+                                alt={`Smart Freight ${i}`}
+                                style={{
+                                    position: 'absolute',
+                                    inset: 0,
+                                    width: '100%',
+                                    height: '100%',
+                                    objectFit: 'cover',
+                                    display: 'block',
+                                }}
+                            />
+                        </div>
+                    ))}
+                </div>
+
+                <h2 style={{
+                    fontSize: '1.75rem',
+                    fontWeight: '800',
+                    color: 'var(--gallery-heading)',
+                    marginBottom: '1.5rem',
+                    marginTop: '4rem',
+                }}>
+                    Jaykaypuram, Sirohi Plant To Balaram
+                </h2>
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(3, 1fr)',
+                    gap: '1.5rem',
+                }}>
+                    {[1, 2].map((i) => (
+                        <div key={i} className="glass" style={{
+                            borderRadius: '12px',
+                            overflow: 'hidden',
+                            border: '1px solid var(--subtle-border)',
+                            position: 'relative',
+                            paddingBottom: '75%',
+                        }}>
+                            <img
+                                src={`/assets/sirohi_balaram_${i}.png`}
+                                alt={`Sirohi Balaram ${i}`}
+                                style={{
+                                    position: 'absolute',
+                                    inset: 0,
+                                    width: '100%',
+                                    height: '100%',
+                                    objectFit: 'cover',
+                                    display: 'block',
+                                }}
+                            />
                         </div>
                     ))}
                 </div>
