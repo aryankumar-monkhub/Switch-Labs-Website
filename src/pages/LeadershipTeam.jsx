@@ -42,8 +42,8 @@ const LeadershipTeam = () => {
         }}>
           {[
             { name: 'ajay_pratap', role: "Co-Founder & CEO", linkedin: "https://www.linkedin.com/in/ajay-pratap" },
-            { name: 'anish_kumar', role: 'Co-Founder' },
-            { name: 'gazal_kalra', role: 'Advisor' },
+            { name: 'anish_kumar', role: 'Co-Founder', linkedin: "https://www.linkedin.com/in/anishconnects" },
+            { name: 'gazal_kalra', role: 'Advisor', linkedin: "https://www.linkedin.com/in/gazalkalra" },
           ].map((member, i) => (
             <div
               key={i}
