@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = ({ onAction }) => {
@@ -11,6 +11,16 @@ const Footer = ({ onAction }) => {
     });
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [width, setWidth] = useState(window.innerWidth);
+    const isSmallPhone = width <= 480;
+    const isMobile = width <= 768;
+    const isTablet = width > 768 && width <= 1024;
+
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const validateField = (name, value) => {
         let error = '';
@@ -80,7 +90,7 @@ const Footer = ({ onAction }) => {
     });
 
     return (
-        <footer id="contact" style={{ background: 'var(--color-primary)', padding: '6rem 0 2rem', position: 'relative' }}>
+        <footer id="contact" style={{ background: 'var(--color-primary)', padding: isMobile ? '3rem 0 1.5rem' : '6rem 0 2rem', position: 'relative' }}>
             {/* Visual background element */}
             <div style={{
                 position: 'absolute',
@@ -96,8 +106,8 @@ const Footer = ({ onAction }) => {
             <div className="container" style={{ position: 'relative' }}>
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'minmax(300px, 1fr) 1.2fr',
-                    gap: '6rem',
+                    gridTemplateColumns: isMobile ? '1fr' : 'minmax(300px, 1fr) 1.2fr',
+                    gap: isMobile ? '3rem' : '6rem',
                     marginBottom: '4rem'
                 }}>
                     <div>
@@ -116,20 +126,20 @@ const Footer = ({ onAction }) => {
                                 />
                             </div>
                         </Link>
-                        <h2 style={{ fontSize: '3.5rem', lineHeight: '1', marginBottom: '2rem', fontWeight: '900' }}>
+                        <h2 style={{ fontSize: isSmallPhone ? '1.6rem' : isMobile ? '2rem' : isTablet ? '2.8rem' : '3.5rem', lineHeight: '1', marginBottom: '2rem', fontWeight: '900' }}>
                             Ready for a <br />
                             <span style={{ color: 'var(--color-accent)' }}>Zero-Emission</span> <br />
                             Future?
                         </h2>
-                        <p style={{ color: 'var(--color-grey-light)', fontSize: '1.25rem', marginBottom: '3rem', maxWidth: '400px' }}>
+                        <p style={{ color: 'var(--color-grey-light)', fontSize: isSmallPhone ? '1rem' : '1.25rem', marginBottom: '3rem', maxWidth: '400px' }}>
                             Transform your fleet operations with India's leading heavy-duty EV ecosystem.
                         </p>
                     </div>
 
-                    <div className="glass" style={{ padding: '3.5rem', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.4)' }}>
+                    <div className="glass" style={{ padding: isSmallPhone ? '1.5rem' : isMobile ? '2rem' : isTablet ? '3rem' : '3.5rem', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.4)' }}>
                         {!isSubmitted ? (
                             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+                                <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '1.5rem' }}>
                                     <div className="input-field">
                                         <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: '800', textTransform: 'uppercase', marginBottom: '0.75rem', color: errors.name ? 'var(--color-error)' : 'var(--color-accent)', letterSpacing: '0.05em' }}>Full Name</label>
                                         <input
@@ -156,7 +166,7 @@ const Footer = ({ onAction }) => {
                                     </div>
                                 </div>
 
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+                                <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '1.5rem' }}>
                                     <div className="input-field">
                                         <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: '800', textTransform: 'uppercase', marginBottom: '0.75rem', color: errors.phone ? 'var(--color-error)' : 'var(--color-accent)', letterSpacing: '0.05em' }}>Phone Number</label>
                                         <div style={{ ...getFooterInputStyle('phone'), display: 'flex', alignItems: 'center', padding: '0 1rem' }}>
@@ -226,8 +236,8 @@ const Footer = ({ onAction }) => {
                                     style={{
                                         marginTop: '1rem',
                                         width: '100%',
-                                        padding: '1.5rem',
-                                        fontSize: '1rem'
+                                        padding: isSmallPhone ? '1rem' : '1.5rem',
+                                        fontSize: isSmallPhone ? '0.85rem' : '1rem'
                                     }}
                                 >
                                     Initialize Transformation
@@ -253,8 +263,8 @@ const Footer = ({ onAction }) => {
                 }}>
                     <div style={{
                         display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-                        gap: '3rem'
+                        gridTemplateColumns: isSmallPhone ? 'repeat(2, 1fr)' : 'repeat(auto-fit, minmax(180px, 1fr))',
+                        gap: isSmallPhone ? '2rem' : '3rem'
                     }}>
                         {/* Solutions */}
                         <div>

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Target, Eye, Zap, TrendingUp, Users, Award, BadgeDollarSign, Plug, Leaf, Gauge, GraduationCap } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 const statCards = [
   { number: '50K+', label: 'Tons CO₂ Reduced', color: 'var(--color-blue-icon)' },
   { number: '5+', label: 'Active Routes', color: 'var(--color-vision-icon)' },
@@ -30,18 +31,30 @@ const values = [
 ];
 
 const AboutUs = () => {
+  const { theme } = useTheme();
+  const [width, setWidth] = useState(window.innerWidth);
+  const isSmallPhone = width <= 480;
+  const isMobile = width <= 768;
+  const isTablet = width > 768 && width <= 1024;
+
+  React.useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div style={{
       minHeight: '100vh',
-      paddingTop: '120px',
-      paddingBottom: '80px',
+      paddingTop: isMobile ? '100px' : '120px',
+      paddingBottom: isMobile ? '40px' : '80px',
       background: 'var(--color-primary)',
     }}>
-      <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+      <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: isSmallPhone ? '0 1rem' : '0 2rem' }}>
 
         {/* Hero Section */}
         <div
-          style={{ textAlign: 'center', marginBottom: '6rem' }}
+          style={{ textAlign: 'center', marginBottom: isMobile ? '3rem' : '6rem', paddingTop: '2rem' }}
         >
           <h1 style={{
             fontSize: 'clamp(2.5rem, 5vw, 4rem)',
@@ -57,7 +70,7 @@ const AboutUs = () => {
           <p style={{
             fontSize: '1.2rem',
             lineHeight: '1.8',
-            color: 'var(--color-grey-light)',
+            color: theme === 'light' ? '#000000' : '#ffffff',
             maxWidth: '800px',
             margin: '0 auto',
           }}>
@@ -69,9 +82,9 @@ const AboutUs = () => {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '2rem',
-            marginBottom: '6rem',
+            gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(3, 1fr)' : 'repeat(3, 1fr)',
+            gap: isMobile ? '1.5rem' : '2rem',
+            marginBottom: isMobile ? '3rem' : '6rem',
           }}
         >
           {statCards.map((stat, i) => (
@@ -79,7 +92,7 @@ const AboutUs = () => {
               key={i}
               className={`glass industrial-card ${i === 1 ? 'info-card-bg-green' : 'info-card-bg-blue'}`}
               style={{
-                padding: '2rem',
+                padding: isSmallPhone ? '1.5rem' : '2rem',
                 textAlign: 'center',
                 borderRadius: '12px',
                 transition: 'var(--transition-smooth)',
@@ -113,15 +126,15 @@ const AboutUs = () => {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '2rem',
-            marginBottom: '6rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: isMobile ? '1.5rem' : '2rem',
+            marginBottom: isMobile ? '3rem' : '6rem',
           }}
         >
           <div
             className="glass border-heavy white-card-border info-card-bg-blue"
             style={{
-              padding: '3rem',
+              padding: isSmallPhone ? '2rem' : isMobile ? '2.5rem' : '3rem',
               borderRadius: '12px',
               textAlign: 'center',
               transition: 'var(--transition-smooth)',
@@ -149,7 +162,7 @@ const AboutUs = () => {
               <Target size={32} color="var(--color-accent)" />
             </div>
             <h3 style={{
-              fontSize: '1.5rem',
+              fontSize: isSmallPhone ? '1.2rem' : '1.5rem',
               fontWeight: '800',
               color: 'var(--color-card-heading)',
               marginBottom: '1rem',
@@ -157,7 +170,7 @@ const AboutUs = () => {
               Our Mission
             </h3>
             <p style={{
-              fontSize: '1rem',
+              fontSize: isSmallPhone ? '0.9rem' : '1rem',
               lineHeight: '1.8',
               color: 'var(--color-white)',
             }}>
@@ -168,7 +181,7 @@ const AboutUs = () => {
           <div
             className="glass border-heavy white-card-border info-card-bg-green"
             style={{
-              padding: '3rem',
+              padding: isSmallPhone ? '2rem' : isMobile ? '2.5rem' : '3rem',
               borderRadius: '12px',
               textAlign: 'center',
               transition: 'var(--transition-smooth)',
@@ -196,7 +209,7 @@ const AboutUs = () => {
               <Eye size={32} color="var(--color-vision-icon)" />
             </div>
             <h3 style={{
-              fontSize: '1.5rem',
+              fontSize: isSmallPhone ? '1.2rem' : '1.5rem',
               fontWeight: '800',
               color: 'var(--color-card-heading)',
               marginBottom: '1rem',
@@ -204,7 +217,7 @@ const AboutUs = () => {
               Our Vision
             </h3>
             <p style={{
-              fontSize: '1rem',
+              fontSize: isSmallPhone ? '0.9rem' : '1rem',
               lineHeight: '1.8',
               color: 'var(--color-white)',
             }}>
@@ -215,9 +228,9 @@ const AboutUs = () => {
 
         {/* Core Values */}
         <div
-          style={{ marginBottom: '4rem' }}
+          style={{ marginBottom: isMobile ? '2rem' : '4rem' }}
         >
-          <div className="section-header" style={{ marginBottom: '4rem' }}>
+          <div className="section-header" style={{ marginBottom: isMobile ? '2rem' : '4rem' }}>
             <h2 style={{
               fontSize: 'clamp(2rem, 4vw, 3rem)',
               fontWeight: '900',
@@ -226,33 +239,51 @@ const AboutUs = () => {
             }}>
               Our <span style={{ color: 'var(--color-accent)' }}>Core Values</span>
             </h2>
-            <p style={{ color: 'var(--color-grey-light)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
+            <p style={{ color: theme === 'light' ? '#000000' : '#ffffff', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
               The principles that guide everything we build
             </p>
           </div>
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '2rem',
+            gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: isMobile ? '1rem' : '2rem',
           }}>
             {values.map((v, i) => (
               <div
                 key={i}
                 className="glass"
                 style={{
-                  padding: '2.5rem 2rem',
+                  padding: isSmallPhone ? '1.5rem 1rem' : isMobile ? '2rem 1.5rem' : '2.5rem 2rem',
                   borderRadius: '12px',
                   textAlign: 'center',
                   transition: 'var(--transition-smooth)',
                   position: 'relative',
+                  background: (i === 0 || i === 2)
+                    ? (theme === 'light'
+                        ? 'linear-gradient(135deg, rgba(0, 255, 136, 0.15) 0%, rgba(0, 255, 136, 0.08) 100%)'
+                        : 'linear-gradient(135deg, rgba(0, 100, 0, 0.4) 0%, rgba(0, 100, 0, 0.2) 100%)')
+                    : (i === 1 || i === 3)
+                        ? (theme === 'light'
+                            ? 'linear-gradient(135deg, rgba(76, 163, 255, 0.15) 0%, rgba(76, 163, 255, 0.08) 100%)'
+                            : 'linear-gradient(135deg, rgba(21, 83, 148, 0.4) 0%, rgba(21, 83, 148, 0.2) 100%)')
+                        : undefined,
+                  borderWidth: '1px',
+                  borderStyle: 'solid',
+                  borderColor: (i === 0 || i === 2)
+                    ? (theme === 'light' ? '#059669' : '#00ff88')
+                    : (i === 1 || i === 3)
+                        ? (theme === 'light' ? '#155394' : '#4CA3FF')
+                        : undefined,
                 }}
                 onMouseOver={(e) => {
                   e.currentTarget.style.transform = 'translateY(-6px)';
-                  e.currentTarget.style.borderColor = 'var(--color-accent)';
+                  if (i === 0 || i === 2) e.currentTarget.style.borderColor = theme === 'light' ? '#059669' : '#00ff88';
+                  else if (i === 1 || i === 3) e.currentTarget.style.borderColor = theme === 'light' ? '#155394' : '#4CA3FF';
                 }}
                 onMouseOut={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
+                  if (i === 0 || i === 2) e.currentTarget.style.borderColor = theme === 'light' ? '#059669' : '#00ff88';
+                  else if (i === 1 || i === 3) e.currentTarget.style.borderColor = theme === 'light' ? '#155394' : '#4CA3FF';
                 }}
               >
                 <div style={{
@@ -264,22 +295,22 @@ const AboutUs = () => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   margin: '0 auto 1.5rem',
-                  color: 'var(--color-accent)',
+                  color: (i === 0 || i === 2) ? (theme === 'light' ? '#059669' : '#00ff88') : (i === 1 || i === 3) ? (theme === 'light' ? '#155394' : '#4CA3FF') : 'var(--color-accent)',
                 }}>
                   {v.icon}
                 </div>
                 <h4 style={{
-                  fontSize: '1.1rem',
+                  fontSize: isSmallPhone ? '0.95rem' : '1.1rem',
                   fontWeight: '800',
-                  color: 'var(--color-white)',
+                  color: theme === 'light' ? '#000000' : '#ffffff',
                   marginBottom: '0.75rem',
                 }}>
                   {v.title}
                 </h4>
                 <p style={{
-                  fontSize: '0.9rem',
+                  fontSize: isSmallPhone ? '0.8rem' : '0.9rem',
                   lineHeight: '1.7',
-                color: 'var(--color-white)',
+                color: theme === 'light' ? '#000000' : '#ffffff',
                 }}>
                   {v.desc}
                 </p>

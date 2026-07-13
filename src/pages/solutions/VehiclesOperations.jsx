@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Truck, Zap, Shield, TrendingUp, CheckCircle } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 
 const VehiclesOperations = () => {
+    const { theme } = useTheme();
     const features = [
         {
             icon: <Truck size={40} />,
@@ -56,7 +58,7 @@ const VehiclesOperations = () => {
         }}>
             {/* Hero Section */}
             <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-                <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+                <div style={{ textAlign: 'center', marginBottom: '5rem', paddingTop: '2rem' }}>
                     <h1 style={{
                         fontSize: 'clamp(2.5rem, 5vw, 4rem)',
                         fontWeight: '900',
@@ -94,7 +96,24 @@ const VehiclesOperations = () => {
                                 padding: '2.5rem',
                                 transition: 'var(--transition-smooth)',
                                 cursor: 'pointer',
-                                background: 'var(--color-card-bg)',
+                                background: (index === 0 || index === 2) 
+                                    ? (theme === 'light' 
+                                        ? 'linear-gradient(135deg, rgba(76, 163, 255, 0.15) 0%, rgba(76, 163, 255, 0.08) 100%)'
+                                        : 'linear-gradient(135deg, rgba(21, 83, 148, 0.4) 0%, rgba(21, 83, 148, 0.2) 100%)')
+                                    : (index === 1 || index === 3)
+                                        ? (theme === 'light'
+                                            ? 'linear-gradient(135deg, rgba(0, 255, 136, 0.15) 0%, rgba(0, 255, 136, 0.08) 100%)'
+                                            : 'linear-gradient(135deg, rgba(0, 100, 0, 0.4) 0%, rgba(0, 100, 0, 0.2) 100%)')
+                                        : 'var(--color-card-bg)',
+                                border: (index === 0 || index === 2) 
+                                    ? (theme === 'light' 
+                                        ? '1px solid rgba(21, 83, 148, 0.5)'
+                                        : '1px solid rgba(76, 163, 255, 0.3)')
+                                    : (index === 1 || index === 3)
+                                        ? (theme === 'light'
+                                            ? '1px solid rgba(0, 80, 0, 0.5)'
+                                            : '1px solid rgba(0, 255, 136, 0.4)')
+                                        : 'none',
                             }}
                             onMouseOver={(e) => {
                                 e.currentTarget.style.transform = 'translateY(-8px)';
@@ -105,7 +124,7 @@ const VehiclesOperations = () => {
                                 e.currentTarget.style.boxShadow = 'none';
                             }}
                         >
-                            <div style={{ color: 'var(--color-accent)', marginBottom: '1.5rem' }}>
+                            <div style={{ color: (index === 0 || index === 2) ? (theme === 'light' ? '#155394' : '#4CA3FF') : (index === 1 || index === 3) ? (theme === 'light' ? '#059669' : '#00ff88') : 'var(--color-accent)', marginBottom: '1.5rem' }}>
                                 {feature.icon}
                             </div>
                             <h3 style={{

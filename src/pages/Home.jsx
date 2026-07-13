@@ -11,9 +11,11 @@ const Home = () => {
     return (
         <>
             <Hero onAction={openModal} />
-            <TransformationStack onAction={openModal} />
-            <CorridorMap />
-            <Credibility />
+            <div style={{ position: 'relative', zIndex: 1 }}>
+                <TransformationStack onAction={openModal} />
+                <CorridorMap />
+                <Credibility />
+            </div>
         </>
     );
 };

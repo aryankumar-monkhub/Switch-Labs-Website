@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Zap, Battery, MapPin, Gauge, CheckCircle, ArrowRight, Clock } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 
 const Infrastructure = () => {
+    const { theme } = useTheme();
     const chargingTypes = [
         {
             icon: <Zap size={40} />,
@@ -123,7 +125,7 @@ const Infrastructure = () => {
         }}>
             <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
                 {/* Hero Section */}
-                <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+                <div style={{ textAlign: 'center', marginBottom: '5rem', paddingTop: '3rem' }}>
                     <h1 style={{
                         fontSize: 'clamp(2.5rem, 5vw, 4rem)',
                         fontWeight: '900',
@@ -160,7 +162,10 @@ const Infrastructure = () => {
                             style={{
                                 padding: '2.5rem',
                                 transition: 'var(--transition-smooth)',
-                                background: 'var(--color-card-bg)',
+                                background: theme === 'light' 
+                                    ? 'linear-gradient(135deg, rgba(76, 163, 255, 0.15) 0%, rgba(76, 163, 255, 0.08) 100%)'
+                                    : 'linear-gradient(135deg, rgba(21, 83, 148, 0.4) 0%, rgba(21, 83, 148, 0.2) 100%)',
+                                border: `1px solid ${theme === 'light' ? '#155394' : '#4CA3FF'}`,
                             }}
                             onMouseOver={(e) => {
                                 e.currentTarget.style.transform = 'translateY(-8px)';
@@ -171,7 +176,7 @@ const Infrastructure = () => {
                                 e.currentTarget.style.boxShadow = 'none';
                             }}
                         >
-                            <div style={{ color: 'var(--color-accent)', marginBottom: '1.5rem' }}>
+                            <div style={{ color: theme === 'light' ? '#155394' : '#4CA3FF', marginBottom: '1.5rem' }}>
                                 {type.icon}
                             </div>
                             <h3 style={{
@@ -184,7 +189,7 @@ const Infrastructure = () => {
                             </h3>
                             <div style={{
                                 fontSize: '1.25rem',
-                                color: 'var(--color-accent)',
+                                color: theme === 'light' ? '#155394' : '#4CA3FF',
                                 fontWeight: '700',
                                 marginBottom: '1.5rem',
                             }}>
@@ -235,7 +240,7 @@ const Infrastructure = () => {
                             <h3 style={{
                                 fontSize: '1.75rem',
                                 fontWeight: '800',
-                                color: 'var(--color-accent)',
+                                color: theme === 'light' ? '#155394' : 'var(--color-accent)',
                                 marginBottom: '1.5rem',
                                 display: 'flex',
                                 alignItems: 'center',
@@ -253,7 +258,13 @@ const Infrastructure = () => {
                                     <div
                                         key={idx}
                                         className="glass border-heavy industrial-card"
-                                        style={{ padding: '2rem', background: 'var(--color-card-bg)' }}
+                                        style={{ 
+                                            padding: '2rem', 
+                                            background: theme === 'light' 
+                                                ? 'linear-gradient(135deg, rgba(76, 163, 255, 0.15) 0%, rgba(76, 163, 255, 0.08) 100%)'
+                                                : 'linear-gradient(135deg, rgba(21, 83, 148, 0.4) 0%, rgba(21, 83, 148, 0.2) 100%)',
+                                            border: `1px solid ${theme === 'light' ? '#155394' : '#4CA3FF'}`,
+                                        }}
                                     >
                                         <h4 style={{
                                             fontSize: '1.25rem',
@@ -271,9 +282,9 @@ const Infrastructure = () => {
                                             padding: '0.75rem',
                                             borderRadius: '6px',
                                         }}>
-                                            <Zap size={20} color="var(--color-accent)" />
+                                            <Zap size={20} color={theme === 'light' ? '#155394' : '#4CA3FF'} />
                                             <span style={{
-                                                color: 'var(--color-accent)',
+                                                color: theme === 'light' ? '#155394' : '#4CA3FF',
                                                 fontWeight: '700',
                                                 fontSize: '0.95rem',
                                             }}>
@@ -343,7 +354,10 @@ const Infrastructure = () => {
                                 style={{
                                     padding: '2rem',
                                     position: 'relative',
-                                    background: 'var(--color-card-bg)',
+                                background: theme === 'light' 
+                                    ? 'linear-gradient(135deg, rgba(76, 163, 255, 0.15) 0%, rgba(76, 163, 255, 0.08) 100%)'
+                                    : 'linear-gradient(135deg, rgba(21, 83, 148, 0.4) 0%, rgba(21, 83, 148, 0.2) 100%)',
+                                border: `1px solid ${theme === 'light' ? '#155394' : '#4CA3FF'}`,
                                 }}
                             >
                                 <div style={{
@@ -352,7 +366,7 @@ const Infrastructure = () => {
                                     left: '2rem',
                                     width: '50px',
                                     height: '50px',
-                                    background: 'var(--color-accent)',
+                                    background: theme === 'light' ? '#059669' : '#00ff88',
                                     borderRadius: '50%',
                                     display: 'flex',
                                     alignItems: 'center',

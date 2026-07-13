@@ -2,11 +2,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from '../../context/ThemeContext';
 
 const Dropdown = ({ label, items, currentPath }) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
     const timeoutRef = useRef(null);
+    const { theme } = useTheme();
 
     useEffect(() => {
         return () => {
@@ -95,7 +97,10 @@ const Dropdown = ({ label, items, currentPath }) => {
                             padding: '0.75rem 0',
                             borderRadius: '12px',
                             boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
-                            zIndex: 1000
+                            zIndex: 1000,
+                            background: theme === 'light' ? 'rgba(255, 255, 255, 0.95)' : 'rgba(10, 12, 14, 0.95)',
+                            backdropFilter: 'blur(20px)',
+                            border: theme === 'light' ? '1px solid rgba(0, 0, 0, 0.1)' : '1px solid rgba(255, 255, 255, 0.08)',
                         }}
                     >
                         {items.map((item, index) => {
@@ -105,7 +110,7 @@ const Dropdown = ({ label, items, currentPath }) => {
                                         key={`divider-${index}`}
                                         style={{
                                             height: '1px',
-                                            background: 'var(--color-grey-dark)',
+                                            background: theme === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'var(--color-grey-dark)',
                                             margin: '0.5rem 0'
                                         }}
                                     />

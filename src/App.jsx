@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { ThemeProvider } from './context/ThemeContext';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
@@ -23,6 +23,7 @@ import BlogPost from './pages/resources/BlogPost';
 import FAQ from './pages/resources/FAQ';
 import Gallery from './pages/resources/Gallery';
 import LeadershipTeam from './pages/LeadershipTeam';
+import ImplementationGuides from './pages/resources/ImplementationGuides';
 
 function App() {
   return (
@@ -52,7 +53,7 @@ function App() {
             <Route path="/resources/blog" element={<BlogList />} />
             <Route path="/resources/blog/:slug" element={<BlogPost />} />
 
-            <Route path="/resources/guides" element={<PlaceholderPage title="Implementation Guides" />} />
+            <Route path="/resources/guides" element={<ImplementationGuides />} />
 
             <Route path="/resources/faq" element={<FAQ />} />
             <Route path="/resources/gallery" element={<Gallery />} />
@@ -79,12 +80,20 @@ function App() {
 const PlaceholderPage = ({ title }) => (
   <div style={{ minHeight: '100vh', paddingTop: '8rem' }}>
     <section className="container">
-      <div className="section-header">
-        <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>
+      <div className="section-header" style={{ paddingTop: '2rem' }}>
+        <h1 style={{
+          fontSize: 'clamp(2rem, 5vw, 4rem)',
+          fontWeight: '900',
+          background: 'linear-gradient(135deg, var(--color-accent) 0%, #00ff88 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          marginBottom: '1.5rem',
+          lineHeight: '1.1',
+        }}>
           {title}
         </h1>
         <p style={{ color: 'var(--color-grey-light)', fontSize: '1.2rem' }}>
-          This page is currently under development.
+          Changes will be done soon.
         </p>
       </div>
       <div className="glass" style={{ padding: '4rem', textAlign: 'center', marginTop: '3rem', borderRadius: '12px' }}>

@@ -1,40 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Credibility = () => {
+    const [width, setWidth] = useState(window.innerWidth);
+    const isSmallPhone = width <= 480;
+    const isMobile = width <= 768;
+    const isTablet = width > 768 && width <= 1024;
+
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <div id="about-us">
             {/* Partners */}
-            <section style={{ textAlign: 'center', padding: '4rem 0' }}>
+            <section style={{ textAlign: 'center', padding: isMobile ? '2rem 0' : '4rem 0' }}>
                 <div className="container">
-                    <h4 style={{ color: 'var(--color-grey-light)', fontSize: '1rem', textTransform: 'uppercase', letterSpacing: '0.3rem', marginBottom: '3rem' }}>
+                    <h4 style={{ color: '#00ff88', fontSize: isSmallPhone ? '1rem' : isMobile ? '1.2rem' : isTablet ? '1.5rem' : '1.8rem', textTransform: 'uppercase', letterSpacing: '0.3rem', marginBottom: '3rem', fontWeight: '700' }}>
                         Strategic OEM Partners
                     </h4>
                     <div style={{
-                        width: '99.2vw',
+                        background: '#eeeeee',
+                        borderRadius: '12px',
+                        boxSizing: 'border-box',
+                        padding: isMobile ? '0.3rem 0' : '0.5rem 0',
+                        width: isMobile ? '100vw' : '100vw',
                         position: 'relative',
                         left: '50%',
                         right: '50%',
-                        marginLeft: '-49.5vw',
-                        marginRight: '-49.5vw',
-                        background: 'linear-gradient(90deg, #FBE9E7, #FFCCBC, #FBE9E7)',
-                        border: 'var(--oem-border)',
-                        borderRadius: '12px',
-                        boxSizing: 'border-box',
-                        padding: '0.8rem 0',
-                        overflow: 'hidden',
+                        marginLeft: '-50vw',
+                        marginRight: '-50vw',
                     }}>
                         <div style={{
                             display: 'flex',
-                            gap: '6rem',
-                            width: 'max-content',
-                            animation: 'marquee 30s linear infinite',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            gap: isMobile ? '2rem' : '4rem',
+                            flexWrap: 'wrap',
                         }}>
                             {[
                                 { name: 'Tata Motors', src: '/assets/logos/tata_motors.png' },
-                                { name: 'Energy in Motion', src: '/assets/logos/energy_in_motion.png', width: '150px' },
-                                { name: 'IPL Tech Electric', src: '/assets/logos/ipl_tech.png' },
-                                { name: 'Tata Motors', src: '/assets/logos/tata_motors.png' },
-                                { name: 'Energy in Motion', src: '/assets/logos/energy_in_motion.png', width: '150px' },
+                                { name: 'Energy in Motion', src: '/assets/logos/energy_in_motion.png', width: '150px', filter: 'grayscale(1) brightness(0)' },
                                 { name: 'IPL Tech Electric', src: '/assets/logos/ipl_tech.png' },
                             ].map((logo, i) => (
                                 <img
@@ -42,10 +49,11 @@ const Credibility = () => {
                                     src={logo.src}
                                     alt={`${logo.name} Logo`}
                                     style={{
-                                        width: logo.width || '180px',
+                                        width: isSmallPhone ? '90px' : isMobile ? '120px' : isTablet ? '150px' : (logo.width || '180px'),
                                         height: 'auto',
                                         objectFit: 'contain',
                                         flexShrink: 0,
+                                        filter: logo.filter || 'none',
                                     }}
                                 />
                             ))}

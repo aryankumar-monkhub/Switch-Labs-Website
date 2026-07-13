@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { feature } from 'topojson-client';
 import { ComposableMap, Geographies, Geography, Marker, Line } from 'react-simple-maps';
+import { useTheme } from '../context/ThemeContext';
 
 // Using a TopoJSON file that represents Indian states with detailed boundaries
 // This file is stored locally in the public folder for reliable access
 const geoUrl = "/india-states.json";
 
 const routes = [
-    { name: 'Sirohi ↔ Kalol', start: 'Sirohi', end: 'Kalol', distance: '220 km/side', trucks: '25', routeDescription: 'Sirohi to Kalol', coordinates: [[72.858894, 24.882618], [72.6186, 23.0338]] },
-    { name: 'Ankaleshwar ↔ Jhagadia', start: 'Ankaleshwar', end: 'Jhagadia', distance: '20 km/side', trucks: '4', routeDescription: 'Ankaleshwar to Jhagadia', coordinates: [[72.99001, 21.63236], [73.151009, 21.719477]] },
-    { name: 'Kalamboli ↔ Khopoli', start: 'Kalamboli', end: 'Khopoli', distance: '50 km/side', trucks: '8', routeDescription: 'Kalamboli to Khopoli', coordinates: [[73.1012, 19.0328], [73.34589, 18.78562]] },
-    { name: 'Dalmiapuram ↔ Karaikal Port', start: 'Dalmiapuram', end: 'Karaikal Port', distance: '140 km/side', trucks: '24', routeDescription: 'Dalmiapuram to Karaikal Port', coordinates: [[78.95250, 10.97667], [79.8573, 10.8327]] },
-    { name: 'Ahiwara ↔ Adani Raipur', start: 'Ahiwara', end: 'Adani Raipur', distance: '80 km/side', trucks: '4', routeDescription: 'Ahiwara to Adani Raipur', coordinates: [[81.412346, 21.356577], [81.629997, 21.250000]] },
+    { name: 'Sirohi ↔ Kalol', start: 'Sirohi', end: 'Kalol', distance: '220 km', trucks: '25', routeDescription: 'Sirohi to Kalol', coordinates: [[72.858894, 24.882618], [72.6186, 23.0338]] },
+    { name: 'Ankaleshwar ↔ Jhagadia', start: 'Ankaleshwar', end: 'Jhagadia', distance: '20 km', trucks: '4', routeDescription: 'Ankaleshwar to Jhagadia', coordinates: [[72.99001, 21.63236], [73.151009, 21.719477]] },
+    { name: 'Kalamboli ↔ Khopoli', start: 'Kalamboli', end: 'Khopoli', distance: '40 km', trucks: '8', routeDescription: 'Kalamboli to Khopoli', coordinates: [[73.1012, 19.0328], [73.34589, 18.78562]] },
+    { name: 'Dalmiapuram ↔ Karaikal Port', start: 'Dalmiapuram', end: 'Karaikal Port', distance: '140 km', trucks: '24', routeDescription: 'Dalmiapuram to Karaikal Port', coordinates: [[78.95250, 10.97667], [79.8573, 10.8327]] },
+    { name: 'Ahiwara ↔ Adani Raipur', start: 'Ahiwara', end: 'Adani Raipur', distance: '80 km', trucks: '4', routeDescription: 'Ahiwara to Adani Raipur', coordinates: [[81.412346, 21.356577], [81.629997, 21.250000]] },
 ];
 
-const CorridorMap = () => {
+const CorridorMap = ({ darkText = false, accentColor = '#00ff88' }) => {
+    const { theme } = useTheme();
     const [statesData, setStatesData] = useState(null);
+    const [width, setWidth] = useState(window.innerWidth);
+    const isSmallPhone = width <= 480;
+    const isMobile = width <= 768;
+    const isTablet = width > 768 && width <= 1024;
 
     useEffect(() => {
         fetch(geoUrl)
@@ -27,30 +33,39 @@ const CorridorMap = () => {
             .catch(err => console.error('Failed to load map data:', err));
     }, []);
 
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
-        <section id="our-corridors" style={{ padding: '4rem 0' }}>
-            <div className="container">
+        <section id="our-corridors" style={{ padding: isMobile ? '2rem 0' : '4rem 0' }}>
+            <div className="container" style={{ padding: isMobile ? '0 1rem' : undefined }}>
                 <div className="section-header" style={{ marginBottom: '3rem' }}>
-                    <h2 style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>Connecting India’s <span style={{ color: 'var(--color-accent)' }}>Industrial Hubs</span></h2>
-                    <p style={{ color: 'var(--color-grey-light)', fontSize: '1.1rem' }}>Operational routes optimized for heavy-duty loop utilization.</p>
+                    <h2 style={{ fontSize: isSmallPhone ? '1.5rem' : isMobile ? '1.8rem' : isTablet ? '2.4rem' : '3rem', marginBottom: '0.5rem', color: darkText ? (theme === 'light' ? '#1A1C1E' : '#ffffff') : '#ffffff' }}>Connecting India's <span style={{ color: accentColor }}>Industrial Hubs</span></h2>
+                    <p style={{ color: darkText ? (theme === 'light' ? '#1A1C1E' : '#ffffff') : '#ffffff', fontSize: isSmallPhone ? '0.95rem' : '1.1rem' }}>Operational routes optimized for heavy-duty loop utilization.</p>
                 </div>
 
                 <div className="grid-corridor" style={{
                     display: 'grid',
-                    gridTemplateColumns: '1.8fr 1fr',
-                    gap: '3rem',
+                    gridTemplateColumns: isMobile ? '1fr' : '1.8fr 1fr',
+                    gap: isMobile ? '2rem' : '3rem',
                     alignItems: 'center'
                 }}>
                     {/* Interactive Map Container */}
                     <div className="glass map-container border-heavy" style={{
                         padding: '0',
-                        aspectRatio: '1.4/1',
                         position: 'relative',
                         background: 'linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.4))',
                         borderRadius: '16px',
                         overflow: 'hidden',
                         boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)',
-                        border: '1px solid rgba(255,255,255,0.08)'
+                        border: '1px solid rgba(255,255,255,0.08)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        minHeight: isMobile ? '260px' : undefined,
                     }}>
                         {/* Map Badge */}
                         <div style={{
@@ -65,18 +80,29 @@ const CorridorMap = () => {
                             backdropFilter: 'blur(4px)',
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '0.5rem'
+                            gap: '0.5rem',
                         }}>
                             <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }} />
                             <span style={{ fontSize: '0.8rem', color: 'var(--color-white)', fontWeight: 600 }}>Pan-India Network</span>
                         </div>
 
+                        <div style={isMobile ? {
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(-50%, -50%) scale(0.38)',
+                            width: '700px',
+                            height: '500px',
+                        } : {
+                            width: '100%',
+                            height: '100%',
+                        }}>
                         <ComposableMap
                             projection="geoMercator"
                             projectionConfig={{ scale: 750, center: [82, 21] }}
                             width={700}
                             height={500}
-                            style={{ width: "100%", height: "100%" }}
+                            style={{ width: "100%", height: "100%", display: 'block' }}
                         >
                             {statesData && (
                             <Geographies geography={statesData}>
@@ -169,7 +195,7 @@ const CorridorMap = () => {
                                     <g transform="translate(8, 23)">
                                         <path d="M1 4 L5 1 L9 4 M5 1 L5 9" stroke="#60a5fa" strokeWidth="1.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
                                     </g>
-                                    <text x="20" y="30" fill="#ffffff" fontSize="9" fontFamily="Inter, sans-serif">Distance: 70 km/side</text>
+                                    <text x="20" y="30" fill="#ffffff" fontSize="9" fontFamily="Inter, sans-serif">Distance: 70 km</text>
                                     <g transform="translate(8, 37)">
                                         <rect x="1" y="2" width="7" height="4" rx="0.5" stroke="#fbbf24" strokeWidth="1" fill="none" />
                                         <rect x="0" y="3" width="2" height="3" rx="0.3" stroke="#fbbf24" strokeWidth="1" fill="none" />
@@ -185,14 +211,17 @@ const CorridorMap = () => {
                                 </g>
                             </Marker>
                         </ComposableMap>
+                        </div>
 
-                        {/* Overlay Gradient */}
+                        {/* Overlay Gradient - desktop only */}
+                        {!isMobile && (
                         <div style={{
                             position: 'absolute',
                             inset: 0,
                             background: 'radial-gradient(circle at 70% 30%, transparent 60%, rgba(0,0,0,0.6))',
                             pointerEvents: 'none'
                         }} />
+                        )}
 
 
                     </div>

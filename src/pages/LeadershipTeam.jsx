@@ -1,19 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 const LeadershipTeam = () => {
+  const { theme } = useTheme();
+  const [width, setWidth] = useState(window.innerWidth);
+  const isSmallPhone = width <= 480;
+  const isMobile = width <= 768;
+  const isTablet = width > 768 && width <= 1024;
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div style={{
       minHeight: '100vh',
-      paddingTop: '120px',
-      paddingBottom: '80px',
+      paddingTop: isMobile ? '100px' : '120px',
+      paddingBottom: isMobile ? '40px' : '80px',
       background: 'var(--color-primary)',
     }}>
-      <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+      <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: isSmallPhone ? '0 1rem' : '0 2rem' }}>
 
         {/* Hero */}
-        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: isMobile ? '3rem' : '5rem', paddingTop: '2rem' }}>
           <h1 style={{
-            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+            fontSize: 'clamp(2rem, 5vw, 4rem)',
             fontWeight: '900',
             background: 'linear-gradient(135deg, var(--color-accent) 0%, #00ff88 100%)',
             WebkitBackgroundClip: 'text',
@@ -24,9 +37,9 @@ const LeadershipTeam = () => {
             Leadership Team
           </h1>
           <p style={{
-            fontSize: '1.2rem',
+            fontSize: isSmallPhone ? '1rem' : '1.2rem',
             lineHeight: '1.8',
-            color: 'var(--color-grey-light)',
+            color: theme === 'light' ? '#000000' : '#ffffff',
             maxWidth: '700px',
             margin: '0 auto',
           }}>
@@ -37,14 +50,18 @@ const LeadershipTeam = () => {
         {/* Gallery Grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '2rem',
+          gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+          gap: isMobile ? '1.5rem' : '2rem',
         }}>
           {[
             { name: 'ajay_pratap', role: "Co-Founder & CEO", linkedin: "https://www.linkedin.com/in/ajay-pratap" },
             { name: 'anish_kumar', role: 'Co-Founder', linkedin: "https://www.linkedin.com/in/anishconnects" },
+            null,
             { name: 'gazal_kalra', role: 'Advisor', linkedin: "https://www.linkedin.com/in/gazalkalra" },
+            { name: 'sunil_bhatnagar', role: 'Additional Director', linkedin: "https://www.linkedin.com/in/sunil-bhatnagar-47251423" },
+            null,
           ].map((member, i) => (
+            member ? (
             <div
               key={i}
               className="glass border-heavy white-card-border"
@@ -53,7 +70,8 @@ const LeadershipTeam = () => {
                 overflow: 'hidden',
                 border: '1px solid var(--subtle-border)',
                 position: 'relative',
-                paddingBottom: '130%',
+                paddingBottom: '120%',
+                maxWidth: '350px',
               }}
             >
               <img
@@ -104,6 +122,7 @@ const LeadershipTeam = () => {
                 </a>
               </div>
             </div>
+            ) : <div key={i}></div>
           ))}
         </div>
 

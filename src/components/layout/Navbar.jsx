@@ -7,24 +7,40 @@ import { useTheme } from '../../context/ThemeContext';
 
 const Navbar = ({ onGetStarted }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [width, setWidth] = React.useState(window.innerWidth);
     const location = useLocation();
     const { theme, toggleTheme } = useTheme();
+
+    React.useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const isSmallPhone = width <= 480;
+    const isMobile = width <= 768;
+    const isTablet = width > 768 && width <= 1024;
 
     return (
         <nav
             className="glass"
             style={{
                 position: 'fixed',
-                top: '1.5rem',
+                top: isSmallPhone ? '0.5rem' : '1.5rem',
                 left: '50%',
                 transform: 'translateX(-50%)',
-                width: '90%',
+                width: isSmallPhone ? '95%' : '90%',
                 maxWidth: '1200px',
                 zIndex: 1000,
-                padding: '1rem 2rem',
+                padding: isSmallPhone ? '0.6rem 0.8rem' : isMobile ? '0.8rem 1.2rem' : '1rem 2rem',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
+                background: theme === 'light' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(10, 12, 14, 0.7)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                border: theme === 'light' ? '1px solid rgba(0, 0, 0, 0.1)' : '1px solid rgba(255, 255, 255, 0.08)',
+                boxShadow: theme === 'light' ? '0 4px 30px rgba(0, 0, 0, 0.08)' : '0 4px 30px rgba(0, 0, 0, 0.1)',
             }}
         >
             {/* Logo */}
@@ -43,7 +59,7 @@ const Navbar = ({ onGetStarted }) => {
                         alt="SwitchLabs Logo"
                         className="logo-img"
                         style={{
-                            height: '80px',
+                            height: isSmallPhone ? '50px' : isMobile ? '60px' : isTablet ? '70px' : '80px',
                             width: 'auto',
                             objectFit: 'contain',
                             filter: 'none',
@@ -57,7 +73,7 @@ const Navbar = ({ onGetStarted }) => {
                 className="nav-links"
                 style={{
                     display: 'flex',
-                    gap: '2rem',
+                    gap: isTablet ? '1.2rem' : '2rem',
                     alignItems: 'center',
                 }}
             >
@@ -189,13 +205,13 @@ const Navbar = ({ onGetStarted }) => {
                         top: '5rem',
                         left: '5%',
                         right: '5%',
-                        background: 'rgba(10, 12, 14, 0.98)',
+                        background: theme === 'light' ? 'rgba(255, 255, 255, 0.98)' : 'rgba(10, 12, 14, 0.98)',
                         backdropFilter: 'blur(20px)',
                         borderRadius: '12px',
                         padding: '2rem',
                         maxHeight: '80vh',
                         overflowY: 'auto',
-                        border: 'var(--border-industrial)',
+                        border: theme === 'light' ? '1px solid rgba(0, 0, 0, 0.1)' : 'var(--border-industrial)',
                         boxShadow: '0 10px 40px rgba(0,0,0,0.5)'
                     }}
                 >
@@ -241,7 +257,7 @@ const Navbar = ({ onGetStarted }) => {
                             onClick={toggleTheme}
                             style={{
                                 background: 'none',
-                                border: '1px solid var(--color-grey-dark)',
+                                border: theme === 'light' ? '1px solid rgba(0, 0, 0, 0.15)' : '1px solid var(--color-grey-dark)',
                                 cursor: 'pointer',
                                 color: 'var(--color-white)',
                                 padding: '0.75rem 1rem',

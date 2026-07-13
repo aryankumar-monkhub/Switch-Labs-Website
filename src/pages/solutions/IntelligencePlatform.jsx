@@ -92,7 +92,7 @@ const IntelligencePlatform = () => {
         }}>
             <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
                 {/* Hero Section */}
-                <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+                <div style={{ textAlign: 'center', marginBottom: '5rem', paddingTop: '2rem' }}>
                     <h1 style={{
                         fontSize: 'clamp(2.5rem, 5vw, 4rem)',
                         fontWeight: '900',

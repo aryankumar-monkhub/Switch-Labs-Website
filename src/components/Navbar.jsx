@@ -23,7 +23,7 @@ const Navbar = ({ onGetStarted }) => {
   return (
     <nav className="glass" style={{
       position: 'fixed',
-      top: '1.5rem',
+      top: '0rem',
       left: '50%',
       transform: 'translateX(-50%)',
       width: '90%',
@@ -33,6 +33,12 @@ const Navbar = ({ onGetStarted }) => {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
+      background: 'transparent',
+      backdropFilter: 'blur(40px) saturate(180%)',
+      WebkitBackdropFilter: 'blur(40px) saturate(180%)',
+      borderRadius: '20px',
+      border: '1px solid rgba(255, 255, 255, 0.15)',
+      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15)',
     }}>
       <Link to="/" style={{
         display: 'flex',

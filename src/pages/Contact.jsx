@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const inputStyle = {
     width: '100%',
@@ -26,6 +26,16 @@ const labelStyle = {
 const Contact = () => {
     const [form, setForm] = useState({ name: '', email: '', contact: '', company: '', subject: '', message: '' });
     const [sent, setSent] = useState(false);
+    const [width, setWidth] = useState(window.innerWidth);
+    const isSmallPhone = width <= 480;
+    const isMobile = width <= 768;
+    const isTablet = width > 768 && width <= 1024;
+
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -37,21 +47,21 @@ const Contact = () => {
     };
 
     return (
-        <div style={{ minHeight: '100vh', paddingTop: '8rem' }}>
+        <div style={{ minHeight: '100vh', paddingTop: isMobile ? '6rem' : '8rem' }}>
             <section className="container">
                 <div className="section-header">
-                    <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>
+                    <h1 style={{ fontSize: isSmallPhone ? '2rem' : isMobile ? '2.5rem' : isTablet ? '3rem' : '3.5rem', marginBottom: '1rem' }}>
                         Get in <span style={{ color: 'var(--color-accent)' }}>Touch</span>
                     </h1>
-                    <p style={{ color: 'var(--color-grey-light)', fontSize: '1.2rem' }}>
+                    <p style={{ color: 'var(--color-grey-light)', fontSize: isSmallPhone ? '1rem' : '1.2rem' }}>
                         Let's discuss how SwitchLabs can transform your fleet operations.
                     </p>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', marginTop: '4rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? '2rem' : '4rem', marginTop: '4rem' }}>
                     {/* Contact Information */}
                     <div>
-                        <h3 style={{ fontSize: '1.5rem', marginBottom: '2rem' }}>Contact Information</h3>
+                        <h3 style={{ fontSize: isSmallPhone ? '1.2rem' : '1.5rem', marginBottom: '2rem' }}>Contact Information</h3>
 
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                             <div>
@@ -77,10 +87,21 @@ const Contact = () => {
                                 <h4 style={{ color: 'var(--color-accent)', marginBottom: '0.5rem', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
                                     Office
                                 </h4>
-                                <p style={{ color: 'var(--color-white)', fontSize: '1rem', lineHeight: '1.6' }}>
+                                <a 
+                                    href="https://www.google.com/maps/search/?api=1&query=Team+Coworks,+Prop+no+-+55+Lane+-+2,+Westend+Marg,+New+Delhi,+Delhi+-+110030" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    style={{ color: 'var(--color-white)', fontSize: '1rem', lineHeight: '1.6', display: 'flex', alignItems: 'flex-start', gap: '0.5rem', textDecoration: 'none', cursor: 'pointer', transition: 'color 0.3s ease' }}
+                                    onMouseOver={(e) => e.target.style.color = 'var(--color-accent)'}
+                                    onMouseOut={(e) => e.target.style.color = 'var(--color-white)'}
+                                >
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginTop: '3px', flexShrink: 0 }}>
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
                                     Team Coworks, Prop no - 55 Lane - 2, Westend Marg,<br />
                                     New Delhi, Delhi - 110030
-                                </p>
+                                </a>
                             </div>
 
                             <div>
@@ -98,9 +119,9 @@ const Contact = () => {
                     </div>
 
                     {/* Contact Form */}
-                    <div className="glass" style={{ padding: '2rem', borderRadius: '12px' }}>
-                        <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Send us a Message</h3>
-                        <p style={{ color: 'var(--color-grey-light)', marginBottom: '2rem' }}>
+                    <div className="glass" style={{ padding: isSmallPhone ? '1.5rem' : '2rem', borderRadius: '12px' }}>
+                        <h3 style={{ fontSize: isSmallPhone ? '1.2rem' : '1.5rem', marginBottom: '1.5rem' }}>Send us a Message</h3>
+                        <p style={{ color: 'var(--color-grey-light)', marginBottom: '2rem', fontSize: isSmallPhone ? '0.9rem' : '1rem' }}>
                             Fill out the form below and our team will get back to you within 24 hours.
                         </p>
 
@@ -137,12 +158,12 @@ const Contact = () => {
                                     <textarea name="message" value={form.message} onChange={handleChange} required placeholder="Tell us about your requirements..." rows={5} style={{ ...inputStyle, resize: 'vertical' }} />
                                 </div>
                                 <button type="submit" style={{
-                                    padding: '1rem',
+                                    padding: isSmallPhone ? '0.8rem' : '1rem',
                                     background: 'var(--color-accent)',
                                     color: 'var(--color-primary)',
                                     border: 'none',
                                     borderRadius: '8px',
-                                    fontSize: '1rem',
+                                    fontSize: isSmallPhone ? '0.9rem' : '1rem',
                                     fontWeight: '800',
                                     textTransform: 'uppercase',
                                     cursor: 'pointer',
