@@ -17,14 +17,11 @@ const Credibility = () => {
             {/* Partners */}
             <section style={{ textAlign: 'center', padding: isMobile ? '2rem 0' : '4rem 0' }}>
                 <div className="container">
-                    <h4 style={{ color: '#00ff88', fontSize: isSmallPhone ? '1rem' : isMobile ? '1.2rem' : isTablet ? '1.5rem' : '1.8rem', textTransform: 'uppercase', letterSpacing: '0.3rem', marginBottom: '3rem', fontWeight: '700' }}>
-                        Strategic OEM Partners
-                    </h4>
                     <div style={{
                         background: '#eeeeee',
                         borderRadius: '12px',
                         boxSizing: 'border-box',
-                        padding: isMobile ? '0.3rem 0' : '0.5rem 0',
+                        padding: isMobile ? '1.5rem 1rem' : '2rem 1.5rem',
                         width: isMobile ? '100vw' : '100vw',
                         position: 'relative',
                         left: '50%',
@@ -32,6 +29,9 @@ const Credibility = () => {
                         marginLeft: '-50vw',
                         marginRight: '-50vw',
                     }}>
+                        <h4 style={{ color: '#4CA3FF', fontSize: isSmallPhone ? '1rem' : isMobile ? '1.2rem' : isTablet ? '1.5rem' : '1.8rem', textTransform: 'uppercase', letterSpacing: '0.3rem', marginBottom: '2rem', fontWeight: '700', textAlign: 'center' }}>
+                            Strategic OEM Partners
+                        </h4>
                         <div style={{
                             display: 'flex',
                             justifyContent: 'center',

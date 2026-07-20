@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BadgeDollarSign, Plug, Gauge, Leaf, GraduationCap } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 const TransformationStack = ({ onAction }) => {
+    const { theme } = useTheme();
     const [width, setWidth] = useState(window.innerWidth);
     const isSmallPhone = width <= 480;
     const isMobile = width <= 768;
@@ -17,8 +19,8 @@ const TransformationStack = ({ onAction }) => {
         <section id="solutions">
             <div className="container">
                 <div className="section-header">
-                    <h2 style={{ fontSize: isSmallPhone ? '1.5rem' : isMobile ? '1.8rem' : isTablet ? '2.5rem' : '3.5rem', marginBottom: '1rem', color: '#ffffff' }}>The SwitchLabs <span style={{ color: '#00ff88' }}>Transformation Stack</span></h2>
-                    <p style={{ color: '#ffffff', fontSize: isSmallPhone ? '0.95rem' : '1.2rem' }}>Integrated solutions for a zero-emission industrial future.</p>
+                    <h2 style={{ fontSize: isSmallPhone ? '1.5rem' : isMobile ? '1.8rem' : isTablet ? '2.5rem' : '3.5rem', marginBottom: '1rem', color: theme === 'light' ? '#1A1C1E' : '#ffffff' }}>The SwitchLabs <span style={{ color: '#4CA3FF' }}>Transformation Stack</span></h2>
+                    <p style={{ color: theme === 'light' ? '#1A1C1E' : '#ffffff', fontSize: isSmallPhone ? '0.95rem' : '1.2rem' }}>Integrated solutions for a zero-emission industrial future.</p>
                 </div>
 
                 <div id="stack-pillars" style={{
@@ -37,6 +39,7 @@ const TransformationStack = ({ onAction }) => {
                             flexDirection: 'column',
                             justifyContent: 'center',
                             textAlign: 'center',
+                            border: `1px solid ${theme === 'light' ? '#155394' : '#4CA3FF'}`,
                         }}
                         onMouseOver={(e) => {
                             e.currentTarget.style.transform = 'translateY(-6px)';
@@ -52,20 +55,20 @@ const TransformationStack = ({ onAction }) => {
                                 width: isMobile ? '48px' : '56px',
                                 height: isMobile ? '48px' : '56px',
                                 borderRadius: '12px',
-                                border: '2px solid var(--color-blue-icon-border)',
-                                background: 'rgba(76, 163, 255, 0.12)',
+                                border: `2px solid ${theme === 'light' ? 'rgba(21, 83, 148, 0.5)' : 'var(--color-blue-icon-border)'}`,
+                                background: theme === 'light' ? 'rgba(21, 83, 148, 0.12)' : 'rgba(76, 163, 255, 0.12)',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 margin: '0 auto 1rem',
-                                color: '#4CA3FF',
+                                color: theme === 'light' ? '#155394' : '#97CAFF',
                             }}>
                                 <BadgeDollarSign size={isMobile ? 24 : 28} />
                             </div>
                             <h3 style={{
                                 fontSize: isSmallPhone ? '1.1rem' : '1.25rem',
                                 fontWeight: '800',
-                                color: '#ffffff',
+                                color: theme === 'light' ? '#1A1C1E' : '#ffffff',
                                 marginBottom: '0.75rem',
                             }}>
                                 Cost Effective Sustainability
@@ -73,7 +76,7 @@ const TransformationStack = ({ onAction }) => {
                             <p style={{
                                 fontSize: isSmallPhone ? '0.82rem' : '0.9rem',
                                 lineHeight: '1.7',
-                                color: '#ffffff',
+                                color: theme === 'light' ? '#1A1C1E' : '#ffffff',
                             }}>
                                 Long-term contracts and affordable leasing options make our smart financing an easy choice, enabling businesses to embrace green solutions without hefty upfront costs or increased freight expenses.
                             </p>
@@ -91,6 +94,7 @@ const TransformationStack = ({ onAction }) => {
                             flexDirection: 'column',
                             justifyContent: 'center',
                             textAlign: 'center',
+                            border: `1px solid ${theme === 'light' ? '#059669' : '#00ff88'}`,
                         }}
                         onMouseOver={(e) => {
                             e.currentTarget.style.transform = 'translateY(-6px)';
@@ -106,20 +110,20 @@ const TransformationStack = ({ onAction }) => {
                                 width: isMobile ? '48px' : '56px',
                                 height: isMobile ? '48px' : '56px',
                                 borderRadius: '12px',
-                                border: '2px solid var(--color-icon-border)',
-                                background: 'rgba(0, 255, 136, 0.12)',
+                                border: `2px solid ${theme === 'light' ? 'rgba(0, 80, 0, 0.5)' : 'var(--color-icon-border)'}`,
+                                background: theme === 'light' ? 'rgba(0, 80, 0, 0.12)' : 'rgba(0, 255, 136, 0.12)',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 margin: '0 auto 1rem',
-                                color: '#00ff88',
+                                color: theme === 'light' ? '#059669' : '#00ff88',
                             }}>
                                 <Plug size={isMobile ? 24 : 28} />
                             </div>
                             <h3 style={{
                                 fontSize: isSmallPhone ? '1.1rem' : '1.25rem',
                                 fontWeight: '800',
-                                color: '#ffffff',
+                                color: theme === 'light' ? '#1A1C1E' : '#ffffff',
                                 marginBottom: '0.75rem',
                             }}>
                                 Strategic Charging Infra Creation
@@ -127,7 +131,7 @@ const TransformationStack = ({ onAction }) => {
                             <p style={{
                                 fontSize: isSmallPhone ? '0.82rem' : '0.9rem',
                                 lineHeight: '1.7',
-                                color: '#ffffff',
+                                color: theme === 'light' ? '#1A1C1E' : '#ffffff',
                             }}>
                                 Creating a dedicated charging network along key routes for seamless access to our electric fleet, optimizing efficiency and ensuring sustainable, reliable transportation.
                             </p>
@@ -145,6 +149,7 @@ const TransformationStack = ({ onAction }) => {
                             flexDirection: 'column',
                             justifyContent: 'center',
                             textAlign: 'center',
+                            border: `1px solid ${theme === 'light' ? '#155394' : '#4CA3FF'}`,
                         }}
                         onMouseOver={(e) => {
                             e.currentTarget.style.transform = 'translateY(-6px)';
@@ -160,20 +165,20 @@ const TransformationStack = ({ onAction }) => {
                                 width: isMobile ? '48px' : '56px',
                                 height: isMobile ? '48px' : '56px',
                                 borderRadius: '12px',
-                                border: '2px solid var(--color-blue-icon-border)',
-                                background: 'rgba(76, 163, 255, 0.12)',
+                                border: `2px solid ${theme === 'light' ? 'rgba(21, 83, 148, 0.5)' : 'var(--color-blue-icon-border)'}`,
+                                background: theme === 'light' ? 'rgba(21, 83, 148, 0.12)' : 'rgba(76, 163, 255, 0.12)',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 margin: '0 auto 1rem',
-                                color: '#4CA3FF',
+                                color: theme === 'light' ? '#155394' : '#97CAFF',
                             }}>
                                 <Gauge size={isMobile ? 24 : 28} />
                             </div>
                             <h3 style={{
                                 fontSize: isSmallPhone ? '1.1rem' : '1.25rem',
                                 fontWeight: '800',
-                                color: '#ffffff',
+                                color: theme === 'light' ? '#1A1C1E' : '#ffffff',
                                 marginBottom: '0.75rem',
                             }}>
                                 Efficient Operation & Management
@@ -181,7 +186,7 @@ const TransformationStack = ({ onAction }) => {
                             <p style={{
                                 fontSize: isSmallPhone ? '0.82rem' : '0.9rem',
                                 lineHeight: '1.7',
-                                color: '#ffffff',
+                                color: theme === 'light' ? '#1A1C1E' : '#ffffff',
                             }}>
                                 With robust SOPs, trained drivers, and advanced telematics, our fleet management optimizes in real time, boosting efficiency for maximum benefits in sustainable transportation.
                             </p>
@@ -199,6 +204,7 @@ const TransformationStack = ({ onAction }) => {
                             flexDirection: 'column',
                             justifyContent: 'center',
                             textAlign: 'center',
+                            border: `1px solid ${theme === 'light' ? '#059669' : '#00ff88'}`,
                         }}
                         onMouseOver={(e) => {
                             e.currentTarget.style.transform = 'translateY(-6px)';
@@ -214,20 +220,20 @@ const TransformationStack = ({ onAction }) => {
                                 width: isMobile ? '48px' : '56px',
                                 height: isMobile ? '48px' : '56px',
                                 borderRadius: '12px',
-                                border: '2px solid var(--color-icon-border)',
-                                background: 'rgba(0, 255, 136, 0.12)',
+                                border: `2px solid ${theme === 'light' ? 'rgba(0, 80, 0, 0.5)' : 'var(--color-icon-border)'}`,
+                                background: theme === 'light' ? 'rgba(0, 80, 0, 0.12)' : 'rgba(0, 255, 136, 0.12)',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 margin: '0 auto 1rem',
-                                color: '#00ff88',
+                                color: theme === 'light' ? '#059669' : '#00ff88',
                             }}>
                                 <Leaf size={isMobile ? 24 : 28} />
                             </div>
                             <h3 style={{
                                 fontSize: isSmallPhone ? '1.1rem' : '1.25rem',
                                 fontWeight: '800',
-                                color: '#ffffff',
+                                color: theme === 'light' ? '#1A1C1E' : '#ffffff',
                                 marginBottom: '0.75rem',
                             }}>
                                 Tailored Green Solutions
@@ -235,7 +241,7 @@ const TransformationStack = ({ onAction }) => {
                             <p style={{
                                 fontSize: isSmallPhone ? '0.82rem' : '0.9rem',
                                 lineHeight: '1.7',
-                                color: '#ffffff',
+                                color: theme === 'light' ? '#1A1C1E' : '#ffffff',
                             }}>
                                 From charging infrastructure to sourcing renewable energy and generating carbon credits, we collaborate with businesses to tailor sustainable plans, aligning with unique goals and reducing scope 3 emissions.
                             </p>
@@ -253,6 +259,7 @@ const TransformationStack = ({ onAction }) => {
                             flexDirection: 'column',
                             justifyContent: 'center',
                             textAlign: 'center',
+                            border: `1px solid ${theme === 'light' ? '#155394' : '#4CA3FF'}`,
                         }}
                         onMouseOver={(e) => {
                             e.currentTarget.style.transform = 'translateY(-6px)';
@@ -268,20 +275,20 @@ const TransformationStack = ({ onAction }) => {
                                 width: isMobile ? '48px' : '56px',
                                 height: isMobile ? '48px' : '56px',
                                 borderRadius: '12px',
-                                border: '2px solid var(--color-blue-icon-border)',
-                                background: 'rgba(76, 163, 255, 0.12)',
+                                border: `2px solid ${theme === 'light' ? 'rgba(21, 83, 148, 0.5)' : 'var(--color-blue-icon-border)'}`,
+                                background: theme === 'light' ? 'rgba(21, 83, 148, 0.12)' : 'rgba(76, 163, 255, 0.12)',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 margin: '0 auto 1rem',
-                                color: '#4CA3FF',
+                                color: theme === 'light' ? '#155394' : '#97CAFF',
                             }}>
                                 <GraduationCap size={isMobile ? 24 : 28} />
                             </div>
                             <h3 style={{
                                 fontSize: isSmallPhone ? '1.1rem' : '1.25rem',
                                 fontWeight: '800',
-                                color: '#ffffff',
+                                color: theme === 'light' ? '#1A1C1E' : '#ffffff',
                                 marginBottom: '0.75rem',
                             }}>
                                 Driver Training for Optimal Performance
@@ -289,7 +296,7 @@ const TransformationStack = ({ onAction }) => {
                             <p style={{
                                 fontSize: isSmallPhone ? '0.82rem' : '0.9rem',
                                 lineHeight: '1.7',
-                                color: '#ffffff',
+                                color: theme === 'light' ? '#1A1C1E' : '#ffffff',
                             }}>
                                 Our EV truck driver training program equips operators with essential skills for efficient and safe electric vehicle handling, emphasizing battery management and eco-friendly driving practices.
                             </p>
@@ -307,6 +314,7 @@ const TransformationStack = ({ onAction }) => {
                             flexDirection: 'column',
                             justifyContent: 'center',
                             textAlign: 'center',
+                            border: `1px solid ${theme === 'light' ? '#059669' : '#00ff88'}`,
                         }}
                         onMouseOver={(e) => {
                             e.currentTarget.style.transform = 'translateY(-6px)';
@@ -322,13 +330,13 @@ const TransformationStack = ({ onAction }) => {
                                 width: isMobile ? '48px' : '56px',
                                 height: isMobile ? '48px' : '56px',
                                 borderRadius: '12px',
-                                border: '2px solid var(--color-icon-border)',
-                                background: 'rgba(0, 255, 136, 0.12)',
+                                border: `2px solid ${theme === 'light' ? 'rgba(0, 80, 0, 0.5)' : 'var(--color-icon-border)'}`,
+                                background: theme === 'light' ? 'rgba(0, 80, 0, 0.12)' : 'rgba(0, 255, 136, 0.12)',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 margin: '0 auto 1rem',
-                                color: '#00ff88',
+                                color: theme === 'light' ? '#059669' : '#00ff88',
                             }}>
                                 <svg width={isMobile ? 24 : 28} height={isMobile ? 24 : 28} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M12 20h9"/>
@@ -338,7 +346,7 @@ const TransformationStack = ({ onAction }) => {
                             <h3 style={{
                                 fontSize: isSmallPhone ? '1.1rem' : '1.25rem',
                                 fontWeight: '800',
-                                color: '#ffffff',
+                                color: theme === 'light' ? '#1A1C1E' : '#ffffff',
                                 marginBottom: '0.75rem',
                             }}>
                                 Telematics & Smart Intelligent Technology
@@ -346,7 +354,7 @@ const TransformationStack = ({ onAction }) => {
                             <p style={{
                                 fontSize: isSmallPhone ? '0.82rem' : '0.9rem',
                                 lineHeight: '1.7',
-                                color: '#ffffff',
+                                color: theme === 'light' ? '#1A1C1E' : '#ffffff',
                             }}>
                                 Empowering fleets with intelligent telematics, live tracking, AI-powered dashboards, and smart dashcam integration to enhance safety, optimize operations, improve asset utilization, and deliver complete end-to-end fleet visibility.
                             </p>

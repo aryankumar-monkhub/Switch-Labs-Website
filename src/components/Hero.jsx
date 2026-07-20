@@ -9,8 +9,8 @@ const Hero = ({ onAction }) => {
     const isSmallPhone = width <= 480;
 
     const slides = [
-        { src: '/assets/hero_truck.png', mobilePosition: 'center 30%' },
-        { src: '/assets/hero_truck_2.png', mobilePosition: 'center 40%' }
+        '/assets/hero_truck.png',
+        '/assets/hero_truck_2.png'
     ];
 
     useEffect(() => {
@@ -37,38 +37,53 @@ const Hero = ({ onAction }) => {
             paddingBottom: isMobile ? '2rem' : '0',
             overflow: 'hidden',
         }}>
-            {/* Fixed Background Image - All Devices */}
+            {/* Background Image - All Devices */}
             <div style={{
-                position: 'fixed',
+                position: 'absolute',
                 top: 0,
                 left: 0,
                 width: '100%',
-                height: '100vh',
+                height: '100%',
                 zIndex: 0,
                 overflow: 'hidden',
             }}>
                 <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-                    {slides.map((slide, i) => (
-                        <img
-                            key={i}
-                            src={slide.src}
-                            alt={`SwitchLabs Electric Truck ${i + 1}`}
-                            style={{
-                                width: '100%',
-                                height: '100%',
-                                objectFit: 'cover',
-                                objectPosition: 'center center',
-                                display: 'block',
-                                position: i === 0 ? 'relative' : 'absolute',
-                                top: 0,
-                                left: 0,
-                                opacity: currentSlide === i ? 1 : 0,
-                                transition: 'opacity 1s ease-in-out',
-                                transform: isMobile ? 'scale(1.05)' : 'none',
-                                filter: 'saturate(1.4) brightness(0.85) contrast(1.05)',
-                            }}
-                        />
-                    ))}
+                    <img
+                        src="/assets/hero_truck.png"
+                        alt="SwitchLabs Electric Truck 1"
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            objectPosition: 'center center',
+                            display: 'block',
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            opacity: currentSlide === 0 ? 1 : 0,
+                            transition: 'opacity 1s ease-in-out',
+                            transform: isMobile ? 'scale(1.05)' : 'none',
+                            filter: 'saturate(1.4) brightness(0.85) contrast(1.05)',
+                        }}
+                    />
+                    <img
+                        src="/assets/hero_truck_2.png"
+                        alt="SwitchLabs Electric Truck 2"
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            objectPosition: 'center center',
+                            display: 'block',
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            opacity: currentSlide === 1 ? 1 : 0,
+                            transition: 'opacity 1s ease-in-out',
+                            transform: isMobile ? 'scale(1.05)' : 'none',
+                            filter: 'saturate(1.4) brightness(0.85) contrast(1.05)',
+                        }}
+                    />
                     {/* Gradient Overlay for better text readability */}
                     <div style={{
                         position: 'absolute',
@@ -117,6 +132,7 @@ const Hero = ({ onAction }) => {
                         color: '#ffffff',
                         textShadow: '0 2px 20px rgba(0,0,0,0.5)',
                         margin: 0,
+                        marginTop: '2rem',
                         textAlign: 'left',
                         maxWidth: '900px',
                     }}
@@ -133,29 +149,6 @@ const Hero = ({ onAction }) => {
                 </motion.h1>
             </div>
 
-            {/* Let's Talk Button */}
-            <div style={{ textAlign: 'center', padding: isMobile ? '1.5rem 1.5rem 0' : '2rem 0', zIndex: 3, position: 'relative' }}>
-                <motion.button
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    onClick={onAction}
-                    style={{
-                        background: 'var(--color-accent)',
-                        color: 'var(--color-primary)',
-                        padding: isSmallPhone ? '0.8rem 1.5rem' : isMobile ? '1rem 2rem' : '1.2rem 2.5rem',
-                        borderRadius: '4px',
-                        fontWeight: '800',
-                        fontSize: isSmallPhone ? '0.85rem' : '1rem',
-                        textTransform: 'uppercase',
-                        boxShadow: '0 0 30px var(--color-accent-glow)',
-                        border: 'none',
-                        cursor: 'pointer',
-                    }}
-                >
-                    Let's Talk
-                </motion.button>
-            </div>
             <div style={{
                 position: 'relative',
                 width: '100%',
@@ -217,6 +210,30 @@ const Hero = ({ onAction }) => {
                         </div>
                     </div>
                 ))}
+            </div>
+
+            {/* Let's Talk Button */}
+            <div style={{ textAlign: 'center', padding: isMobile ? '1.5rem 1.5rem 0' : '2rem 0', zIndex: 3, position: 'relative' }}>
+                <motion.button
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    onClick={onAction}
+                    style={{
+                        background: 'var(--color-accent)',
+                        color: 'var(--color-primary)',
+                        padding: isSmallPhone ? '0.8rem 1.5rem' : isMobile ? '1rem 2rem' : '1.2rem 2.5rem',
+                        borderRadius: '4px',
+                        fontWeight: '800',
+                        fontSize: isSmallPhone ? '0.85rem' : '1rem',
+                        textTransform: 'uppercase',
+                        boxShadow: '0 0 30px var(--color-accent-glow)',
+                        border: 'none',
+                        cursor: 'pointer',
+                    }}
+                >
+                    Let's Talk
+                </motion.button>
             </div>
 
             {/* Trust Bar Placeholder Logic */}

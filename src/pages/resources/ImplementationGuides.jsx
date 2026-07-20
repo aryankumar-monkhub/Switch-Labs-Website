@@ -16,7 +16,16 @@ const ImplementationGuides = () => {
     <div style={{ minHeight: '100vh', paddingTop: isMobile ? '6rem' : '8rem' }}>
       <section className="container" style={{ padding: isMobile ? '0 1rem' : undefined }}>
         <div className="section-header">
-          <h1 style={{ fontSize: isSmallPhone ? '1.6rem' : isMobile ? '2rem' : isTablet ? '2.8rem' : '3.5rem', marginBottom: '1rem' }}>
+          <h1 style={{
+            fontSize: isSmallPhone ? '1.6rem' : isMobile ? '2rem' : isTablet ? '2.8rem' : '3.5rem',
+            fontWeight: '900',
+            background: 'linear-gradient(135deg, var(--color-accent) 0%, #00ff88 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            marginBottom: '1rem',
+            marginTop: '1.5rem',
+            lineHeight: '1.1',
+          }}>
             Implementation Guides
           </h1>
           <p style={{

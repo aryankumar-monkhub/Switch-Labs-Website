@@ -43,8 +43,8 @@ const CorridorMap = ({ darkText = false, accentColor = '#00ff88' }) => {
         <section id="our-corridors" style={{ padding: isMobile ? '2rem 0' : '4rem 0' }}>
             <div className="container" style={{ padding: isMobile ? '0 1rem' : undefined }}>
                 <div className="section-header" style={{ marginBottom: '3rem' }}>
-                    <h2 style={{ fontSize: isSmallPhone ? '1.5rem' : isMobile ? '1.8rem' : isTablet ? '2.4rem' : '3rem', marginBottom: '0.5rem', color: darkText ? (theme === 'light' ? '#1A1C1E' : '#ffffff') : '#ffffff' }}>Connecting India's <span style={{ color: accentColor }}>Industrial Hubs</span></h2>
-                    <p style={{ color: darkText ? (theme === 'light' ? '#1A1C1E' : '#ffffff') : '#ffffff', fontSize: isSmallPhone ? '0.95rem' : '1.1rem' }}>Operational routes optimized for heavy-duty loop utilization.</p>
+                    <h2 style={{ fontSize: isSmallPhone ? '1.5rem' : isMobile ? '1.8rem' : isTablet ? '2.4rem' : '3rem', marginBottom: '0.5rem', marginTop: '1.5rem', color: theme === 'light' ? '#1A1C1E' : '#ffffff' }}>Connecting India's <span style={{ color: '#4CA3FF' }}>Industrial Hubs</span></h2>
+                    <p style={{ color: theme === 'light' ? '#1A1C1E' : '#ffffff', fontSize: isSmallPhone ? '0.95rem' : '1.1rem' }}>Operational routes optimized for heavy-duty loop utilization.</p>
                 </div>
 
                 <div className="grid-corridor" style={{

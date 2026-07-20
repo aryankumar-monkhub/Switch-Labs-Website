@@ -113,11 +113,12 @@ const Gallery = () => {
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         marginBottom: '1.5rem',
+                        marginTop: '1.5rem',
                         lineHeight: '1.1',
                     }}>
                         GALLERY
                     </h1>
-                    <p style={{ color: 'var(--color-grey-light)', fontSize: isSmallPhone ? '1rem' : '1.2rem' }}>
+                    <p style={{ color: 'var(--color-white)', fontSize: isSmallPhone ? '1rem' : '1.2rem' }}>
                         Explore moments and milestones from SwitchLabs.
                     </p>
                 </div>
