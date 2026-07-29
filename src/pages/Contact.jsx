@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 
 const inputStyle = {
     width: '100%',
@@ -6,7 +7,7 @@ const inputStyle = {
     background: 'rgba(255,255,255,0.03)',
     border: '1px solid var(--color-accent-dark)',
     borderRadius: '8px',
-    color: '#fff',
+    color: 'var(--color-white)',
     fontSize: '0.95rem',
     outline: 'none',
     transition: 'border 0.2s',
@@ -39,11 +40,28 @@ const Contact = () => {
 
     const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const body = `Name: ${form.name}%0AEmail: ${form.email}%0AContact: ${form.contact}%0ACompany: ${form.company}%0ASubject: ${form.subject}%0A%0AMessage:%0A${form.message}`;
-        window.location.href = `mailto:switchlabsautomobiles@gmail.com?subject=${encodeURIComponent(form.subject || 'Contact Form Submission')}&body=${body}`;
-        setSent(true);
+        try {
+            await emailjs.send(
+                'YOUR_SERVICE_ID',
+                'YOUR_TEMPLATE_ID',
+                {
+                    from_name: form.name,
+                    from_email: form.email,
+                    contact: form.contact,
+                    company: form.company,
+                    subject: form.subject,
+                    message: form.message,
+                    to_email: 'switchlabsautomobiles@gmail.com',
+                },
+                'YOUR_PUBLIC_KEY'
+            );
+            setSent(true);
+        } catch (error) {
+            console.error('Failed to send email:', error);
+            alert('Failed to send message. Please try again.');
+        }
     };
 
     return (
@@ -121,15 +139,11 @@ const Contact = () => {
                     {/* Contact Form */}
                     <div className="glass" style={{ padding: isSmallPhone ? '1.5rem' : '2rem', borderRadius: '12px' }}>
                         <h3 style={{ fontSize: isSmallPhone ? '1.2rem' : '1.5rem', marginBottom: '1.5rem' }}>Send us a Message</h3>
-                        <p style={{ color: 'var(--color-grey-light)', marginBottom: '2rem', fontSize: isSmallPhone ? '0.9rem' : '1rem' }}>
-                            Fill out the form below and our team will get back to you within 24 hours.
-                        </p>
 
                         {sent ? (
                             <div style={{ textAlign: 'center', padding: '3rem' }}>
-                                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📧</div>
-                                <h3 style={{ color: 'var(--color-accent)', marginBottom: '0.5rem' }}>Message Ready!</h3>
-                                <p style={{ color: 'var(--color-grey-light)' }}>Your email client will open to send your message.</p>
+                                <h3 style={{ color: 'var(--color-accent)', marginBottom: '0.5rem' }}>Your Message has been sent</h3>
+                                <p style={{ color: 'var(--color-grey-light)' }}>Our Team will reach you within 24 hours</p>
                             </div>
                         ) : (
                             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>

@@ -8,7 +8,50 @@ const Hero = ({ onAction }) => {
     const isTablet = width > 768 && width <= 1024;
     const isSmallPhone = width <= 480;
 
+    const getCleanRunValue = () => {
+        const now = new Date();
+        const baseDate = new Date(2026, 6, 1);
+        const monthsDiff = (now.getFullYear() - baseDate.getFullYear()) * 12 + (now.getMonth() - baseDate.getMonth());
+        const baseValue = 10;
+        const total = baseValue + (monthsDiff * 2);
+        return `${total}Lac.+ Kms.`;
+    };
+
+    const getFuelSavedValue = () => {
+        const now = new Date();
+        const baseDate = new Date(2026, 6, 1);
+        const monthsDiff = (now.getFullYear() - baseDate.getFullYear()) * 12 + (now.getMonth() - baseDate.getMonth());
+        const baseLitres = 250000;
+        const total = baseLitres + (monthsDiff * 80000);
+        if (total >= 100000) {
+            return `${(total / 100000).toFixed(1)}Lac.+ Litres`;
+        }
+        return `${total.toLocaleString()}+ Litres`;
+    };
+
+    const getTreeSavedValue = () => {
+        const now = new Date();
+        const baseDate = new Date(2026, 6, 1);
+        const monthsDiff = (now.getFullYear() - baseDate.getFullYear()) * 12 + (now.getMonth() - baseDate.getMonth());
+        const baseTrees = 5500;
+        const total = baseTrees + (monthsDiff * 4760);
+        if (total >= 1000) {
+            return `${(total / 1000).toFixed(1)}K+`;
+        }
+        return `${total.toLocaleString()}+`;
+    };
+
+    const getCO2SavedValue = () => {
+        const now = new Date();
+        const baseDate = new Date(2026, 6, 1);
+        const monthsDiff = (now.getFullYear() - baseDate.getFullYear()) * 12 + (now.getMonth() - baseDate.getMonth());
+        const baseTons = 500;
+        const total = baseTons + (monthsDiff * 100);
+        return `${total}+ Tons`;
+    };
+
     const slides = [
+        '/assets/hero_truck_1.png',
         '/assets/hero_truck.png',
         '/assets/hero_truck_2.png'
     ];
@@ -27,13 +70,14 @@ const Hero = ({ onAction }) => {
     }, []);
 
     return (
+        <>
         <section id="hero" className="noise-overlay" style={{
             minHeight: isMobile ? 'auto' : '100vh',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'stretch',
             position: 'relative',
-            paddingTop: isMobile ? '6rem' : '8rem',
+            paddingTop: isMobile ? '6.5rem' : '3.5rem',
             paddingBottom: isMobile ? '2rem' : '0',
             overflow: 'hidden',
         }}>
@@ -49,7 +93,7 @@ const Hero = ({ onAction }) => {
             }}>
                 <div style={{ position: 'relative', width: '100%', height: '100%' }}>
                     <img
-                        src="/assets/hero_truck.png"
+                        src="/assets/hero_truck_1.png"
                         alt="SwitchLabs Electric Truck 1"
                         style={{
                             width: '100%',
@@ -67,7 +111,7 @@ const Hero = ({ onAction }) => {
                         }}
                     />
                     <img
-                        src="/assets/hero_truck_2.png"
+                        src="/assets/hero_truck.png"
                         alt="SwitchLabs Electric Truck 2"
                         style={{
                             width: '100%',
@@ -79,6 +123,24 @@ const Hero = ({ onAction }) => {
                             top: 0,
                             left: 0,
                             opacity: currentSlide === 1 ? 1 : 0,
+                            transition: 'opacity 1s ease-in-out',
+                            transform: isMobile ? 'scale(1.05)' : 'none',
+                            filter: 'saturate(1.4) brightness(0.85) contrast(1.05)',
+                        }}
+                    />
+                    <img
+                        src="/assets/hero_truck_2.png"
+                        alt="SwitchLabs Electric Truck 3"
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            objectPosition: 'center center',
+                            display: 'block',
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            opacity: currentSlide === 2 ? 1 : 0,
                             transition: 'opacity 1s ease-in-out',
                             transform: isMobile ? 'scale(1.05)' : 'none',
                             filter: 'saturate(1.4) brightness(0.85) contrast(1.05)',
@@ -132,7 +194,7 @@ const Hero = ({ onAction }) => {
                         color: '#ffffff',
                         textShadow: '0 2px 20px rgba(0,0,0,0.5)',
                         margin: 0,
-                        marginTop: '2rem',
+                        marginTop: '0',
                         textAlign: 'left',
                         maxWidth: '900px',
                     }}
@@ -147,69 +209,6 @@ const Hero = ({ onAction }) => {
                         Electric Freight
                     </span>
                 </motion.h1>
-            </div>
-
-            <div style={{
-                position: 'relative',
-                width: '100%',
-                display: 'flex',
-                justifyContent: isMobile ? 'flex-start' : 'center',
-                flexWrap: 'wrap',
-                gap: isSmallPhone ? '0.6rem' : '1rem',
-                padding: isMobile ? '6rem 1.5rem 0' : '8rem 2rem',
-                zIndex: 3,
-            }}>
-                {[
-                    { label: 'Clean Run', value: '10Lac.+ Kms.' },
-                    { label: 'Fuel Saved', value: '2.5Lac.+ Litres' },
-                    { label: 'CO₂ Saved', value: '500+ Tons' },
-                    { label: 'Tree Saved', value: '5.5K+' },
-                ].map((stat, i) => (
-                    <div key={i} className="" style={{
-                        padding: isSmallPhone ? '0.8rem 1rem' : isMobile ? '1rem 1.2rem' : '1.5rem 2rem',
-                        textAlign: 'center',
-                        minWidth: isSmallPhone ? '100px' : isMobile ? '120px' : '160px',
-                        flex: isMobile ? '1 1 calc(50% - 0.5rem)' : 'none',
-                        background: 'rgba(255, 255, 255, 0.08)',
-                        backdropFilter: 'blur(8px)',
-                        WebkitBackdropFilter: 'blur(8px)',
-                        transform: isMobile ? 'none' : 'perspective(800px) rotateX(3deg)',
-                        border: '1px solid rgba(255, 255, 255, 0.15)',
-                        borderRadius: '12px',
-                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-                        transition: 'all 0.3s ease',
-                    }}
-                    onMouseOver={(e) => {
-                        e.currentTarget.style.transform = isMobile ? 'none' : 'perspective(800px) rotateX(0deg) translateY(-4px)';
-                        e.currentTarget.style.boxShadow = '0 12px 40px rgba(0, 255, 136, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)';
-                    }}
-                    onMouseOut={(e) => {
-                        e.currentTarget.style.transform = isMobile ? 'none' : 'perspective(800px) rotateX(3deg)';
-                        e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)';
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-                    }}
-                    >
-                        <div style={{
-                            fontSize: '0.75rem',
-                            color: '#ffffff',
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.5px',
-                            fontWeight: '600',
-                        }}>
-                            {stat.label}
-                        </div>
-                        <div style={{
-                            fontSize: isSmallPhone ? '1rem' : isMobile ? '1.2rem' : '1.5rem',
-                            fontWeight: '800',
-                            color: '#00ff88',
-                            lineHeight: 1.2,
-                            marginTop: '0.25rem',
-                        }}>
-                            {stat.value}
-                        </div>
-                    </div>
-                ))}
             </div>
 
             {/* Let's Talk Button */}
@@ -235,68 +234,134 @@ const Hero = ({ onAction }) => {
                     Let's Talk
                 </motion.button>
             </div>
+        </section>
 
-            {/* Trust Bar Placeholder Logic */}
-            <div style={{
-                position: 'relative',
+        {/* Stats Cards - Below the hero image */}
+        <div style={{
+            position: 'relative',
+            width: '100%',
+            display: 'flex',
+            justifyContent: isMobile ? 'flex-start' : 'center',
+            flexWrap: 'wrap',
+            gap: isSmallPhone ? '0.6rem' : '1rem',
+            padding: isMobile ? '2rem 1.5rem' : '3rem 2rem',
+            background: 'rgba(15, 23, 42, 0.85)',
+            zIndex: 3,
+        }}>
+            {[
+                { label: 'Clean Run', value: getCleanRunValue() },
+                { label: 'Fuel Saved', value: getFuelSavedValue() },
+                { label: 'CO₂ Saved', value: getCO2SavedValue() },
+                { label: 'Tree Saved', value: getTreeSavedValue() },
+            ].map((stat, i) => (
+                <div key={i} className="" style={{
+                    padding: isSmallPhone ? '0.8rem 1rem' : isMobile ? '1rem 1.2rem' : '1.5rem 2rem',
+                    textAlign: 'center',
+                    minWidth: isSmallPhone ? '100px' : isMobile ? '120px' : '160px',
+                    flex: isMobile ? '1 1 calc(50% - 0.5rem)' : 'none',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    backdropFilter: 'blur(8px)',
+                    WebkitBackdropFilter: 'blur(8px)',
+                    transform: isMobile ? 'none' : 'perspective(800px) rotateX(3deg)',
+                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                    borderRadius: '12px',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+                    transition: 'all 0.3s ease',
+                }}
+                onMouseOver={(e) => {
+                    e.currentTarget.style.transform = isMobile ? 'none' : 'perspective(800px) rotateX(0deg) translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 12px 40px rgba(0, 255, 136, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)';
+                }}
+                onMouseOut={(e) => {
+                    e.currentTarget.style.transform = isMobile ? 'none' : 'perspective(800px) rotateX(3deg)';
+                    e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)';
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                }}
+                >
+                    <div style={{
+                        fontSize: '0.75rem',
+                        color: '#ffffff',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.5px',
+                        fontWeight: '600',
+                    }}>
+                        {stat.label}
+                    </div>
+                    <div style={{
+                        fontSize: isSmallPhone ? '1rem' : isMobile ? '1.2rem' : '1.5rem',
+                        fontWeight: '800',
+                        color: '#00ff88',
+                        lineHeight: 1.2,
+                        marginTop: '0.25rem',
+                    }}>
+                        {stat.value}
+                    </div>
+                </div>
+            ))}
+        </div>
+
+        {/* Trust Bar - Partner Logos */}
+        <div style={{
+            position: 'relative',
+            width: '100%',
+            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+            padding: '1.5rem 0',
+            background: 'rgba(15, 23, 42, 0.5)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 3,
+        }}>
+            <div className="ticker" style={{
                 width: '100%',
-                borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-                padding: '1.5rem 0',
-                background: 'rgba(15, 23, 42, 0.5)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                zIndex: 3,
             }}>
-                <div className="ticker" style={{
-                    width: '100%',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}>
-                        <div style={{
-                            width: '99.7%',
-                            marginLeft: '0.3%',
-                            borderRadius: '12px',
-                            overflow: 'hidden',
-                            padding: '0.8rem 0',
-                        }}>
-                        <div style={{
-                            display: 'flex',
-                            gap: '6rem',
-                            width: 'max-content',
-                            animation: 'marquee 30s linear infinite',
-                        }}>
-                            {[
-                                { name: 'JK Lakshmi Cements', src: '/assets/logos/jk_lakshmi.png' },
-                                { name: 'Dalmia Cements', src: '/assets/logos/dalmia.svg' },
-                                { name: 'UPL', src: '/assets/logos/upl.svg' },
-                                { name: 'Tata Steel', src: '/assets/logos/tata_steel.svg' },
-                                { name: 'JK Lakshmi Cements', src: '/assets/logos/jk_lakshmi.png' },
-                                { name: 'Dalmia Cements', src: '/assets/logos/dalmia.svg' },
-                                { name: 'UPL', src: '/assets/logos/upl.svg' },
-                                { name: 'Tata Steel', src: '/assets/logos/tata_steel.svg' },
-                            ].map((logo, i) => (
-                                <img
-                                    key={i}
-                                    src={logo.src}
-                                    alt={`${logo.name} Logo`}
-                                    className="partner-logo"
-                                    style={{
-                                        width: isSmallPhone ? '80px' : isMobile ? '100px' : isTablet ? '150px' : (i === 0 || i === 3 || i === 4 || i === 7 ? '220px' : i === 2 || i === 6 ? '162px' : '180px'),
-                                        height: 'auto',
-                                        objectFit: 'contain',
-                                        flexShrink: 0,
-                                    }}
-                                />
-                            ))}
-                        </div>
+                    <div style={{
+                        width: '99.7%',
+                        marginLeft: '0.3%',
+                        borderRadius: '12px',
+                        overflow: 'hidden',
+                        padding: '0.8rem 0',
+                    }}>
+                    <div style={{
+                        display: 'flex',
+                        gap: '6rem',
+                        width: 'max-content',
+                        animation: 'marquee 30s linear infinite',
+                    }}>
+                        {[
+                            { name: 'JK Lakshmi Cements', src: '/assets/logos/jk_lakshmi.png' },
+                            { name: 'Dalmia Cements', src: '/assets/logos/dalmia.svg' },
+                            { name: 'UPL', src: '/assets/logos/upl.svg' },
+                            { name: 'Tata Steel', src: '/assets/logos/tata_steel.svg' },
+                            { name: 'JK Lakshmi Cements', src: '/assets/logos/jk_lakshmi.png' },
+                            { name: 'Dalmia Cements', src: '/assets/logos/dalmia.svg' },
+                            { name: 'UPL', src: '/assets/logos/upl.svg' },
+                            { name: 'Tata Steel', src: '/assets/logos/tata_steel.svg' },
+                        ].map((logo, i) => (
+                            <img
+                                key={i}
+                                src={logo.src}
+                                alt={`${logo.name} Logo`}
+                                className="partner-logo"
+                                style={{
+                                    width: isSmallPhone ? '80px' : isMobile ? '100px' : isTablet ? '150px' : (i === 0 || i === 3 || i === 4 || i === 7 ? '220px' : i === 2 || i === 6 ? '162px' : '180px'),
+                                    height: 'auto',
+                                    objectFit: 'contain',
+                                    flexShrink: 0,
+                                }}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+        </>
     );
 };
 

@@ -236,7 +236,7 @@ const CorridorMap = ({ darkText = false, accentColor = '#00ff88' }) => {
                             </h3>
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
                                 <div className="stat-card glass" style={{ padding: '1.5rem', borderRadius: '12px' }}>
-                                    <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--color-accent)', lineHeight: 1 }}>5</div>
+                                    <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--color-accent)', lineHeight: 1 }}>6</div>
                                     <div style={{ marginTop: '0.5rem', color: 'var(--color-grey)', fontSize: '0.85rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                                         Routes Live Today
                                     </div>

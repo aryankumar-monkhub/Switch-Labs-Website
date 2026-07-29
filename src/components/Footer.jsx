@@ -305,7 +305,6 @@ const Footer = ({ onAction }) => {
                                 <Link to="/resources/guides" style={linkStyle} onMouseOver={linkHoverGreen} onMouseOut={linkOutGreen}>Guides</Link>
                                 <Link to="/resources/faq" style={linkStyle} onMouseOver={linkHoverGreen} onMouseOut={linkOutGreen}>FAQ</Link>
                                 <Link to="/resources/gallery" style={linkStyle} onMouseOver={linkHoverGreen} onMouseOut={linkOutGreen}>Gallery</Link>
-                                <Link to="/site-map" style={linkStyle} onMouseOver={linkHoverGreen} onMouseOut={linkOutGreen}>Site Map</Link>
                                 <a href="#contact" style={linkStyle} onMouseOver={linkHoverGreen} onMouseOut={linkOutGreen}>Contact</a>
                             </div>
                             <h4 style={{ ...sectionHeaderStyle, color: 'var(--color-blue-icon)', marginTop: '2rem' }}>Legal</h4>

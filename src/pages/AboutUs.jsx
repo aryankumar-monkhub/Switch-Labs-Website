@@ -3,7 +3,7 @@ import { Target, Eye, Zap, TrendingUp, Users, Award, BadgeDollarSign, Plug, Leaf
 import { useTheme } from '../context/ThemeContext';
 const statCards = [
   { number: '50K+', label: 'Tons CO₂ Reduced', color: 'var(--color-blue-icon)' },
-  { number: '5+', label: 'Active Routes', color: 'var(--color-vision-icon)' },
+  { number: '6+', label: 'Active Routes', color: 'var(--color-vision-icon)' },
   { number: '99.5%', label: 'Fleet Uptime', color: 'var(--color-blue-icon)' },
 ];
 
