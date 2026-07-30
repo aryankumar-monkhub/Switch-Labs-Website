@@ -65,7 +65,7 @@ const Contact = () => {
     };
 
     return (
-        <div style={{ minHeight: '100vh', paddingTop: isMobile ? '6rem' : '8rem' }}>
+        <div style={{ minHeight: '100vh', paddingTop: isMobile ? '7rem' : '9rem' }}>
             <section className="container">
                 <div className="section-header">
                     <h1 style={{ fontSize: isSmallPhone ? '2rem' : isMobile ? '2.5rem' : isTablet ? '3rem' : '3.5rem', marginBottom: '1rem' }}>
