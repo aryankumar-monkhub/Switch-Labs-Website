@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Target, Eye, Zap, TrendingUp, Users, Award, BadgeDollarSign, Plug, Leaf, Gauge, GraduationCap } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 const statCards = [
-  { number: '50K+', label: 'Tons CO₂ Reduced', color: 'var(--color-blue-icon)' },
+  { number: '500+', label: 'Tons CO₂ Reduced', color: 'var(--color-blue-icon)' },
   { number: '6+', label: 'Active Routes', color: 'var(--color-vision-icon)' },
   { number: '99.5%', label: 'Fleet Uptime', color: 'var(--color-blue-icon)' },
 ];

@@ -59,7 +59,7 @@ const Infrastructure = () => {
                 {
                     name: 'Jhagadia Hub',
                     chargers: '1x 240 kW',
-                    features: ['Dual Gun CCS2 Charger', '1.5 Hr Charging Time', '24/7 Operation', 'In-plant installation'],
+                    features: ['Dual Gun CCS2 Charger', '1 Hr Charging Time', '24/7 Operation', 'In-plant installation'],
                     uptime: '99.6%'
                 },
                 {
@@ -82,7 +82,7 @@ const Infrastructure = () => {
                 {
                     name: 'Ahirwara Charging Point',
                     chargers: '1x 240 kW',
-                    features: ['Dual Gun CCS2 Charger', '1.5 Hr Charging Time', '24/7 Operation', 'In-plant installation'],
+                    features: ['Dual Gun CCS2 Charger', '1 Hr Charging Time', '24/7 Operation', 'In-plant installation'],
                     uptime: '99.4%'
                 }
             ]

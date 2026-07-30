@@ -8,7 +8,7 @@ import { useTheme } from '../context/ThemeContext';
 const geoUrl = "/india-states.json";
 
 const routes = [
-    { name: 'Sirohi ↔ Kalol', start: 'Sirohi', end: 'Kalol', distance: '220 km', trucks: '25', routeDescription: 'Sirohi to Kalol', coordinates: [[72.858894, 24.882618], [72.6186, 23.0338]] },
+    { name: 'Sirohi ↔ Kalol', start: 'Sirohi', end: 'Kalol', distance: '240 km', trucks: '25', routeDescription: 'Sirohi to Kalol', coordinates: [[72.858894, 24.882618], [72.6186, 23.0338]] },
     { name: 'Ankaleshwar ↔ Jhagadia', start: 'Ankaleshwar', end: 'Jhagadia', distance: '20 km', trucks: '4', routeDescription: 'Ankaleshwar to Jhagadia', coordinates: [[72.99001, 21.63236], [73.151009, 21.719477]] },
     { name: 'Kalamboli ↔ Khopoli', start: 'Kalamboli', end: 'Khopoli', distance: '40 km', trucks: '8', routeDescription: 'Kalamboli to Khopoli', coordinates: [[73.1012, 19.0328], [73.34589, 18.78562]] },
     { name: 'Dalmiapuram ↔ Karaikal Port', start: 'Dalmiapuram', end: 'Karaikal Port', distance: '140 km', trucks: '24', routeDescription: 'Dalmiapuram to Karaikal Port', coordinates: [[78.95250, 10.97667], [79.8573, 10.8327]] },
