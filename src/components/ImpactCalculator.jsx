@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 
 const ImpactCalculator = ({ onAction }) => {
@@ -8,7 +8,6 @@ const ImpactCalculator = ({ onAction }) => {
     const [width, setWidth] = useState(window.innerWidth);
     const isSmallPhone = width <= 480;
     const isMobile = width <= 768;
-    const isTablet = width > 768 && width <= 1024;
 
     useEffect(() => {
         const handleResize = () => setWidth(window.innerWidth);
@@ -16,18 +15,7 @@ const ImpactCalculator = ({ onAction }) => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const [metrics, setMetrics] = useState({
-        carbonSaved: 0,
-        treesEquiv: 0,
-        dieselBase: 0,
-        evImpact: 0
-    });
-
-    const springCarbon = useSpring(0, { stiffness: 80, damping: 20 });
-
-    const displayCarbon = useTransform(springCarbon, (val) => Math.round(val).toLocaleString());
-
-    useEffect(() => {
+    const metrics = useMemo(() => {
         // --- CONSTANTS (India Focused) ---
         const DIESEL_CO2_PER_KM = 1.5; // kg CO2/km
         const GRID_CO2_PER_KWH = 0.82; // India National Average (kg CO2/kWh)
@@ -45,15 +33,21 @@ const ImpactCalculator = ({ onAction }) => {
         const carbonSaved = dieselEmissions - evEmissions;
         const trees = carbonSaved * 45; // Approx 45 trees per tonne of CO2 per year
 
-        setMetrics({
+        return {
             carbonSaved,
             treesEquiv: trees,
             dieselBase: dieselEmissions,
             evImpact: evEmissions
-        });
-
-        springCarbon.set(carbonSaved);
+        };
     }, [trucks, km, energySource]);
+
+    const springCarbon = useSpring(0, { stiffness: 80, damping: 20 });
+
+    const displayCarbon = useTransform(springCarbon, (val) => Math.round(val).toLocaleString());
+
+    useEffect(() => {
+        springCarbon.set(metrics.carbonSaved);
+    }, [metrics.carbonSaved, springCarbon]);
 
     return (
         <section id="impact" className="noise-overlay">

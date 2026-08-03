@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Target, Eye, Zap, TrendingUp, Users, Award, BadgeDollarSign, Plug, Leaf, Gauge, GraduationCap } from 'lucide-react';
+import React, { useState } from 'react';
+import { Target, Eye, Zap, TrendingUp, Users, Award } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 const statCards = [
   { number: '500+', label: 'Tons CO₂ Reduced', color: 'var(--color-blue-icon)' },

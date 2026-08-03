@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 
-const Footer = ({ onAction }) => {
+const Footer = () => {
     const [formData, setFormData] = useState({
         name: '',
         company: '',

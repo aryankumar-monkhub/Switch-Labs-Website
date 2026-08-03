@@ -26,7 +26,6 @@ const labelStyle = {
 
 const Contact = () => {
     const [form, setForm] = useState({ name: '', email: '', contact: '', company: '', subject: '', message: '' });
-    const [sent, setSent] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [width, setWidth] = useState(window.innerWidth);
     const isSmallPhone = width <= 480;
@@ -52,7 +51,6 @@ const Contact = () => {
             message: form.message,
         }, { publicKey: 'StxpEdmeC33SuAAk4' })
         .then(() => {
-            setSent(true);
             setShowPopup(true);
         })
         .catch((err) => console.error('EmailJS error:', err));

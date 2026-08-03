@@ -28,7 +28,6 @@ const labelStyle = {
 
 const LeadModal = ({ isOpen, onClose }) => {
     const [form, setForm] = useState({ name: '', email: '', contact: '', company: '', subject: '', message: '' });
-    const [sent, setSent] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
 
     const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -44,7 +43,6 @@ const LeadModal = ({ isOpen, onClose }) => {
             message: form.message,
         }, { publicKey: 'StxpEdmeC33SuAAk4' })
         .then(() => {
-            setSent(true);
             setShowPopup(true);
         })
         .catch((err) => console.error('EmailJS error:', err));
@@ -204,7 +202,6 @@ const LeadModal = ({ isOpen, onClose }) => {
                         <button
                             onClick={() => {
                                 setShowPopup(false);
-                                setSent(false);
                                 setForm({ name: '', email: '', contact: '', company: '', subject: '', message: '' });
                                 onClose();
                             }}

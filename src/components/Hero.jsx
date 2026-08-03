@@ -68,7 +68,7 @@ const Hero = ({ onAction }) => {
             setCurrentSlide((prev) => (prev + 1) % slides.length);
         }, 4000);
         return () => clearInterval(interval);
-    }, []);
+    }, [slides.length]);
 
     return (
         <>

@@ -15,7 +15,7 @@ const routes = [
     { name: 'Ahiwara ↔ Adani Raipur', start: 'Ahiwara', end: 'Adani Raipur', distance: '80 km', trucks: '4', routeDescription: 'Ahiwara to Adani Raipur', coordinates: [[81.412346, 21.356577], [81.629997, 21.250000]] },
 ];
 
-const CorridorMap = ({ darkText = false, accentColor = '#00ff88' }) => {
+const CorridorMap = () => {
     const { theme } = useTheme();
     const [statesData, setStatesData] = useState(null);
     const [width, setWidth] = useState(window.innerWidth);

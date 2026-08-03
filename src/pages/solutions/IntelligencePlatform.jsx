@@ -6,7 +6,6 @@ const IntelligencePlatform = () => {
     const [width, setWidth] = useState(window.innerWidth);
     const isSmallPhone = width <= 480;
     const isMobile = width <= 768;
-    const isTablet = width > 768 && width <= 1024;
 
     useEffect(() => {
         const handleResize = () => setWidth(window.innerWidth);
