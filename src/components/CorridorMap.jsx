@@ -22,6 +22,7 @@ const CorridorMap = ({ darkText = false, accentColor = '#00ff88' }) => {
     const isSmallPhone = width <= 480;
     const isMobile = width <= 768;
     const isTablet = width > 768 && width <= 1024;
+    const isLargeTablet = width > 1024 && width <= 1368;
 
     useEffect(() => {
         fetch(geoUrl)
@@ -43,14 +44,14 @@ const CorridorMap = ({ darkText = false, accentColor = '#00ff88' }) => {
         <section id="our-corridors" style={{ padding: isMobile ? '2rem 0' : '4rem 0' }}>
             <div className="container" style={{ padding: isMobile ? '0 1rem' : undefined }}>
                 <div className="section-header" style={{ marginBottom: '3rem' }}>
-                    <h2 style={{ fontSize: isSmallPhone ? '1.5rem' : isMobile ? '1.8rem' : isTablet ? '2.4rem' : '3rem', marginBottom: '0.5rem', marginTop: '1.5rem', color: theme === 'light' ? '#1A1C1E' : '#ffffff' }}>Connecting India's <span style={{ color: '#4CA3FF' }}>Industrial Hubs</span></h2>
+                    <h2 style={{ fontSize: isSmallPhone ? '1.5rem' : isMobile ? '1.8rem' : isTablet ? '2.4rem' : isLargeTablet ? '2.6rem' : '3rem', marginBottom: '0.5rem', marginTop: '1.5rem', color: theme === 'light' ? '#1A1C1E' : '#ffffff' }}>Connecting India's <span style={{ color: '#4CA3FF' }}>Industrial Hubs</span></h2>
                     <p style={{ color: theme === 'light' ? '#1A1C1E' : '#ffffff', fontSize: isSmallPhone ? '0.95rem' : '1.1rem' }}>Operational routes optimized for heavy-duty loop utilization.</p>
                 </div>
 
                 <div className="grid-corridor" style={{
                     display: 'grid',
-                    gridTemplateColumns: isMobile ? '1fr' : '1.8fr 1fr',
-                    gap: isMobile ? '2rem' : '3rem',
+                    gridTemplateColumns: isMobile ? '1fr' : isLargeTablet ? '1.6fr 1fr' : '1.8fr 1fr',
+                    gap: isMobile ? '2rem' : isLargeTablet ? '2.5rem' : '3rem',
                     alignItems: 'center'
                 }}>
                     {/* Interactive Map Container */}
@@ -65,7 +66,7 @@ const CorridorMap = ({ darkText = false, accentColor = '#00ff88' }) => {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        minHeight: isMobile ? '260px' : undefined,
+                        minHeight: isMobile ? '260px' : isLargeTablet ? '340px' : undefined,
                     }}>
                         {/* Map Badge */}
                         <div style={{
@@ -90,7 +91,7 @@ const CorridorMap = ({ darkText = false, accentColor = '#00ff88' }) => {
                             position: 'absolute',
                             top: '50%',
                             left: '50%',
-                            transform: 'translate(-50%, -50%) scale(0.38)',
+                            transform: `translate(-50%, -50%) scale(${isSmallPhone ? 0.3 : 0.38})`,
                             width: '700px',
                             height: '500px',
                         } : {

@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Zap, Battery, MapPin, Gauge, CheckCircle, ArrowRight, Clock } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 const Infrastructure = () => {
     const { theme } = useTheme();
+    const [width, setWidth] = useState(window.innerWidth);
+    const isSmallPhone = width <= 480;
+    const isMobile = width <= 768;
+    const isTablet = width > 768 && width <= 1024;
+
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     const chargingTypes = [
         {
             icon: <Zap size={40} />,
@@ -119,13 +129,13 @@ const Infrastructure = () => {
     return (
         <div style={{
             minHeight: '100vh',
-            paddingTop: '120px',
+            paddingTop: isMobile ? '6rem' : '120px',
             paddingBottom: '80px',
             background: 'var(--color-primary)',
         }}>
-            <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: isSmallPhone ? '0 1rem' : '0 2rem' }}>
                 {/* Hero Section */}
-                <div style={{ textAlign: 'center', marginBottom: '5rem', paddingTop: '3rem' }}>
+                <div style={{ textAlign: 'center', marginBottom: isMobile ? '3rem' : '5rem', paddingTop: '3rem' }}>
                     <h1 style={{
                         fontSize: 'clamp(2.5rem, 5vw, 4rem)',
                         fontWeight: '900',
@@ -138,7 +148,7 @@ const Infrastructure = () => {
                         Charging Infrastructure Built for Industrial Scale
                     </h1>
                     <p style={{
-                        fontSize: '1.35rem',
+                        fontSize: isSmallPhone ? '1rem' : '1.35rem',
                         color: 'var(--color-text-secondary)',
                         maxWidth: '800px',
                         margin: '0 auto',
@@ -151,7 +161,7 @@ const Infrastructure = () => {
                 {/* Charging Types Grid */}
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                    gridTemplateColumns: isSmallPhone ? '1fr' : 'repeat(auto-fit, minmax(280px, 1fr))',
                     gap: '2rem',
                     marginBottom: '6rem',
                 }}>
@@ -160,7 +170,7 @@ const Infrastructure = () => {
                             key={index}
                             className="glass industrial-card"
                             style={{
-                                padding: '2.5rem',
+                                padding: isSmallPhone ? '1.5rem' : isMobile ? '2rem' : '2.5rem',
                                 transition: 'var(--transition-smooth)',
                                 background: theme === 'light' 
                                     ? 'linear-gradient(135deg, rgba(76, 163, 255, 0.15) 0%, rgba(76, 163, 255, 0.08) 100%)'
@@ -218,7 +228,7 @@ const Infrastructure = () => {
                 <div style={{ marginBottom: '6rem' }}>
                     <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
                         <h2 style={{
-                            fontSize: '2.5rem',
+                            fontSize: isSmallPhone ? '1.5rem' : isMobile ? '2rem' : '2.5rem',
                             fontWeight: '900',
                             color: 'var(--color-white)',
                             marginBottom: '1rem',
@@ -238,7 +248,7 @@ const Infrastructure = () => {
                     {locations.map((location, index) => (
                         <div key={index} style={{ marginBottom: '3rem' }}>
                             <h3 style={{
-                                fontSize: '1.75rem',
+                                fontSize: isSmallPhone ? '1.3rem' : '1.75rem',
                                 fontWeight: '800',
                                 color: theme === 'light' ? '#155394' : 'var(--color-accent)',
                                 marginBottom: '1.5rem',
@@ -251,7 +261,7 @@ const Infrastructure = () => {
                             </h3>
                             <div style={{
                                 display: 'grid',
-                                gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+                                gridTemplateColumns: isSmallPhone ? '1fr' : 'repeat(auto-fill, minmax(320px, 1fr))',
                                 gap: '1.5rem',
                             }}>
                                 {location.stations.map((station, idx) => (
@@ -333,7 +343,7 @@ const Infrastructure = () => {
                 <div style={{ marginBottom: '6rem' }}>
                     <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
                         <h2 style={{
-                            fontSize: '2.5rem',
+                            fontSize: isSmallPhone ? '1.5rem' : isMobile ? '2rem' : '2.5rem',
                             fontWeight: '900',
                             color: 'var(--color-white)',
                             marginBottom: '1rem',

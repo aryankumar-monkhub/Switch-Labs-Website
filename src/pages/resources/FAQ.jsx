@@ -1,7 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const FAQ = () => {
     const [openIndex, setOpenIndex] = useState(null);
+    const [width, setWidth] = useState(window.innerWidth);
+    const isSmallPhone = width <= 480;
+    const isMobile = width <= 768;
+
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const toggle = (index) => {
         setOpenIndex(openIndex === index ? null : index);
@@ -285,7 +294,7 @@ const FAQ = () => {
     ];
 
     return (
-        <div style={{ minHeight: '100vh', paddingTop: '8rem' }}>
+        <div style={{ minHeight: '100vh', paddingTop: isMobile ? '6rem' : '8rem' }}>
             <section className="container">
                 <div className="section-header">
                     <h1 style={{
@@ -317,7 +326,7 @@ const FAQ = () => {
                                 onClick={() => toggle(i)}
                                 style={{
                                     width: '100%',
-                                    padding: '1.5rem 2rem',
+                                    padding: isSmallPhone ? '1rem' : '1.5rem 2rem',
                                     background: 'none',
                                     border: 'none',
                                     cursor: 'pointer',
@@ -356,7 +365,7 @@ const FAQ = () => {
                                 transition: 'max-height 0.3s ease',
                             }}>
                                 <div style={{
-                                    padding: '0 2rem 1.5rem 2rem',
+                                    padding: isSmallPhone ? '0 1rem 1rem 1rem' : '0 2rem 1.5rem 2rem',
                                     color: 'var(--color-white)',
                                     fontSize: '1rem',
                                     lineHeight: '1.8',

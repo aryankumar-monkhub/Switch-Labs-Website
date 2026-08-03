@@ -96,7 +96,7 @@ const PlaceholderPage = ({ title }) => (
           Changes will be done soon.
         </p>
       </div>
-      <div className="glass" style={{ padding: '4rem', textAlign: 'center', marginTop: '3rem', borderRadius: '12px' }}>
+      <div className="glass" style={{ padding: 'clamp(1.5rem, 5vw, 4rem)', textAlign: 'center', marginTop: '3rem', borderRadius: '12px' }}>
         <p style={{ fontSize: '1.1rem', color: 'var(--color-grey-light)', marginBottom: '2rem' }}>
           We're working hard to bring you detailed content for this section.
         </p>
@@ -113,10 +113,10 @@ const NotFound = () => (
   <div style={{ minHeight: '100vh', paddingTop: '8rem' }}>
     <section className="container">
       <div className="section-header">
-        <h1 style={{ fontSize: '4rem', marginBottom: '1rem', color: 'var(--color-accent)' }}>
+        <h1 style={{ fontSize: 'clamp(3rem, 10vw, 4rem)', marginBottom: '1rem', color: 'var(--color-accent)' }}>
           404
         </h1>
-        <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
+        <h2 style={{ fontSize: 'clamp(1.3rem, 4vw, 2rem)', marginBottom: '1rem' }}>
           Page Not Found
         </h2>
         <p style={{ color: 'var(--color-grey-light)', fontSize: '1.2rem' }}>

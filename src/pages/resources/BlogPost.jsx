@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { blogPosts } from '../../data/blogPosts';
@@ -8,6 +8,14 @@ const BlogPost = () => {
     const { theme } = useTheme();
     const { slug } = useParams();
     const post = blogPosts.find(p => p.slug === slug);
+    const [width, setWidth] = useState(window.innerWidth);
+    const isMobile = width <= 768;
+
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     if (!post) {
         return (
@@ -19,7 +27,7 @@ const BlogPost = () => {
     }
 
     return (
-        <div style={{ minHeight: '100vh', paddingTop: '8rem', paddingBottom: '4rem' }}>
+        <div style={{ minHeight: '100vh', paddingTop: isMobile ? '6rem' : '8rem', paddingBottom: '4rem' }}>
             <Helmet>
                 <title>{post.title} | SwitchLabs Blog</title>
                 <meta name="description" content={post.excerpt} />
@@ -45,7 +53,7 @@ const BlogPost = () => {
                         <span style={{ color: theme === 'light' ? '#000000' : '#ffffff' }}>{post.date}</span>
                     </div>
 
-                    <h1 style={{ fontSize: '3rem', marginBottom: '1.5rem', lineHeight: '1.2', color: theme === 'light' ? '#155394' : '#4CA3FF', paddingBottom: '1rem', borderBottom: `2px solid ${theme === 'light' ? '#059669' : '#00ff88'}` }}>{post.title}</h1>
+                    <h1 style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)', marginBottom: '1.5rem', lineHeight: '1.2', color: theme === 'light' ? '#155394' : '#4CA3FF', paddingBottom: '1rem', borderBottom: `2px solid ${theme === 'light' ? '#059669' : '#00ff88'}` }}>{post.title}</h1>
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: theme === 'light' ? '#000000' : 'var(--color-grey-light)' }}>
                         <span>By <span style={{ color: theme === 'light' ? '#155394' : '#4CA3FF' }}>{post.author}</span></span>

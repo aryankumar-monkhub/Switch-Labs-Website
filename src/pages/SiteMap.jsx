@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const SiteMap = () => {
+    const [width, setWidth] = useState(window.innerWidth);
+    const isMobile = width <= 768;
+
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
-        <div className="container" style={{ paddingTop: '8rem', paddingBottom: '4rem' }}>
-            <h1 style={{ fontSize: '3rem', marginBottom: '3rem' }}>Site Map</h1>
+        <div className="container" style={{ paddingTop: isMobile ? '6rem' : '8rem', paddingBottom: '4rem' }}>
+            <h1 style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)', marginBottom: '3rem' }}>Site Map</h1>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '3rem' }}>
                 <div>

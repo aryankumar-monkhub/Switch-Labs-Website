@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Brain, Route, Battery, BarChart3, CheckCircle, TrendingUp } from 'lucide-react';
 
 const IntelligencePlatform = () => {
+    const [width, setWidth] = useState(window.innerWidth);
+    const isSmallPhone = width <= 480;
+    const isMobile = width <= 768;
+    const isTablet = width > 768 && width <= 1024;
+
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     const platformFeatures = [
         {
             icon: <Route size={40} />,
@@ -86,13 +96,13 @@ const IntelligencePlatform = () => {
     return (
         <div style={{
             minHeight: '100vh',
-            paddingTop: '120px',
+            paddingTop: isMobile ? '6rem' : '120px',
             paddingBottom: '80px',
             background: 'var(--color-primary)',
         }}>
-            <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: isSmallPhone ? '0 1rem' : '0 2rem' }}>
                 {/* Hero Section */}
-                <div style={{ textAlign: 'center', marginBottom: '5rem', paddingTop: '2rem' }}>
+                <div style={{ textAlign: 'center', marginBottom: isMobile ? '3rem' : '5rem', paddingTop: '2rem' }}>
                     <h1 style={{
                         fontSize: 'clamp(2.5rem, 5vw, 4rem)',
                         fontWeight: '900',
@@ -105,7 +115,7 @@ const IntelligencePlatform = () => {
                         AI-Powered Intelligence Platform
                     </h1>
                     <p style={{
-                        fontSize: '1.35rem',
+                        fontSize: isSmallPhone ? '1rem' : '1.35rem',
                         color: 'var(--color-text-secondary)',
                         maxWidth: '800px',
                         margin: '0 auto',
@@ -118,7 +128,7 @@ const IntelligencePlatform = () => {
                 {/* Platform Features Grid */}
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                    gridTemplateColumns: isSmallPhone ? '1fr' : 'repeat(auto-fit, minmax(280px, 1fr))',
                     gap: '2rem',
                     marginBottom: '6rem',
                 }}>
@@ -127,7 +137,7 @@ const IntelligencePlatform = () => {
                             key={index}
                             className="glass"
                             style={{
-                                padding: '2.5rem',
+                                padding: isSmallPhone ? '1.5rem' : isMobile ? '2rem' : '2.5rem',
                                 transition: 'var(--transition-smooth)',
                                 background: 'var(--color-card-bg)',
                             }}
@@ -181,7 +191,7 @@ const IntelligencePlatform = () => {
                 <div style={{ marginBottom: '6rem' }}>
                     <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
                         <h2 style={{
-                            fontSize: '2.5rem',
+                            fontSize: isSmallPhone ? '1.5rem' : isMobile ? '2rem' : '2.5rem',
                             fontWeight: '900',
                             color: 'var(--color-white)',
                             marginBottom: '1rem',
@@ -200,7 +210,7 @@ const IntelligencePlatform = () => {
 
                     <div style={{
                         display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                        gridTemplateColumns: isSmallPhone ? '1fr' : 'repeat(auto-fit, minmax(320px, 1fr))',
                         gap: '2rem',
                     }}>
                         {dashboardMetrics.map((section, index) => (
@@ -254,13 +264,13 @@ const IntelligencePlatform = () => {
                 <div
                     className="glass"
                     style={{
-                        padding: '4rem 3rem',
+                        padding: isSmallPhone ? '2rem 1.5rem' : isMobile ? '3rem 2rem' : '4rem 3rem',
                         textAlign: 'center',
                         background: 'linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 255, 136, 0.05) 100%)',
                     }}
                 >
                     <h2 style={{
-                        fontSize: '2.5rem',
+                        fontSize: isSmallPhone ? '1.5rem' : isMobile ? '2rem' : '2.5rem',
                         fontWeight: '900',
                         color: 'var(--color-white)',
                         marginBottom: '1rem',

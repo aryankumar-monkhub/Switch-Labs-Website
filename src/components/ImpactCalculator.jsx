@@ -5,6 +5,16 @@ const ImpactCalculator = ({ onAction }) => {
     const [trucks, setTrucks] = useState(20);
     const [km, setKm] = useState(5000);
     const [energySource, setEnergySource] = useState('grid'); // 'grid', 'renewable', 'diesel'
+    const [width, setWidth] = useState(window.innerWidth);
+    const isSmallPhone = width <= 480;
+    const isMobile = width <= 768;
+    const isTablet = width > 768 && width <= 1024;
+
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const [metrics, setMetrics] = useState({
         carbonSaved: 0,
@@ -49,7 +59,7 @@ const ImpactCalculator = ({ onAction }) => {
         <section id="impact" className="noise-overlay">
             <div className="container">
                 <div className="glass border-heavy" style={{
-                    padding: '3rem',
+                    padding: isSmallPhone ? '1.5rem' : isMobile ? '2rem' : '3rem',
                     position: 'relative',
                     overflow: 'hidden'
                 }}>
@@ -66,8 +76,8 @@ const ImpactCalculator = ({ onAction }) => {
                     }} />
 
                     <div style={{ position: 'relative', zIndex: 1 }}>
-                        <div className="section-header" style={{ marginBottom: '4rem' }}>
-                            <h2 style={{ fontSize: '3rem', marginBottom: '0.5rem', fontWeight: '800' }}>
+                        <div className="section-header" style={{ marginBottom: isMobile ? '2rem' : '4rem' }}>
+                            <h2 style={{ fontSize: isSmallPhone ? '1.8rem' : isMobile ? '2.2rem' : '3rem', marginBottom: '0.5rem', fontWeight: '800' }}>
                                 Simulate Your <span style={{ color: 'var(--color-accent)' }}>Transition</span>
                             </h2>
                             <p style={{ color: 'var(--color-grey-light)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
@@ -77,8 +87,8 @@ const ImpactCalculator = ({ onAction }) => {
 
                         <div style={{
                             display: 'grid',
-                            gridTemplateColumns: 'minmax(300px, 1fr) 1fr',
-                            gap: '4rem',
+                            gridTemplateColumns: isMobile ? '1fr' : 'minmax(300px, 1fr) 1fr',
+                            gap: isMobile ? '2rem' : '4rem',
                             alignItems: 'stretch'
                         }}>
                             {/* LEFT PANEL: INPUTS & CHART */}
@@ -184,7 +194,7 @@ const ImpactCalculator = ({ onAction }) => {
                                 background: 'var(--color-primary)',
                                 border: '1px solid var(--color-accent-glow)',
                                 borderRadius: '20px',
-                                padding: '2.5rem',
+                                padding: isSmallPhone ? '1.5rem' : isMobile ? '2rem' : '2.5rem',
                                 display: 'flex',
                                 flexDirection: 'column',
                                 justifyContent: 'space-between',
@@ -196,7 +206,7 @@ const ImpactCalculator = ({ onAction }) => {
                                         Projected Savings
                                     </h4>
                                     <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.8rem', marginBottom: '0.5rem' }}>
-                                        <motion.div style={{ fontSize: '4rem', fontWeight: '900', color: 'var(--color-accent)', lineHeight: '1' }}>
+                                        <motion.div style={{ fontSize: isSmallPhone ? '2.5rem' : isMobile ? '3rem' : '4rem', fontWeight: '900', color: 'var(--color-accent)', lineHeight: '1' }}>
                                             <motion.span>{displayCarbon}</motion.span>
                                         </motion.div>
                                         <div style={{ fontSize: '1rem', color: 'var(--color-grey-light)', lineHeight: '1.3' }}>

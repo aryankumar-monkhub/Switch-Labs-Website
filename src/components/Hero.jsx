@@ -5,8 +5,9 @@ const Hero = ({ onAction }) => {
     const [width, setWidth] = useState(window.innerWidth);
     const [currentSlide, setCurrentSlide] = useState(0);
     const isMobile = width <= 768;
-    const isTablet = width > 768 && width <= 1024;
     const isSmallPhone = width <= 480;
+    const isTablet = width > 768 && width <= 1024;
+    const isLargeTablet = width > 1024 && width <= 1368;
 
     const getCleanRunValue = () => {
         const now = new Date();
@@ -72,12 +73,13 @@ const Hero = ({ onAction }) => {
     return (
         <>
         <section id="hero" className="noise-overlay" style={{
-            minHeight: isMobile ? 'auto' : '100vh',
+            minHeight: isMobile ? 'auto' : isLargeTablet ? '80vh' : '100vh',
+            maxHeight: isMobile ? '85vh' : isLargeTablet ? '85vh' : 'none',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'stretch',
             position: 'relative',
-            paddingTop: isMobile ? '6.5rem' : '3.5rem',
+            paddingTop: isMobile ? '6.5rem' : isLargeTablet ? '4rem' : '3.5rem',
             paddingBottom: isMobile ? '2rem' : '0',
             overflow: 'hidden',
         }}>
@@ -95,54 +97,58 @@ const Hero = ({ onAction }) => {
                     <img
                         src="/assets/hero_truck_1.png"
                         alt="SwitchLabs Electric Truck 1"
+                        loading="eager"
+                        fetchPriority="high"
                         style={{
                             width: '100%',
                             height: '100%',
                             objectFit: 'cover',
-                            objectPosition: 'center center',
+                            objectPosition: isMobile ? 'center 30%' : isLargeTablet ? 'center 40%' : 'center center',
                             display: 'block',
                             position: 'absolute',
                             top: 0,
                             left: 0,
                             opacity: currentSlide === 0 ? 1 : 0,
                             transition: 'opacity 1s ease-in-out',
-                            transform: isMobile ? 'scale(1.05)' : 'none',
+                            transform: isMobile ? 'scale(1.08)' : isLargeTablet ? 'scale(1.04)' : 'none',
                             filter: 'saturate(1.4) brightness(0.85) contrast(1.05)',
                         }}
                     />
                     <img
                         src="/assets/hero_truck.png"
                         alt="SwitchLabs Electric Truck 2"
+                        loading="lazy"
                         style={{
                             width: '100%',
                             height: '100%',
                             objectFit: 'cover',
-                            objectPosition: 'center center',
+                            objectPosition: isMobile ? 'center 30%' : isLargeTablet ? 'center 40%' : 'center center',
                             display: 'block',
                             position: 'absolute',
                             top: 0,
                             left: 0,
                             opacity: currentSlide === 1 ? 1 : 0,
                             transition: 'opacity 1s ease-in-out',
-                            transform: isMobile ? 'scale(1.05)' : 'none',
+                            transform: isMobile ? 'scale(1.08)' : isLargeTablet ? 'scale(1.04)' : 'none',
                             filter: 'saturate(1.4) brightness(0.85) contrast(1.05)',
                         }}
                     />
                     <img
                         src="/assets/hero_truck_2.png"
                         alt="SwitchLabs Electric Truck 3"
+                        loading="lazy"
                         style={{
                             width: '100%',
                             height: '100%',
                             objectFit: 'cover',
-                            objectPosition: 'center center',
+                            objectPosition: isMobile ? 'center 30%' : isLargeTablet ? 'center 40%' : 'center center',
                             display: 'block',
                             position: 'absolute',
                             top: 0,
                             left: 0,
                             opacity: currentSlide === 2 ? 1 : 0,
                             transition: 'opacity 1s ease-in-out',
-                            transform: isMobile ? 'scale(1.05)' : 'none',
+                            transform: isMobile ? 'scale(1.08)' : isLargeTablet ? 'scale(1.04)' : 'none',
                             filter: 'saturate(1.4) brightness(0.85) contrast(1.05)',
                         }}
                     />
@@ -154,7 +160,9 @@ const Hero = ({ onAction }) => {
                             ? 'linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.6) 100%)'
                             : isMobile 
                                 ? 'linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.6) 100%)'
-                                : 'linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.2) 100%)',
+                                : isLargeTablet
+                                    ? 'linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 35%, rgba(0,0,0,0.3) 100%)'
+                                    : 'linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.2) 100%)',
                         pointerEvents: 'none',
                     }} />
                     {/* Bottom Gradient for smooth transition to next section */}
@@ -163,7 +171,7 @@ const Hero = ({ onAction }) => {
                         bottom: 0,
                         left: 0,
                         right: 0,
-                        height: isSmallPhone ? '40%' : isMobile ? '35%' : '30%',
+                        height: isSmallPhone ? '40%' : isMobile ? '35%' : isLargeTablet ? '25%' : '30%',
                         background: 'linear-gradient(to top, var(--color-background), transparent)',
                         pointerEvents: 'none',
                     }} />
@@ -179,7 +187,7 @@ const Hero = ({ onAction }) => {
                 alignItems: isMobile ? 'center' : 'flex-start',
                 justifyContent: isMobile ? 'flex-start' : 'center',
                 flex: isMobile ? 'none' : 1,
-                padding: isMobile ? '2rem 1.5rem 0' : '0 0 0 5%',
+                padding: isMobile ? '2rem 1.5rem 0' : isLargeTablet ? '0 0 0 6%' : '0 0 0 5%',
                 paddingTop: isMobile ? '0rem' : undefined,
                 textAlign: isMobile ? 'center' : 'left',
             }}>
@@ -188,7 +196,7 @@ const Hero = ({ onAction }) => {
                     animate={{ opacity: 1, x: 0, y: 0 }}
                     transition={{ duration: 0.8 }}
                     style={{
-                        fontSize: isSmallPhone ? '1.8rem' : isMobile ? '2rem' : isTablet ? '2.5rem' : '3.4rem',
+                        fontSize: isSmallPhone ? '1.8rem' : isMobile ? '2rem' : isTablet ? '2.5rem' : isLargeTablet ? '2.8rem' : '3.4rem',
                         lineHeight: '1.1',
                         fontWeight: '900',
                         color: '#ffffff',
@@ -196,7 +204,7 @@ const Hero = ({ onAction }) => {
                         margin: 0,
                         marginTop: '0',
                         textAlign: 'left',
-                        maxWidth: '900px',
+                        maxWidth: isLargeTablet ? '700px' : '900px',
                     }}
                 >
                     Powering the<br />Shift to<br />
@@ -212,7 +220,7 @@ const Hero = ({ onAction }) => {
             </div>
 
             {/* Let's Talk Button */}
-            <div style={{ textAlign: 'center', padding: isMobile ? '1.5rem 1.5rem 0' : '2rem 0', zIndex: 3, position: 'relative' }}>
+            <div style={{ textAlign: 'center', padding: isMobile ? '1.5rem 1.5rem 0' : isLargeTablet ? '2rem 0 1rem' : '2rem 0', zIndex: 3, position: 'relative' }}>
                 <motion.button
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -221,10 +229,10 @@ const Hero = ({ onAction }) => {
                     style={{
                         background: 'var(--color-accent)',
                         color: 'var(--color-primary)',
-                        padding: isSmallPhone ? '0.8rem 1.5rem' : isMobile ? '1rem 2rem' : '1.2rem 2.5rem',
+                        padding: isSmallPhone ? '0.8rem 1.5rem' : isMobile ? '1rem 2rem' : isLargeTablet ? '1rem 2.2rem' : '1.2rem 2.5rem',
                         borderRadius: '4px',
                         fontWeight: '800',
-                        fontSize: isSmallPhone ? '0.85rem' : '1rem',
+                        fontSize: isSmallPhone ? '0.85rem' : isLargeTablet ? '0.95rem' : '1rem',
                         textTransform: 'uppercase',
                         boxShadow: '0 0 30px var(--color-accent-glow)',
                         border: 'none',
@@ -243,8 +251,8 @@ const Hero = ({ onAction }) => {
             display: 'flex',
             justifyContent: isMobile ? 'flex-start' : 'center',
             flexWrap: 'wrap',
-            gap: isSmallPhone ? '0.6rem' : '1rem',
-            padding: isMobile ? '2rem 1.5rem' : '3rem 2rem',
+            gap: isSmallPhone ? '0.6rem' : isLargeTablet ? '0.8rem' : '1rem',
+            padding: isMobile ? '2rem 1.5rem' : isLargeTablet ? '2.5rem 2rem' : '3rem 2rem',
             background: 'rgba(15, 23, 42, 0.85)',
             zIndex: 3,
         }}>
@@ -255,10 +263,10 @@ const Hero = ({ onAction }) => {
                 { label: 'Tree Saved', value: getTreeSavedValue() },
             ].map((stat, i) => (
                 <div key={i} className="" style={{
-                    padding: isSmallPhone ? '0.8rem 1rem' : isMobile ? '1rem 1.2rem' : '1.5rem 2rem',
+                    padding: isSmallPhone ? '0.8rem 1rem' : isMobile ? '1rem 1.2rem' : isLargeTablet ? '1.2rem 1.5rem' : '1.5rem 2rem',
                     textAlign: 'center',
-                    minWidth: isSmallPhone ? '100px' : isMobile ? '120px' : '160px',
-                    flex: isMobile ? '1 1 calc(50% - 0.5rem)' : 'none',
+                    minWidth: isSmallPhone ? '100px' : isMobile ? '120px' : isLargeTablet ? '140px' : '160px',
+                    flex: isMobile ? '1 1 calc(50% - 0.5rem)' : isLargeTablet ? '1 1 calc(25% - 0.6rem)' : 'none',
                     background: 'rgba(255, 255, 255, 0.08)',
                     backdropFilter: 'blur(8px)',
                     WebkitBackdropFilter: 'blur(8px)',
@@ -289,7 +297,7 @@ const Hero = ({ onAction }) => {
                         {stat.label}
                     </div>
                     <div style={{
-                        fontSize: isSmallPhone ? '1rem' : isMobile ? '1.2rem' : '1.5rem',
+                        fontSize: isSmallPhone ? '1rem' : isMobile ? '1.2rem' : isLargeTablet ? '1.35rem' : '1.5rem',
                         fontWeight: '800',
                         color: '#00ff88',
                         lineHeight: 1.2,
@@ -330,7 +338,7 @@ const Hero = ({ onAction }) => {
                     }}>
                     <div style={{
                         display: 'flex',
-                        gap: '6rem',
+                        gap: isLargeTablet ? '4rem' : '6rem',
                         width: 'max-content',
                         animation: 'marquee 30s linear infinite',
                     }}>
@@ -349,8 +357,9 @@ const Hero = ({ onAction }) => {
                                 src={logo.src}
                                 alt={`${logo.name} Logo`}
                                 className="partner-logo"
+                                sizes={isSmallPhone ? '80px' : isMobile ? '100px' : isTablet ? '150px' : isLargeTablet ? '180px' : '220px'}
                                 style={{
-                                    width: isSmallPhone ? '80px' : isMobile ? '100px' : isTablet ? '150px' : (i === 0 || i === 3 || i === 4 || i === 7 ? '220px' : i === 2 || i === 6 ? '162px' : '180px'),
+                                    width: isSmallPhone ? '80px' : isMobile ? '100px' : isTablet ? '150px' : isLargeTablet ? (i === 0 || i === 3 || i === 4 || i === 7 ? '190px' : i === 2 || i === 6 ? '140px' : '160px') : (i === 0 || i === 3 || i === 4 || i === 7 ? '220px' : i === 2 || i === 6 ? '162px' : '180px'),
                                     height: 'auto',
                                     objectFit: 'contain',
                                     flexShrink: 0,

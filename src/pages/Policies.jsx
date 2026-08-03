@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Policies = () => {
+    const [width, setWidth] = useState(window.innerWidth);
+    const isSmallPhone = width <= 480;
+    const isMobile = width <= 768;
+
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
-        <div className="container" style={{ paddingTop: '10rem', paddingBottom: '4rem' }}>
-            <h1 style={{ fontSize: '3rem', marginBottom: '2rem', textAlign: 'center', background: 'linear-gradient(135deg, var(--color-accent) 0%, #00ff88 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: '900' }}>Privacy Policy</h1>
+        <div className="container" style={{ paddingTop: isMobile ? '6rem' : '10rem', paddingBottom: '4rem' }}>
+            <h1 style={{ fontSize: isSmallPhone ? '1.8rem' : isMobile ? '2.5rem' : '3rem', marginBottom: '2rem', textAlign: 'center', background: 'linear-gradient(135deg, var(--color-accent) 0%, #00ff88 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: '900' }}>Privacy Policy</h1>
             <p style={{ fontSize: '1rem', lineHeight: '1.8', color: 'var(--color-white)', marginBottom: '1.5rem' }}>
                 SwitchLabs Automobiles Private Limited ("SwitchLabs", "we", "our", or "us") respects your privacy and is committed to protecting the personal information you share with us. This Privacy Policy explains how we collect, use, store, disclose, and protect your information when you visit our website or interact with our services.
             </p>

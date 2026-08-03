@@ -66,6 +66,7 @@ const Gallery = () => {
                         <img
                             src={img.src}
                             alt={img.alt}
+                            loading="lazy"
                             style={{
                                 position: 'absolute',
                                 inset: 0,

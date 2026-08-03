@@ -71,12 +71,12 @@ const LeadershipTeam = () => {
                 paddingBottom: '120%',
                 maxWidth: '350px',
                 width: '100%',
-                marginLeft: member.name === 'ajay_pratap' ? '22rem' : member.name === 'anish_kumar' ? '22rem' : '0',
               }}
             >
               <img
                 src={`/assets/${member.name}.png`}
                 alt={member.name}
+                loading="lazy"
                 style={{
                   position: 'absolute',
                   inset: 0,
@@ -151,6 +151,7 @@ const LeadershipTeam = () => {
               <img
                 src={`/assets/${member.name}.png`}
                 alt={member.name}
+                loading="lazy"
                 style={{
                   position: 'absolute',
                   inset: 0,

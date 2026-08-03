@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const FloatingCTA = () => {
+    const [width, setWidth] = useState(window.innerWidth);
+    const isSmallPhone = width <= 480;
+
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const handleWhatsAppClick = () => {
         window.open('https://wa.me/919004253299', '_blank');
     };
@@ -15,10 +24,10 @@ const FloatingCTA = () => {
             whileTap={{ scale: 0.9 }}
             style={{
                 position: 'fixed',
-                bottom: '2rem',
-                right: '2rem',
-                width: '64px',
-                height: '64px',
+                bottom: isSmallPhone ? '1rem' : '2rem',
+                right: isSmallPhone ? '1rem' : '2rem',
+                width: isSmallPhone ? '52px' : '64px',
+                height: isSmallPhone ? '52px' : '64px',
                 borderRadius: '50%',
                 background: '#25D366',
                 color: '#ffffff',

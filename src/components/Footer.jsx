@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import emailjs from '@emailjs/browser';
 
 const Footer = ({ onAction }) => {
     const [formData, setFormData] = useState({
@@ -78,9 +79,19 @@ const Footer = ({ onAction }) => {
             return;
         }
 
-        setIsSubmitted(true);
-        console.log('Lead Captured:', formData);
-        setTimeout(() => setIsSubmitted(false), 5000);
+        emailjs.send('service_kitlnb8', 'template_l7pv5qh', {
+            name: formData.name,
+            email: formData.email,
+            phone: `${formData.countryCode} ${formData.phone}`,
+            company: formData.company,
+            subject: 'Footer Lead',
+            message: `Lead from footer form`,
+        }, { publicKey: 'StxpEdmeC33SuAAk4' })
+        .then(() => {
+            setIsSubmitted(true);
+            setTimeout(() => setIsSubmitted(false), 5000);
+        })
+        .catch((err) => console.error('EmailJS error:', err));
     };
 
     const getFooterInputStyle = (fieldName) => ({
@@ -118,7 +129,7 @@ const Footer = ({ onAction }) => {
                                     alt="SwitchLabs Logo"
                                     className="logo-img"
                                     style={{
-                                        height: '75px',
+                                        height: isSmallPhone ? '50px' : isMobile ? '60px' : '75px',
                                         width: 'auto',
                                         objectFit: 'contain',
                                         filter: 'none',
@@ -137,9 +148,8 @@ const Footer = ({ onAction }) => {
                     </div>
 
                     <div className="glass" style={{ padding: isSmallPhone ? '1.5rem' : isMobile ? '2rem' : isTablet ? '3rem' : '3.5rem', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.4)' }}>
-                        {!isSubmitted ? (
-                            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                                <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '1.5rem' }}>
+                        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                                <div style={{ display: 'grid', gridTemplateColumns: isMobile || isTablet ? '1fr' : '1fr 1fr', gap: '1.5rem' }}>
                                     <div className="input-field">
                                         <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: '800', textTransform: 'uppercase', marginBottom: '0.75rem', color: errors.name ? 'var(--color-error)' : 'var(--color-accent)', letterSpacing: '0.05em' }}>Full Name</label>
                                         <input
@@ -166,10 +176,10 @@ const Footer = ({ onAction }) => {
                                     </div>
                                 </div>
 
-                                <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '1.5rem' }}>
+                                <div style={{ display: 'grid', gridTemplateColumns: isMobile || isTablet ? '1fr' : '1fr 1fr', gap: '1.5rem' }}>
                                     <div className="input-field">
                                         <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: '800', textTransform: 'uppercase', marginBottom: '0.75rem', color: errors.phone ? 'var(--color-error)' : 'var(--color-accent)', letterSpacing: '0.05em' }}>Phone Number</label>
-                                        <div style={{ ...getFooterInputStyle('phone'), display: 'flex', alignItems: 'center', padding: '0 1rem' }}>
+                                        <div style={{ ...getFooterInputStyle('phone'), display: 'flex', alignItems: 'center', padding: '0 1rem', flexWrap: 'wrap' }}>
                                             <select
                                                 name="countryCode"
                                                 value={formData.countryCode}
@@ -245,15 +255,63 @@ const Footer = ({ onAction }) => {
 
 
                             </form>
-                        ) : (
-                            <div style={{ textAlign: 'center', padding: '3rem 0' }}>
-                                <div style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>⚡️</div>
-                                <h3 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>Request Logged</h3>
-                                <p style={{ color: 'var(--color-grey-light)' }}>Our engineers will reach out with a custom fleet study.</p>
-                            </div>
-                        )}
                     </div>
                 </div>
+
+                {/* Success Popup */}
+                {isSubmitted && (
+                    <div style={{
+                        position: 'fixed',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        background: 'rgba(0, 0, 0, 0.85)',
+                        backdropFilter: 'blur(8px)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        zIndex: 1000,
+                        padding: '1rem'
+                    }}>
+                        <div style={{
+                            background: 'var(--color-primary)',
+                            border: '1px solid var(--color-accent)',
+                            borderRadius: '16px',
+                            padding: isSmallPhone ? '2rem 1.5rem' : '3rem',
+                            maxWidth: '420px',
+                            width: '100%',
+                            textAlign: 'center',
+                            boxShadow: '0 0 50px rgba(0, 0, 0, 0.5), 0 0 30px var(--color-accent-glow)'
+                        }}>
+                            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✓</div>
+                            <h3 style={{ fontSize: isSmallPhone ? '1.3rem' : '1.5rem', color: 'var(--color-accent)', marginBottom: '0.75rem' }}>
+                                Your Message has been sent
+                            </h3>
+                            <p style={{ color: 'var(--color-grey-light)', fontSize: '1rem', marginBottom: '2rem' }}>
+                                Our team will reach you within 24 hours
+                            </p>
+                            <button
+                                onClick={() => setIsSubmitted(false)}
+                                style={{
+                                    padding: '0.8rem 2.5rem',
+                                    background: 'var(--color-accent)',
+                                    color: 'var(--color-primary)',
+                                    border: 'none',
+                                    borderRadius: '8px',
+                                    fontSize: '1rem',
+                                    fontWeight: '800',
+                                    textTransform: 'uppercase',
+                                    cursor: 'pointer',
+                                    boxShadow: '0 0 20px var(--color-accent-glow)',
+                                    transition: 'var(--transition-smooth)'
+                                }}
+                            >
+                                OK
+                            </button>
+                        </div>
+                    </div>
+                )}
 
                 {/* Footer Links Section - All Navbar Dropdowns */}
                 <div style={{

@@ -5,6 +5,7 @@ const Credibility = () => {
     const isSmallPhone = width <= 480;
     const isMobile = width <= 768;
     const isTablet = width > 768 && width <= 1024;
+    const isLargeTablet = width > 1024 && width <= 1368;
 
     useEffect(() => {
         const handleResize = () => setWidth(window.innerWidth);
@@ -14,22 +15,22 @@ const Credibility = () => {
 
     return (
         <div id="about-us">
-            {/* Partners */}
-            <section style={{ textAlign: 'center', padding: isMobile ? '2rem 0' : '4rem 0' }}>
-                <div className="container">
-                    <div style={{
-                        background: '#eeeeee',
-                        borderRadius: '12px',
-                        boxSizing: 'border-box',
-                        padding: isMobile ? '1.5rem 1rem' : '2rem 1.5rem',
-                        width: isMobile ? '100vw' : '100vw',
-                        position: 'relative',
-                        left: '50%',
-                        right: '50%',
-                        marginLeft: '-50vw',
-                        marginRight: '-50vw',
-                    }}>
-                        <h4 style={{ color: '#4CA3FF', fontSize: isSmallPhone ? '1rem' : isMobile ? '1.2rem' : isTablet ? '1.5rem' : '1.8rem', textTransform: 'uppercase', letterSpacing: '0.3rem', marginBottom: '2rem', fontWeight: '700', textAlign: 'center' }}>
+            {/* Partners - Full-bleed background */}
+            <section style={{ textAlign: 'center', padding: isMobile ? '2rem 0' : '4rem 0', overflow: 'hidden' }}>
+                <div style={{
+                    background: '#eeeeee',
+                    borderRadius: 0,
+                    boxSizing: 'border-box',
+                    padding: isMobile ? '1.5rem 1rem' : '2rem 1.5rem',
+                    width: '100%',
+                    position: 'relative',
+                    left: 0,
+                    right: 0,
+                    marginLeft: 0,
+                    marginRight: 0,
+                }}>
+                    <div className="container">
+                        <h4 style={{ color: '#4CA3FF', fontSize: isSmallPhone ? '1rem' : isMobile ? '1.2rem' : isTablet ? '1.5rem' : isLargeTablet ? '1.6rem' : '1.8rem', textTransform: 'uppercase', letterSpacing: '0.3rem', marginBottom: '2rem', fontWeight: '700', textAlign: 'center' }}>
                             Strategic OEM Partners
                         </h4>
                         <div style={{
@@ -48,8 +49,9 @@ const Credibility = () => {
                                     key={i}
                                     src={logo.src}
                                     alt={`${logo.name} Logo`}
+                                    sizes={isSmallPhone ? '90px' : isMobile ? '120px' : isTablet ? '150px' : isLargeTablet ? '170px' : '180px'}
                                     style={{
-                                        width: isSmallPhone ? '90px' : isMobile ? '120px' : isTablet ? '150px' : (logo.width || '180px'),
+                                        width: isSmallPhone ? '90px' : isMobile ? '120px' : isTablet ? '150px' : isLargeTablet ? '170px' : (logo.width || '180px'),
                                         height: 'auto',
                                         objectFit: 'contain',
                                         flexShrink: 0,

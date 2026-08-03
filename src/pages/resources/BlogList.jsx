@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { blogPosts } from '../../data/blogPosts';
@@ -6,8 +6,17 @@ import { useTheme } from '../../context/ThemeContext';
 
 const BlogList = () => {
     const { theme } = useTheme();
+    const [width, setWidth] = useState(window.innerWidth);
+    const isMobile = width <= 768;
+
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
-        <div style={{ minHeight: '100vh', paddingTop: '8rem', paddingBottom: '4rem' }}>
+        <div style={{ minHeight: '100vh', paddingTop: isMobile ? '6rem' : '8rem', paddingBottom: '4rem' }}>
             <Helmet>
                 <title>Blog | SwitchLabs</title>
                 <meta name="description" content="Insights, news, and updates from SwitchLabs on heavy-duty EV logistics." />
@@ -72,7 +81,7 @@ const BlogList = () => {
                                 </span>
                             </div>
 
-                            <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>
+                            <h2 style={{ fontSize: 'clamp(1.2rem, 3vw, 1.5rem)', marginBottom: '1rem' }}>
                                 <Link to={`/resources/blog/${post.slug}`} style={{ color: theme === 'light' ? '#155394' : '#4CA3FF', textDecoration: 'none' }}>
                                     {post.title}
                                 </Link>
