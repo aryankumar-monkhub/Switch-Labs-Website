@@ -133,7 +133,7 @@ const LeadershipTeam = () => {
           {[
             { name: 'gazal_kalra', role: 'Advisor', linkedin: "https://www.linkedin.com/in/gazalkalra" },
             { name: 'sunil_bhatnagar', role: 'Additional Director', linkedin: "https://www.linkedin.com/in/sunil-bhatnagar-47251423" },
-            { name: 'sudhendu_j_sinha', role: 'Leadership', linkedin: "https://www.linkedin.com/in/sudhendu-j-sinha-9973541b3" },
+            { name: 'sudhendu_j_sinha', role: 'Advisor', linkedin: "https://www.linkedin.com/in/sudhendu-j-sinha-9973541b3" },
           ].map((member, i) => (
             <div
               key={i}

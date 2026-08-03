@@ -314,7 +314,7 @@ const Hero = ({ onAction }) => {
             position: 'relative',
             width: '100%',
             borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-            padding: '1.5rem 0',
+            padding: '0rem 0 1.5rem 0',
             background: 'rgba(15, 23, 42, 0.5)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
@@ -336,6 +336,21 @@ const Hero = ({ onAction }) => {
                         overflow: 'hidden',
                         padding: '0.8rem 0',
                     }}>
+                        <div style={{
+                            textAlign: 'center',
+                            fontWeight: '700',
+                            fontSize: isSmallPhone ? '1rem' : isMobile ? '1.2rem' : isTablet ? '1.5rem' : isLargeTablet ? '1.6rem' : '1.8rem',
+                            color: 'transparent',
+                            background: 'linear-gradient(90deg, #00ff88, #00cc6a)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
+                            marginBottom: '0.6rem',
+                            marginTop: '-0.3rem',
+                            letterSpacing: '0.3rem',
+                        }}>
+                            OUR CLIENTS
+                        </div>
                     <div style={{
                         display: 'flex',
                         gap: isLargeTablet ? '4rem' : '6rem',

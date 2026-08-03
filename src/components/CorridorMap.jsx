@@ -245,7 +245,7 @@ const CorridorMap = () => {
                                 <div className="stat-card glass" style={{ padding: '1.5rem', borderRadius: '12px' }}>
                                     <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--color-white)', lineHeight: 1 }}>10+</div>
                                     <div style={{ marginTop: '0.5rem', color: 'var(--color-grey)', fontSize: '0.85rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                                        Planned for Q3 2026
+                                        Planned for 2026-27
                                     </div>
                                 </div>
                             </div>
