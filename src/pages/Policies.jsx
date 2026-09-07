@@ -154,7 +154,7 @@ const Policies = () => {
                 Website: switchlabs.in
             </p>
             <p style={{ fontSize: '1rem', lineHeight: '1.8', color: 'var(--color-white)', marginBottom: '1.5rem' }}>
-                Address: Team Coworks, Prop no - 55 Lane - 2, Westend Marg, New Delhi, Delhi - 110030
+                Address: Alphathum, Unit No. 1106/1107, Tower B, Plot No. 1, Sector-90, Noida - 201305, Uttar Pradesh, India
             </p>
             <p style={{ fontSize: '1rem', lineHeight: '1.8', color: 'var(--color-white)', marginBottom: '1.5rem' }}>
                 By using our website, you consent to the collection and use of information as described in this Privacy Policy.

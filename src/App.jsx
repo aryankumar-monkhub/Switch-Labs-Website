@@ -17,6 +17,7 @@ import AboutUs from './pages/AboutUs';
 import Policies from './pages/Policies';
 import TermsAndConditions from './pages/TermsAndConditions';
 import SiteMap from './pages/SiteMap';
+import ImpactStats from './pages/ImpactStats';
 import OperationalCorridors from './pages/network/OperationalCorridors';
 import BlogList from './pages/resources/BlogList';
 import BlogPost from './pages/resources/BlogPost';
@@ -60,6 +61,9 @@ function App() {
 
             {/* Contact */}
             <Route path="/contact" element={<Contact />} />
+
+            {/* Impact */}
+            <Route path="/impact" element={<ImpactStats />} />
 
             {/* Legal */}
             <Route path="/policies" element={<Policies />} />

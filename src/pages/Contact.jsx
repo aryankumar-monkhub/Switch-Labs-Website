@@ -38,6 +38,16 @@ const Contact = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    useEffect(() => {
+        const closeDropdown = () => {
+            document.querySelectorAll('[data-phone-dropdown]').forEach(el => {
+                el.style.display = 'none';
+            });
+        };
+        document.addEventListener('click', closeDropdown);
+        return () => document.removeEventListener('click', closeDropdown);
+    }, []);
+
     const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
     const handleSubmit = (e) => {
@@ -84,34 +94,84 @@ const Contact = () => {
 
                             </div>
 
-                            <div>
+                            <div style={{ position: 'relative' }}>
                                 <h4 style={{ color: 'var(--color-accent)', marginBottom: '0.5rem', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
                                     Phone
                                 </h4>
-                                <a href="tel:+919004253299" style={{ color: 'var(--color-white)', fontSize: '1.1rem', textDecoration: 'none' }}>
+                                <div
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                                        if (isMobile) {
+                                            const dropdown = e.currentTarget.nextElementSibling;
+                                            if (dropdown) {
+                                                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                                            }
+                                        } else {
+                                            window.open('https://wa.me/919004253299', '_blank');
+                                        }
+                                    }}
+                                    style={{ color: 'var(--color-white)', fontSize: '1.1rem', cursor: 'pointer', textDecoration: 'none', transition: 'color 0.3s' }}
+                                    onMouseOver={(e) => e.currentTarget.style.color = 'var(--color-accent)'}
+                                    onMouseOut={(e) => e.currentTarget.style.color = 'var(--color-white)'}
+                                >
                                     +91 9004253299
-                                </a>
+                                </div>
+                                <div data-phone-dropdown style={{
+                                    display: 'none',
+                                    position: 'absolute',
+                                    top: '100%',
+                                    left: 0,
+                                    background: 'rgba(15, 23, 42, 0.95)',
+                                    backdropFilter: 'blur(12px)',
+                                    border: '1px solid rgba(0, 255, 136, 0.2)',
+                                    borderRadius: '8px',
+                                    padding: '0.5rem 0',
+                                    minWidth: '180px',
+                                    zIndex: 100,
+                                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+                                }}>
+                                    <a
+                                        href="tel:+919004253299"
+                                        style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.6rem 1rem', color: 'var(--color-primary)', textDecoration: 'none', fontSize: '0.95rem', transition: 'background 0.2s' }}
+                                        onMouseOver={(e) => e.currentTarget.style.background = 'rgba(0, 255, 136, 0.1)'}
+                                        onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}
+                                    >
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                        </svg>
+                                        +91 9004253299
+                                    </a>
+                                    <a
+                                        href="https://wa.me/919004253299"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.6rem 1rem', color: 'var(--color-primary)', textDecoration: 'none', fontSize: '0.95rem', transition: 'background 0.2s' }}
+                                        onMouseOver={(e) => e.currentTarget.style.background = 'rgba(0, 255, 136, 0.1)'}
+                                        onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}
+                                    >
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#25D366" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                                        </svg>
+                                        +91 9004253299
+                                    </a>
+                                </div>
                             </div>
 
                             <div>
                                 <h4 style={{ color: 'var(--color-accent)', marginBottom: '0.5rem', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
                                     Office
                                 </h4>
-                                <a 
-                                    href="https://www.google.com/maps/search/?api=1&query=Team+Coworks,+Prop+no+-+55+Lane+-+2,+Westend+Marg,+New+Delhi,+Delhi+-+110030" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    style={{ color: 'var(--color-white)', fontSize: '1rem', lineHeight: '1.6', display: 'flex', alignItems: 'flex-start', gap: '0.5rem', textDecoration: 'none', cursor: 'pointer', transition: 'color 0.3s ease' }}
-                                    onMouseOver={(e) => e.target.style.color = 'var(--color-accent)'}
-                                    onMouseOut={(e) => e.target.style.color = 'var(--color-white)'}
+                                <div
+                                    style={{ color: 'var(--color-white)', fontSize: '1rem', lineHeight: '1.6', display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}
                                 >
                                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginTop: '3px', flexShrink: 0 }}>
                                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                                         <circle cx="12" cy="10" r="3"/>
                                     </svg>
-                                    Team Coworks, Prop no - 55 Lane - 2, Westend Marg,<br />
-                                    New Delhi, Delhi - 110030
-                                </a>
+                                    Alphathum, Unit No. 1106/1107, Tower B, Plot No. 1,<br />
+                                    Sector-90, Noida - 201305, Uttar Pradesh, India
+                                </div>
                             </div>
 
                             <div>

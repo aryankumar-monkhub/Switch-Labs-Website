@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { getCleanRunValue, getFuelSavedValue, getTreeSavedValue, getCO2SavedValue } from '../data/impactStats';
 
 const Hero = ({ onAction }) => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -8,48 +9,6 @@ const Hero = ({ onAction }) => {
     const isSmallPhone = width <= 480;
     const isTablet = width > 768 && width <= 1024;
     const isLargeTablet = width > 1024 && width <= 1368;
-
-    const getCleanRunValue = () => {
-        const now = new Date();
-        const baseDate = new Date(2026, 6, 1);
-        const monthsDiff = (now.getFullYear() - baseDate.getFullYear()) * 12 + (now.getMonth() - baseDate.getMonth());
-        const baseValue = 10;
-        const total = baseValue + (monthsDiff * 2);
-        return `${total}Lac.+ Kms.`;
-    };
-
-    const getFuelSavedValue = () => {
-        const now = new Date();
-        const baseDate = new Date(2026, 6, 1);
-        const monthsDiff = (now.getFullYear() - baseDate.getFullYear()) * 12 + (now.getMonth() - baseDate.getMonth());
-        const baseLitres = 250000;
-        const total = baseLitres + (monthsDiff * 80000);
-        if (total >= 100000) {
-            return `${(total / 100000).toFixed(1)}Lac.+ Litres`;
-        }
-        return `${total.toLocaleString()}+ Litres`;
-    };
-
-    const getTreeSavedValue = () => {
-        const now = new Date();
-        const baseDate = new Date(2026, 6, 1);
-        const monthsDiff = (now.getFullYear() - baseDate.getFullYear()) * 12 + (now.getMonth() - baseDate.getMonth());
-        const baseTrees = 5500;
-        const total = baseTrees + (monthsDiff * 4760);
-        if (total >= 1000) {
-            return `${(total / 1000).toFixed(1)}K+`;
-        }
-        return `${total.toLocaleString()}+`;
-    };
-
-    const getCO2SavedValue = () => {
-        const now = new Date();
-        const baseDate = new Date(2026, 6, 1);
-        const monthsDiff = (now.getFullYear() - baseDate.getFullYear()) * 12 + (now.getMonth() - baseDate.getMonth());
-        const baseTons = 500;
-        const total = baseTons + (monthsDiff * 100);
-        return `${total}+ Tons`;
-    };
 
     const slides = [
         '/assets/hero_truck_1.png',

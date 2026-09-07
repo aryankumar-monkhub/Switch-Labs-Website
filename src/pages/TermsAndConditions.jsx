@@ -32,7 +32,7 @@ const TermsAndConditions = () => {
                 Email: switchlabsautomobiles@gmail.com
             </p>
             <p style={{ fontSize: '1rem', lineHeight: '1.8', color: 'var(--color-white)', marginBottom: '1.5rem' }}>
-                Registered Office: Team Coworks, Prop no - 55 Lane - 2, Westend Marg, New Delhi, Delhi - 110030
+                Registered Office: Alphathum, Unit No. 1106/1107, Tower B, Plot No. 1, Sector-90, Noida - 201305, Uttar Pradesh, India
             </p>
 
             <h2 style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: 'var(--gallery-heading)' }}>2. Acceptance of Terms</h2>
@@ -228,7 +228,7 @@ const TermsAndConditions = () => {
                 Website: switchlabs.in
             </p>
             <p style={{ fontSize: '1rem', lineHeight: '1.8', color: 'var(--color-white)', marginBottom: '1.5rem' }}>
-                Address: Team Coworks, Prop no - 55 Lane - 2, Westend Marg, New Delhi, Delhi - 110030
+                Address: Alphathum, Unit No. 1106/1107, Tower B, Plot No. 1, Sector-90, Noida - 201305, Uttar Pradesh, India
             </p>
             <p style={{ fontSize: '1rem', lineHeight: '1.8', color: 'var(--color-white)', marginBottom: '1.5rem' }}>
                 By accessing or using this website, you acknowledge that you have read, understood, and agreed to these Terms and Conditions.
