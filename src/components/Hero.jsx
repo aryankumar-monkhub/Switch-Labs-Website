@@ -315,16 +315,19 @@ const Hero = ({ onAction }) => {
                         gap: isLargeTablet ? '4rem' : '6rem',
                         width: 'max-content',
                         animation: 'marquee 30s linear infinite',
+                        alignItems: 'center',
                     }}>
                         {[
-                            { name: 'JK Lakshmi Cements', src: '/assets/logos/jk_lakshmi.png' },
-                            { name: 'Dalmia Cements', src: '/assets/logos/dalmia.svg' },
-                            { name: 'UPL', src: '/assets/logos/upl.svg' },
-                            { name: 'Tata Steel', src: '/assets/logos/tata_steel.svg' },
-                            { name: 'JK Lakshmi Cements', src: '/assets/logos/jk_lakshmi.png' },
-                            { name: 'Dalmia Cements', src: '/assets/logos/dalmia.svg' },
-                            { name: 'UPL', src: '/assets/logos/upl.svg' },
-                            { name: 'Tata Steel', src: '/assets/logos/tata_steel.svg' },
+                            { name: 'JK Lakshmi Cements', src: '/assets/logos/jk_lakshmi.png', width: '220px', mobileWidth: '100px' },
+                            { name: 'Dalmia Cements', src: '/assets/logos/dalmia.svg', width: '180px', mobileWidth: '100px' },
+                            { name: 'UPL', src: '/assets/logos/upl.svg', width: '162px', mobileWidth: '100px' },
+                            { name: 'Tata Steel', src: '/assets/logos/tata_steel.svg', width: '220px', mobileWidth: '100px' },
+                            { name: 'JSW Steel', src: '/assets/logos/jsw_steel_logo_1.png', width: '180px', mobileWidth: '100px' },
+                            { name: 'JK Lakshmi Cements', src: '/assets/logos/jk_lakshmi.png', width: '220px', mobileWidth: '100px' },
+                            { name: 'Dalmia Cements', src: '/assets/logos/dalmia.svg', width: '180px', mobileWidth: '100px' },
+                            { name: 'UPL', src: '/assets/logos/upl.svg', width: '162px', mobileWidth: '100px' },
+                            { name: 'Tata Steel', src: '/assets/logos/tata_steel.svg', width: '220px', mobileWidth: '100px' },
+                            { name: 'JSW Steel', src: '/assets/logos/jsw_steel_logo_1.png', width: '180px', mobileWidth: '100px' },
                         ].map((logo, i) => (
                             <img
                                 key={i}
@@ -333,7 +336,7 @@ const Hero = ({ onAction }) => {
                                 className="partner-logo"
                                 sizes={isSmallPhone ? '80px' : isMobile ? '100px' : isTablet ? '150px' : isLargeTablet ? '180px' : '220px'}
                                 style={{
-                                    width: isSmallPhone ? '80px' : isMobile ? '100px' : isTablet ? '150px' : isLargeTablet ? (i === 0 || i === 3 || i === 4 || i === 7 ? '190px' : i === 2 || i === 6 ? '140px' : '160px') : (i === 0 || i === 3 || i === 4 || i === 7 ? '220px' : i === 2 || i === 6 ? '162px' : '180px'),
+                                    width: isSmallPhone ? '80px' : isMobile ? logo.mobileWidth : isTablet ? '150px' : isLargeTablet ? (logo.width === '220px' ? '190px' : logo.width === '162px' ? '140px' : '160px') : logo.width,
                                     height: 'auto',
                                     objectFit: 'contain',
                                     flexShrink: 0,
